@@ -9,3 +9,4 @@ Step is aimed to improve the tour experience
 * Intelligent location determination
 * Auto tour record
 * Easy to integrate
+
