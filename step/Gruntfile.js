@@ -403,19 +403,6 @@ module.exports = function(grunt) {
     // },
 
     // Test settings
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true
-      }
-    },
-
-    mochaTest: {
-      options: {
-        reporter: 'spec'
-      },
-      src: ['test/server/**/*.js']
-    },
 
     env: {
       test: {
@@ -471,25 +458,6 @@ module.exports = function(grunt) {
     grunt.task.run(['serve']);
   });
 
-  grunt.registerTask('test', function(target) {
-    if (target === 'server') {
-      return grunt.task.run([
-        'env:test',
-        'mochaTest'
-      ]);
-    } else if (target === 'client') {
-      return grunt.task.run([
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer',
-        'karma'
-      ]);
-    } else grunt.task.run([
-      'test:server',
-      'test:client'
-    ]);
-  });
-
   grunt.registerTask('build', [
     'clean:dist',
     'bower-install',
@@ -512,7 +480,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'test',
     'build'
   ]);
 };
