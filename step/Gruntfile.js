@@ -47,13 +47,12 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
-        tasks: ['newer:coffee:dist']
-      },
-      coffeeTest: {
-        files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
-        tasks: ['newer:coffee:test', 'karma']
+      js: {
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        tasks: ['newer:jshint:all'],
+        options: {
+          livereload: true
+        }
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -64,10 +63,10 @@ module.exports = function(grunt) {
       },
       livereload: {
         files: [
-          '<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
-          '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
-          '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+        '<%= yeoman.app %>/views/{,*//*}*.{html,jade}',
+        '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
+        '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+        '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
 
         options: {
@@ -109,9 +108,9 @@ module.exports = function(grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/*',
-            '!<%= yeoman.dist %>/.git*',
-            '!<%= yeoman.dist %>/Procfile'
+          '<%= yeoman.dist %>/*',
+          '!<%= yeoman.dist %>/.git*',
+          '!<%= yeoman.dist %>/Procfile'
           ]
         }]
       },
@@ -185,41 +184,15 @@ module.exports = function(grunt) {
       }
     },
 
-    // Compiles CoffeeScript to JavaScript
-    coffee: {
-      options: {
-        sourceMap: true,
-        sourceRoot: ''
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/scripts',
-          ext: '.js'
-        }]
-      },
-      test: {
-        files: [{
-          expand: true,
-          cwd: 'test/client/spec',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/client/spec',
-          ext: '.js'
-        }]
-      }
-    },
-
     // Renames files for browser caching purposes
     rev: {
       dist: {
         files: {
           src: [
-            '<%= yeoman.dist %>/public/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/public/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/public/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/public/styles/fonts/*'
+          '<%= yeoman.dist %>/public/scripts/{,*/}*.js',
+          '<%= yeoman.dist %>/public/styles/{,*/}*.css',
+          '<%= yeoman.dist %>/public/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.dist %>/public/styles/fonts/*'
           ]
         }
       }
@@ -230,7 +203,7 @@ module.exports = function(grunt) {
     // additional tasks can operate on them
     useminPrepare: {
       html: ['<%= yeoman.app %>/views/index.html',
-        '<%= yeoman.app %>/views/index.jade'
+      '<%= yeoman.app %>/views/index.jade'
       ],
       options: {
         dest: '<%= yeoman.dist %>/public'
@@ -240,7 +213,7 @@ module.exports = function(grunt) {
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/views/{,*/}*.html',
-        '<%= yeoman.dist %>/views/{,*/}*.jade'
+      '<%= yeoman.dist %>/views/{,*/}*.jade'
       ],
       css: ['<%= yeoman.dist %>/public/styles/{,*/}*.css'],
       options: {
@@ -351,11 +324,9 @@ module.exports = function(grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'coffee:dist',
         'copy:styles'
       ],
       test: [
-        'coffee',
         'copy:styles'
       ],
       debug: {
@@ -368,7 +339,6 @@ module.exports = function(grunt) {
         }
       },
       dist: [
-        'coffee',
         'copy:styles',
         'imagemin',
         'svgmin',

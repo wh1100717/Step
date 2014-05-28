@@ -20,7 +20,7 @@ var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 // 初始化 models
 var modelsPath = path.join(__dirname, 'lib/models');
 fs.readdirSync(modelsPath).forEach(function(file) {
-  if (/(.*)\.(js$|coffee$)/.test(file)) {
+  if (/(.*)\.(js$)/.test(file)) {
     require(modelsPath + '/' + file);
   }
 });

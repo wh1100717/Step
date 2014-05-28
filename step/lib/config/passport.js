@@ -12,7 +12,7 @@ LocalStrategy = require('passport-local').Strategy;
 
 
 /*
- * Passport configuration
+ * Passport 配置文件
  */
 
 passport.serializeUser(function(user, done) {
