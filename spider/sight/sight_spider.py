@@ -14,6 +14,7 @@ import traceback
 from BeautifulSoup import BeautifulSoup
 from util import pinyin
 from util import AgentPoolUtil
+from util import MongoUtil
 
 
 '''
@@ -50,6 +51,7 @@ class Spider:
 	def __init__(self, args):
 		self._city = args.city
 		self._city_cn = args.city_cn
+		self._save_type = args.save_type
 		self._scene = []
 		# self.url_template = "http://lvyou.baidu.com/destination/ajax/jingdian?format=ajax&surl=beijing&pn=3"
 		self._scene_template = "http://lvyou.baidu.com/destination/ajax/jingdian?format=ajax&surl=#{1}&pn=#{2}"
@@ -135,6 +137,7 @@ class Spider:
 			s['sketch_desc'] = scene['ext']['sketch_desc'].encode('utf-8','ignore')
 			s['more_desc'] = scene['ext']['more_desc'].encode('utf-8','ignore')
 			s['cover'] = scene['cover']['full_url'].encode('utf-8','ignore')
+			s['city'] = self._city
 			try:
 				location = self._location(self._city_cn + s['sname'])
 				if location:
@@ -155,11 +158,17 @@ class Spider:
 		with open(file_name, 'w') as outfile:
 			json.dump(self._scene, outfile, ensure_ascii=False, indent=4)
 
+	def _save_to_mongo(self):
+		SceneCollection = MongoUtil.db.scene
+		for scene in self._scene:
+			SceneCollection.update({'sname':scene['sname']},{'$set':scene}, safe=True, upsert=True)
+		print "success insert into database"
+			
+
 	def grab(self):
 		flag = True
 		city = self._city
-		page_index = 1
-
+		page_index = 105
 		while(flag):
 			url = self._get_url(city, page_index)
 			data = self._data(url)
@@ -168,7 +177,10 @@ class Spider:
 			else:
 				page_index += 1
 			print "The %s page finished!" %(str(page_index-1))
-		self._save_to_file()
+		if self._save_type is "mongo":
+			self._save_to_mongo()
+		else:
+			self._save_to_file()
 		print "all finish! The sight spot information has been saved in the path `scenes/%s.json`" %self._city
 
 
@@ -178,6 +190,9 @@ if __name__ == '__main__':
 
 	#设置需要抓取的城市
 	parser.add_argument('-c', type=str, dest="city_cn", default="北京", help="config the city, input chinese city name, 北京 by default")
+
+	#设置存储格式
+	parser.add_argument('-s', type=str, dest="save_type", default="mongo", help="config the save mode: mongo | file, mongo by default")
 
 	args = parser.parse_args()
 
