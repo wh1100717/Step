@@ -38,22 +38,5 @@ exports.show_by_name = (req, res, next) ->
 	return
 
 exports.save_scene = (req,res,next) ->
-	sceneSchema = new Schema({
-		name: String
-		name_en: String
-		city: String
-		province: String
-		category: String
-		alias: []
-		location: {
-			longtitude: Number
-			latitude: Number
-			altitude: Number
-			radius: Number
-			geo: String
-			type: Number
-			addr: String
-		}
-	})
-	sceneSchema.save()
+	return
 

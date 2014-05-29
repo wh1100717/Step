@@ -39,6 +39,12 @@ module.exports = function(app) {
   app.route('/partials/*')
     .get(index.partials);
   // app.route('/scene/all').get(scenes.show_all);
+
+  app.route('/cities').get(cities.show);
+
+
+
+
   app.route('/city').get(cities.show);
   app.route('/city/name/:name').get(cities.show_city_by_name);
   app.route('/scene/id/:id').get(scenes.show_by_id);

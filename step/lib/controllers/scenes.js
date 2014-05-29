@@ -68,23 +68,4 @@ exports.show_by_name = function(req, res, next) {
   });
 };
 
-exports.save_scene = function(req, res, next) {
-  var sceneSchema;
-  return sceneSchema = new Schema({
-    name: String,
-    name_en: String,
-    city: String,
-    province: String,
-    category: String,
-    alias: [],
-    location: {
-      longtitude: Number,
-      latitude: Number,
-      altitude: Number,
-      radius: Number,
-      geo: String,
-      type: Number,
-      addr: String
-    }
-  });
-};
+exports.save_scene = function(req, res, next) {};
