@@ -373,33 +373,24 @@ commit = ->
  * 页面过渡
 ###
 move = ->
-	n = 0
-	m = 100
+	$("#second").css "animationName" , "moveright"
+	$("#second").css "webkitAnimationName" , "moveright"
+	$("#first").css "animationName" , "moveleft"
+	$("#first").css "webkitAnimationName" , "moveleft"
 	$("#second").css "display" , "block"
-	moveTimer = setInterval () ->
-		n--
-		m--
-		$("#first").css "left" , n+"%"
-		$("#second").css "left" , m+"%"
-		if n is -100 or m is 0
-			clearInterval moveTimer
-	, 1
 	console.log()
 ###
  * 回退页面过渡
 ###
 moveback = ->
-	n = -100
-	m = 0
-	backTimer = setInterval ()->
-		n++
-		m++
-		$("#first").css "left" , n+"%"
-		$("#second").css "left" , m+"%"
-		if n is 0 or m is 100
-			$("#second").css "display" , "none"
-			clearInterval backTimer
-	,1
+	$("#first").css "animationName" , "backleft"
+	$("#first").css "webkitAnimationName" , "backleft"
+	$("#second").css "animationName" , "backright"
+	$("#second").css "webkitAnimationName" , "backright"
+	setTimeout ()->
+		$("#second").css "display" , "none"
+		console.log()
+	,1000
 	console.log()
 
 

@@ -425,19 +425,11 @@ commit = function() {
  */
 
 move = function() {
-  var m, moveTimer, n;
-  n = 0;
-  m = 100;
+  $("#second").css("animationName", "moveright");
+  $("#second").css("webkitAnimationName", "moveright");
+  $("#first").css("animationName", "moveleft");
+  $("#first").css("webkitAnimationName", "moveleft");
   $("#second").css("display", "block");
-  moveTimer = setInterval(function() {
-    n--;
-    m--;
-    $("#first").css("left", n + "%");
-    $("#second").css("left", m + "%");
-    if (n === -100 || m === 0) {
-      return clearInterval(moveTimer);
-    }
-  }, 1);
   return console.log();
 };
 
@@ -447,18 +439,13 @@ move = function() {
  */
 
 moveback = function() {
-  var backTimer, m, n;
-  n = -100;
-  m = 0;
-  backTimer = setInterval(function() {
-    n++;
-    m++;
-    $("#first").css("left", n + "%");
-    $("#second").css("left", m + "%");
-    if (n === 0 || m === 100) {
-      $("#second").css("display", "none");
-      return clearInterval(backTimer);
-    }
-  }, 1);
+  $("#first").css("animationName", "backleft");
+  $("#first").css("webkitAnimationName", "backleft");
+  $("#second").css("animationName", "backright");
+  $("#second").css("webkitAnimationName", "backright");
+  setTimeout(function() {
+    $("#second").css("display", "none");
+    return console.log();
+  }, 1000);
   return console.log();
 };
