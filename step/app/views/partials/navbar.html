@@ -1,4 +1,4 @@
-<div class="header" ng-controller="NavbarCtrl">
+<!-- <div class="header" ng-controller="NavbarCtrl">
   <ul class="nav nav-pills pull-right">
     <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
         <a ng-href="{{item.link}}">{{item.title}}</a>
@@ -8,4 +8,21 @@
     <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
   </ul>
   <h3 class="text-muted">step</h3>
+</div> -->
+
+
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="col-md-1"></div>
+  <div class="">
+    <ul class="nav nav-pills">
+    <li class=" active btn-lg"><a  class="text-center" href="#">Home</a></li>
+    <li class="btn-lg"><a class="text-center"  href="#">Profile</a></li>
+    <li class=" btn-lg"><a  class="text-center"   href="#">Messages</a></li>
+
+  </ul>
+ 
 </div>
+
+ 
+  
+</nav>

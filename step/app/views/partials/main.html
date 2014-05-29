@@ -1,6 +1,68 @@
+<div class="row">
 <div ng-include="'partials/navbar'"></div>
+</div>
 
-<div class="jumbotron">
+
+
+
+
+<div class="row">
+
+<div class="col-md-2" id="allmapp"></div>
+<form >
+                <div  class="row"> 
+           
+                    <div class="col-md-1">
+   
+               <div id="the-basics">
+      
+                   <input id="prov"class="typeahead" type="text" placeholder="Province"  onkeypress="m1();">
+                    </div>
+                </div>
+                                                    <div class="col-md-1">
+
+                                                   <div id="city" style="display:none;">
+                                                    <input class="typeahead" type="text" placeholder="city" onkeypress="m2();">
+                                                  </div>
+                                                    </div>
+
+
+                                                 <div class="col-md-1">
+
+                                                <div id="area" style="display:none;">
+                                                   <input class="typeahead" type="text" placeholder="area">
+                                                  </div>
+                                                    </div>
+
+                                                                    <div class="col-md-1">
+
+                                                <div  id="jing">
+                                                   <input class="typeahead" type="text" placeholder="jing">
+                                                  </div>
+                                                    </div>          
+                                                                  <div class="col-md-1">
+
+                                                <div  id="wei">
+                                                   <input class="typeahead" type="text" placeholder="wei">
+                                                  </div>
+                                                    </div>          
+
+
+
+
+
+
+
+</div>
+
+
+</form>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+
+</nav>
+
+<!-- <div class="jumbotron">
   <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
@@ -19,3 +81,160 @@
 <div class="footer">
   <p>♥ from the Yeoman team</p>
 </div>
+ -->
+ <script type="text/javascript">
+
+// 百度地图API功能
+var map = new BMap.Map("allmapp");
+map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
+var marker1 = new BMap.Marker(new BMap.Point(116.384, 39.925));  // 创建标注
+map.addOverlay(marker1);              // 将标注添加到地图中
+var province;
+
+// $(document).ready(function(){
+
+
+
+// });
+
+
+
+
+function m1(){
+
+if(event.keyCode==13){  
+      document.getElementById("city").style.display="block";
+      var p=$("#prov").val();
+     // alert(p);
+     $.get("jia.json",function(data){
+
+      alert(data);
+     }
+
+
+      );
+    }     
+
+}
+
+
+function m2(){
+
+if(event.keyCode==13){  
+      document.getElementById("area").style.display="block";
+    }     
+
+}
+// function method1(){
+// document.getElementById("pro2").style.display="block";
+
+
+
+
+// }
+
+
+// function method2(){
+
+// province=this.value;
+
+// }
+
+// function m2(){
+
+// alert(province);
+
+// }
+
+// var prov = document.getElementById("pro"); 
+// prov.onclick=method1;
+// prov.oninput=method2;
+//  document.getElementById("city").onclick=m2;
+
+
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+ 
+    // an array that will be populated with substring matches
+    matches = [];
+ 
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+ 
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        // the typeahead jQuery plugin expects suggestions to a
+        // JavaScript object, refer to typeahead docs for more info
+        matches.push({ value: str });
+      }
+    });
+ 
+    cb(matches);
+  };
+};
+ 
+var states = ['山东', '山西', '河南', '河北', '湖南',
+  '湖北', '广东', '广西', '黑龙江', '辽宁', '浙江',
+  '安徽', '江苏', '福建', '甘肃', '江西', '云南', '贵州',
+  '四川', '青海', '陕西', '吉林', '宁夏',
+  '海南', '西藏', '内蒙古', '新疆', '台湾'
+];
+
+
+var states2 = ['wuhan', 'a', '河南', '河北', '湖南',
+  '湖北', '广东', '广西', '黑龙江', '辽宁', '浙江',
+  '安徽', '江苏', '福建', '甘肃', '江西', '云南', '贵州',
+  '四川', '青海', '陕西', '吉林', '宁夏',
+  '海南', '西藏', '内蒙古', '新疆', '台湾'
+];
+
+
+var states3 = ['wuhan', 'a', '河南', '河北', '湖南',
+  '湖北', '广东', '广西', '黑龙江', '辽宁', '浙江',
+  '安徽', '江苏', '福建', '甘肃', '江西', '云南', '贵州',
+  '四川', '青海', '陕西', '吉林', '宁夏',
+  '海南', '西藏', '内蒙古', '新疆', '台湾'
+];
+ 
+$('#the-basics .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states',
+  displayKey: 'value',
+  source: substringMatcher(states)
+});
+
+
+
+
+$('#city .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states2',
+  displayKey: 'value',
+  source: substringMatcher(states2)
+});
+
+
+
+
+$('#area .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states3',
+  displayKey: 'value',
+  source: substringMatcher(states3)
+});
+</script>
