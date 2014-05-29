@@ -1,10 +1,12 @@
 'use strict';
 
 var api = require('./controllers/api'),
-    index = require('./controllers'),
-    users = require('./controllers/users'),
-    session = require('./controllers/session'),
-    middleware = require('./middleware');
+  index = require('./controllers'),
+  users = require('./controllers/users'),
+  session = require('./controllers/session'),
+  middleware = require('./middleware'),
+  scenes = require('./controllers/scenes'),
+  cities = require('./controllers/cities');
 
 /**
  * Application routes
@@ -14,7 +16,7 @@ module.exports = function(app) {
   // Server API Routes
   app.route('/api/awesomeThings')
     .get(api.awesomeThings);
-  
+
   app.route('/api/users')
     .post(users.create)
     .put(users.changePassword);
@@ -36,6 +38,13 @@ module.exports = function(app) {
   // All other routes to use Angular routing in app/scripts/app.js
   app.route('/partials/*')
     .get(index.partials);
+  // app.route('/scene/all').get(scenes.show_all);
+  app.route('/city').get(cities.show);
+  app.route('/city/name/:name').get(cities.show_city_by_name);
+  app.route('/scene/id/:id').get(scenes.show_by_id);
+  app.route('/scene/name/:name').get(scenes.show_by_name);
   app.route('/*')
-    .get( middleware.setUserCookie, index.index);
+    .get(middleware.setUserCookie, index.index);
+
+
 };
