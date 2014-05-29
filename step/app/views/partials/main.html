@@ -90,7 +90,7 @@ map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
 var marker1 = new BMap.Marker(new BMap.Point(116.384, 39.925));  // 创建标注
 map.addOverlay(marker1);              // 将标注添加到地图中
 var province;
-
+ statess = new Array();
 // $(document).ready(function(){
 
 
@@ -103,16 +103,69 @@ var province;
 function m1(){
 
 if(event.keyCode==13){  
-      document.getElementById("city").style.display="block";
+     
+      //document.getElementById("city").style.display="block";
+      $("#city").show(500);
       var p=$("#prov").val();
-     // alert(p);
-     $.get("jia.json",function(data){
+     //alert(p);
+     // $.get("jia.json",function(data){
+     //  console.log(data)
+     // }
+     //  );
+    $.ajax({
+       type: "GET",
+       url: "api/jia",
+       data: "timestamp=" + (new Date()).getTime(),
+       success: function(msg){
+        // alert( msg.data[0]);
+      statess=msg.data;
+  
 
-      alert(data);
-     }
 
 
-      );
+
+      var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+ 
+    // an array that will be populated with substring matches
+    matches = [];
+ 
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+ 
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        // the typeahead jQuery plugin expects suggestions to a
+        // JavaScript object, refer to typeahead docs for more info
+        matches.push({ value: str });
+      }
+    });
+ 
+    cb(matches);
+  };
+};
+
+
+var states2=statess;
+$('#city .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states2',
+  displayKey: 'value',
+  source: substringMatcher(states2)
+});
+
+
+
+       }
+    });
+
     }     
 
 }
@@ -184,12 +237,6 @@ var states = ['山东', '山西', '河南', '河北', '湖南',
 ];
 
 
-var states2 = ['wuhan', 'a', '河南', '河北', '湖南',
-  '湖北', '广东', '广西', '黑龙江', '辽宁', '浙江',
-  '安徽', '江苏', '福建', '甘肃', '江西', '云南', '贵州',
-  '四川', '青海', '陕西', '吉林', '宁夏',
-  '海南', '西藏', '内蒙古', '新疆', '台湾'
-];
 
 
 var states3 = ['wuhan', 'a', '河南', '河北', '湖南',
@@ -213,16 +260,7 @@ $('#the-basics .typeahead').typeahead({
 
 
 
-$('#city .typeahead').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'states2',
-  displayKey: 'value',
-  source: substringMatcher(states2)
-});
+
 
 
 
