@@ -21,6 +21,7 @@ SceneSchema = new Schema({
     altitude: Number,
     radius: Number,
     geo: String,
+    area: String,
     type: Number,
     addr: String
   },
@@ -46,6 +47,7 @@ SceneSchema = new Schema({
         altitude: Number,
         radius: Number,
         geo: String,
+        area: String,
         type: Number,
         addr: String
       },

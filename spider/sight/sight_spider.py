@@ -134,31 +134,34 @@ class Spider:
             return False
         for scene in scene_list:
             s = {}
-            s['sname'] = scene['sname'].encode('utf-8', 'ignore')
+            s['ext'] = {}
+            s['location'] = {}
+            s['children'] = []
+            s['name'] = scene['sname'].encode('utf-8', 'ignore')
             s['surl'] = scene['surl'].encode('utf-8', 'ignore')
             s['ambiguity_sname'] = scene[
                 'ambiguity_sname'].encode('utf-8', 'ignore')
             s['place_name'] = scene['place_name'].encode('utf-8', 'ignore')
-            s['address'] = scene['ext']['address'].encode('utf-8', 'ignore')
-            s['phone'] = scene['ext']['phone'].encode('utf-8', 'ignore')
+            s['location']['addr'] = scene['ext']['address'].encode('utf-8', 'ignore')
+            s['ext']['phone'] = scene['ext']['phone'].encode('utf-8', 'ignore')
             s['abs_desc'] = scene['ext']['abs_desc'].encode('utf-8', 'ignore')
             s['sketch_desc'] = scene['ext'][
                 'sketch_desc'].encode('utf-8', 'ignore')
-            s['more_desc'] = scene['ext'][
+            s['ext'] ['description']= scene['ext'][
                 'more_desc'].encode('utf-8', 'ignore')
-            s['cover'] = scene['cover']['full_url'].encode('utf-8', 'ignore')
-            s['city'] = self._city
+            s['ext']['images'] = scene['cover']['full_url'].encode('utf-8', 'ignore')
+            s['city'] = self._city_cn
             try:
-                location = self._location(self._city_cn + s['sname'])
+                location = self._location(self._city_cn + s['name'])
                 if location:
                     s['alias'] = location[
                         'alias'] if location.has_key('alias') else []
-                    s['geo'] = location['geo']
+                    s['location']['geo'] = location['geo']
                     s['uid'] = location['uid']
-                    s['ext_type'] = location['ext_type']
+                    s['location']['type'] = location['ext_type']
 
-                    area = self._area(s['uid'], s['ext_type'])
-                    s['area'] = area if area else ""
+                    area = self._area(s['uid'], s['location']['type'])
+                    s['location']['area'] = area if area else ""
             except Exception, e:
                 print traceback.format_exc()
             self._scene.append(s)
