@@ -31,12 +31,14 @@ cities.scenes = {
       });
     });
   },
-  show: function() {
+  show: function(req, res, next) {
     var city, scene;
     city = req.params.city;
-    scene = req.params.scene;
+    console.log(city);
+    scene = req.params.scenes;
+    console.log(scene);
     Scene.find({
-      name: name
+      name: scene
     }, function(err, scene) {
       if (err) {
         return next(err);

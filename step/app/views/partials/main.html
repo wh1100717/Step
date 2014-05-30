@@ -237,14 +237,18 @@ function m3(){
 if (event.keyCode == 13) {
  // alert(mycity);
   var myscenes=$("#scenes").val();
+  //alert(mycity);
+  //alert(myscenes);
    if(mycity!=""){
            $.ajax({
           type: "GET",
-          url:"/cities/:"+mycity+"/scenes/:"+myscenes,
+          url:"/cities/"+mycity+"/scenes/"+myscenes,   //     /cities/:city/scenes/:scene
+          //url:"/cities/北京/scenes/红螺湖度假区",
           data: "timestamp=" + (new Date()).getTime(),
           success: function(msg) {
-
-            //alert(msg.data);
+            msg = JSON.parse(msg)
+            console.log(msg)
+            console.log(msg.data[0]._id)
 
               }
             });
