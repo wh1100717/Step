@@ -175,14 +175,14 @@ class Spider:
     def _save_to_mongo(self):
         ScenesCollection = MongoUtil.db.scenes
         CitiesCollection = MongoUtil.db.cities
-        s_name = []
+        name = []
         for scene in self._scene:
-            s_name.append(scene['sname'])
+            name.append(scene['name'])
             ScenesCollection.update(
-                {'sname': scene['sname']}, {'$set': scene}, safe=True, upsert=True)
+                {'name': scene['name']}, {'$set': scene}, safe=True, upsert=True)
 
         CitiesCollection.update(
-            {'name': self._city_cn}, {'$set': {'name': self._city_cn, 'scenes': s_name}}, safe=True, upsert=True)
+            {'name': self._city_cn}, {'$set': {'name': self._city_cn, 'scenes': name}}, safe=True, upsert=True)
         print "success insert into database"
 
     def grab(self):

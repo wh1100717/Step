@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+import sys
+import os
+reload(sys)
+sys.setdefaultencoding('utf-8')
 import commands
 from util import pinyin
 areaselect_data = {
@@ -39,7 +43,7 @@ areaselect_data = {
 
 areaselect_data = {
     'p': ['黑龙江'],
-    'c': {'黑龙江': ['厦门']}
+    'c': {'黑龙江': ['哈尔滨']}
 }
 
 
@@ -52,7 +56,8 @@ def spider_place(places):
             save_wrong_place(content)
         else:
             print place + ' is OK'
-            spider_place(areaselect_data['c'][place])
+            if areaselect_data['c'].has_key(place):
+              spider_place(areaselect_data['c'][place])
 
 
 def save_wrong_place(name):

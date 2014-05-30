@@ -10,17 +10,17 @@
         
         <div id="the-basics">
           
-          <input id="prov"class="typeahead" type="text" placeholder="Province"  onkeypress="m1();">
+          <input id="prov"class="typeahead" type="text" placeholder="Province"  onkeypress="m1(); " onFocus="m4();">
         </div>
       </div>
       <div class="col-md-1" >
         <div >
-          <input  id="city" style="display:none;" class="typeahead" type="text" placeholder="city" onkeypress="m2();">
+          <input  id="city" style="display:none;" class="typeahead" type="text" placeholder="city" onkeypress="m2();" onFocus="m5();">
         </div>
       </div>
       <div class="col-md-1">
         <div >
-          <input id="area" style="display:none;" class="typeahead" type="text" placeholder="area">
+          <input id="scenes" style="display:none;" class="typeahead" type="text" placeholder="scenes" onkeypress="m3();">
         </div>
       </div>
       <div class="col-md-1">
@@ -75,12 +75,11 @@ statess = new Array();
 
 function ptc(pp) {
 
-    var ptc = ['山东', '山西', '河南', '河北', '湖南',
-        '湖北', '广东', '广西', '黑龙江', '辽宁', '浙江',
-        '安徽', '江苏', '福建', '甘肃', '江西', '云南', '贵州',
-        '四川', '青海', '陕西', '吉林', '宁夏',
-        '海南', '西藏', '内蒙古', '新疆', '台湾'
-    ];
+    var ptc = ['山东省', '山西省', '河南省', '河北省', '湖南省',
+        '湖北省', '广东省', '广西省', '黑龙江省', '辽宁省', '浙江省',
+        '安徽省', '江苏省', '福建省', '甘肃省', '江西省', '云南省', '贵州省',
+        '四川省', '青海省', '陕西省', '吉林省', '宁夏省',
+        '海南省', '西藏省', '内蒙古省', '新疆省', '北京', '上海', '重庆', '天津', '台湾省'];
     for (var i = 0; i < ptc.length; i++) {
         if (ptc[i] == pp) {
 
@@ -93,11 +92,13 @@ function ptc(pp) {
 function m1() {
 
     if (event.keyCode == 13) {
-
-
+ var p = $("#prov").val();
+ $("#city").val("");
+ $("#scenes").val("");
+if(p!=""){
         $("#city").css("display", "inline");
 
-        var p = $("#prov").val();
+       
 
         $.ajax({
             type: "GET",
@@ -109,8 +110,13 @@ function m1() {
 
                 var num = ptc(p);
                 // alert(msg.data[0]);
-                alert(num)
+                //alert(num)
+           
                 statess = msg.data[num];
+               if(num>26 && num<32){
+               $("#city").val(statess);
+               }
+               
                 //  alert(statess);
                 var substringMatcher = function(strs) {
                     return function findMatches(q, cb) {
@@ -137,17 +143,17 @@ function m1() {
                         cb(matches);
                     };
                 };
-                states5 = statess;
-                alert(states5);
+               var states2 = statess;
+                //alert(states5);
                 $("#city").typeahead('destroy');
                 $('#city').typeahead({
                     hint: false,
                     highlight: true,
                     minLength: 1
                 }, {
-                    name: 'states5',
+                    name: 'states2',
                     displayKey: 'value',
-                    source: substringMatcher(states5)
+                    source: substringMatcher(states2)
                 });
 
 
@@ -158,28 +164,103 @@ function m1() {
     }
 
 }
-
+}
 
 function m2() {
 
     if (event.keyCode == 13) {
-       $("#area").css("display", "inline");
-       // $.ajax({
-       //    type: "GET",
-       //    url:"/cities/:city/scenes",
-       //     data: "timestamp=" + (new Date()).getTime(),
-       //      success: function(msg) {
 
+       mycity=$("#city").val();
+      if(mycity!=""){
+       $("#scenes").css("display", "inline");
+        
+        //alert(mycity);
+       $.ajax({
+          type: "GET",
+          url:"/cities/"+mycity+"/scenes",
+           data: "timestamp=" + (new Date()).getTime(),
+            success: function(msg) {
 
-       //      }
+             //alert(msg.response);
+               //alert(msg.data[0].scenes[0]);
+    var substringMatcher = function(strs) {
+                    return function findMatches(q, cb) {
+                        var matches, substringRegex;
 
-       // });
+                        // an array that will be populated with substring matches
+                        matches = [];
+
+                        // regex used to determine if a string contains the substring `q`
+                        substrRegex = new RegExp(q, 'i');
+
+                        // iterate through the pool of strings and for any string that
+                        // contains the substring `q`, add it to the `matches` array
+                        $.each(strs, function(i, str) {
+                            if (substrRegex.test(str)) {
+                                // the typeahead jQuery plugin expects suggestions to a
+                                // JavaScript object, refer to typeahead docs for more info
+                                matches.push({
+                                    value: str
+                                });
+                            }
+                        });
+
+                        cb(matches);
+                    };
+                };
+
+               var scenes=msg.data[0].scenes;                             //ajax get scenes
+               var states3 = scenes;
+                //alert(states3);
+               $("#scenes").typeahead('destroy');
+                $('#scenes ').typeahead({
+                    hint: false,
+                    highlight: true,
+                    minLength: 1
+                }, {
+                    name: 'states3',
+                    displayKey: 'value',
+                    source: substringMatcher(states3)
+                });
+
+            }
+
+       });
     }
 
 }
+}
+
+
+
+function m3(){
+if (event.keyCode == 13) {
+ // alert(mycity);
+  var myscenes=$("#scenes").val();
+   if(mycity!=""){
+           $.ajax({
+          type: "GET",
+          url:"/cities/:"+mycity+"/scenes/:"+myscenes,
+          data: "timestamp=" + (new Date()).getTime(),
+          success: function(msg) {
+
+            //alert(msg.data);
+
+              }
+            });
+   }
+}
+}
 // function method1(){
 // document.getElementById("pro2").style.display="block";
-
+function m4(){
+$("#city").css("display","none");
+$("#scenes").css("display","none");
+}
+function m5(){
+  $("#scenes").val("");
+$("#scenes").css("display","none");
+}
 
 
 
@@ -230,22 +311,16 @@ var substringMatcher = function(strs) {
     };
 };
 
-var states = ['山东', '山西', '河南', '河北', '湖南',
-    '湖北', '广东', '广西', '黑龙江', '辽宁', '浙江',
-    '安徽', '江苏', '福建', '甘肃', '江西', '云南', '贵州',
-    '四川', '青海', '陕西', '吉林', '宁夏',
-    '海南', '西藏', '内蒙古', '新疆', '台湾'
-];
+var states =['山东省', '山西省', '河南省', '河北省', '湖南省',
+        '湖北省', '广东省', '广西省', '黑龙江省', '辽宁省', '浙江省',
+        '安徽省', '江苏省', '福建省', '甘肃省', '江西省', '云南省', '贵州省',
+        '四川省', '青海省', '陕西省', '吉林省', '宁夏省',
+        '海南省', '西藏省', '内蒙古省', '新疆省', '北京', '上海', '重庆', '天津', '台湾省'];
 
 
 
 
-var states3 = ['wuhan', 'a', '河南', '河北', '湖南',
-    '湖北', '广东', '广西', '黑龙江', '辽宁', '浙江',
-    '安徽', '江苏', '福建', '甘肃', '江西', '云南', '贵州',
-    '四川', '青海', '陕西', '吉林', '宁夏',
-    '海南', '西藏', '内蒙古', '新疆', '台湾'
-];
+
 
 $('#the-basics .typeahead').typeahead({
     hint: false,
@@ -265,13 +340,5 @@ $('#the-basics .typeahead').typeahead({
 
 
 
-$('#area .typeahead').typeahead({
-    hint: true,
-    highlight: true,
-    minLength: 1
-}, {
-    name: 'states3',
-    displayKey: 'value',
-    source: substringMatcher(states3)
-});
+
   </script>
