@@ -5,7 +5,9 @@ angular.module('stepApp')
     $http.get('/api/awesomeThings').success (awesomeThings) ->
       $scope.awesomeThings = awesomeThings
 
-
+###
+ * 省市信息
+###
 city_info = {
 	p: ['北京市', '天津市', '上海市', '重庆市', '河北省', '山西省', '辽宁省', '吉林省', '黑龙江省', '江苏省', '浙江省', '安徽省', '福建省', '江西省', '山东省', '河南省', '湖北省', '湖南省', '广东省', '海南省', '四川省', '贵州省', '云南省', '陕西省', '甘肃省', '青海省', '西藏自治区', '内蒙古自治区', '广西壮族自治区', '宁夏回族自治区', '新疆维吾尔自治区']
 	c: {
@@ -44,6 +46,9 @@ city_info = {
 	get_cities: (province)-> this.c[province]
 }
 
+###
+ * 获取省份
+###
 get_provinces = ->
 	$("#prov").typeahead {
 		hint: false
@@ -55,6 +60,9 @@ get_provinces = ->
 		source: substringMatcher(city_info.p)
 	}
 
+###
+ * 根据所选省份获取城市
+###
 get_cities = ->
 	return if event.keyCode isnt 13
 	for province in city_info.p when $('#prov').val() is province
@@ -72,6 +80,10 @@ get_cities = ->
 		}
 		$("#cities").show()
 	return
+
+###
+ * 根据所选城市获取该城市的旅游景点
+###
 get_scenes = ->
 	return if event.keyCode isnt 13
 	c = $("#cities").val()
@@ -96,6 +108,9 @@ get_scenes = ->
 				return
 		}
 
+###
+ * 根据城市和景点名获取详细景点信息
+###
 get_scene = ->
 	return if event.keyCode isnt 13
 	scene = $("#scenes").val()
@@ -110,10 +125,16 @@ get_scene = ->
 			console.log(data)
 	}
 
+###
+ * 隐藏城市及景点选择框
+###
 hide_cities = ->
 	$("#cities").hide()
 	$("#scenes").hide()
 
+###
+ * 隐藏景点选择框
+###
 hide_scenes = ->
 	$("#scenes").val("")
 	$("#scenes").hide()
