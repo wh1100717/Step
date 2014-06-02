@@ -50,7 +50,7 @@ city_info = {
  * 获取省份
 ###
 get_provinces = ->
-	$("#prov").typeahead {
+	$("#prov").typeahead({
 		hint: false
 		highlight: true
 		minLength: 1
@@ -58,18 +58,18 @@ get_provinces = ->
 		name: "states1"
 		displayKey: 'value'
 		source: substringMatcher(city_info.p)
-	}
+	}).bind('typeahead:selected',(obj, selected, name) -> get_cities(false))
 
 ###
  * 根据所选省份获取城市
 ###
-get_cities = ->
-	return if event.keyCode isnt 13
+get_cities = (flag)->
+	return if flag and event.keyCode isnt 13
 	for province in city_info.p when $('#prov').val() is province
 		$("#cities").val ""
 		$("#scenes").val ""
 		$("#cities").typeahead 'destroy'
-		$("#cities").typeahead {
+		$("#cities").typeahead({
 			hint: false
 			highlight: true
 			minLength: 1
@@ -77,15 +77,15 @@ get_cities = ->
 			name: 'states2'
 			displayKey: 'value'
 			source: substringMatcher(city_info.c[province])
-		}
+		}).bind('typeahead:selected', (obj, selected, name) -> get_scenes(false))
 		$("#cities").show()
 	return
 
 ###
  * 根据所选城市获取该城市的旅游景点
 ###
-get_scenes = ->
-	return if event.keyCode isnt 13
+get_scenes = (flag)->
+	return if flag and event.keyCode isnt 13
 	c = $("#cities").val()
 	for city in city_info.c[$('#prov').val()] when c is city
 		$.ajax {

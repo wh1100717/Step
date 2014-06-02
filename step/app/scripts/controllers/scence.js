@@ -67,6 +67,8 @@ get_provinces = function() {
     name: "states1",
     displayKey: 'value',
     source: substringMatcher(city_info.p)
+  }).bind('typeahead:selected', function(obj, selected, name) {
+    return get_cities(false);
   });
 };
 
@@ -75,9 +77,9 @@ get_provinces = function() {
  * 根据所选省份获取城市
  */
 
-get_cities = function() {
+get_cities = function(flag) {
   var province, _i, _len, _ref;
-  if (event.keyCode !== 13) {
+  if (flag && event.keyCode !== 13) {
     return;
   }
   _ref = city_info.p;
@@ -97,6 +99,8 @@ get_cities = function() {
       name: 'states2',
       displayKey: 'value',
       source: substringMatcher(city_info.c[province])
+    }).bind('typeahead:selected', function(obj, selected, name) {
+      return get_scenes(false);
     });
     $("#cities").show();
   }
@@ -107,9 +111,9 @@ get_cities = function() {
  * 根据所选城市获取该城市的旅游景点
  */
 
-get_scenes = function() {
+get_scenes = function(flag) {
   var c, city, _i, _len, _ref, _results;
-  if (event.keyCode !== 13) {
+  if (flag && event.keyCode !== 13) {
     return;
   }
   c = $("#cities").val();
