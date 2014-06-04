@@ -11,10 +11,10 @@ angular.module('stepApp')
 city_info = {
 	p: ['北京市', '天津市', '上海市', '重庆市', '河北省', '山西省', '辽宁省', '吉林省', '黑龙江省', '江苏省', '浙江省', '安徽省', '福建省', '江西省', '山东省', '河南省', '湖北省', '湖南省', '广东省', '海南省', '四川省', '贵州省', '云南省', '陕西省', '甘肃省', '青海省', '西藏自治区', '内蒙古自治区', '广西壮族自治区', '宁夏回族自治区', '新疆维吾尔自治区']
 	c: {
-		'北京市': ['北京市']
-		'天津市': ['天津市']
-		'上海市': ['上海市']
-		'重庆市': ['重庆市']
+		'北京市': ['北京']
+		'天津市': ['天津']
+		'上海市': ['上海']
+		'重庆市': ['重庆']
 		'河北省': ['石家庄市', '唐山市', '秦皇岛市', '邯郸市', '邢台市', '保定市', '张家口市', '承德市', '沧州市', '廊坊市', '衡水市']
 		'山西省': ['太原市', '大同市', '阳泉市', '长治市', '晋城市', '朔州市', '晋中市', '运城市', '忻州市', '临汾市', '吕梁市']
 		'辽宁省': ['沈阳市', '大连市', '鞍山市', '抚顺市', '本溪市', '丹东市', '锦州市', '营口市', '阜新市', '辽阳市', '盘锦市', '铁岭市', '朝阳市', '葫芦岛市']
@@ -86,16 +86,18 @@ get_cities = (flag)->
 ###
 get_scenes = (flag)->
 	return if flag and event.keyCode isnt 13
+
 	c = $("#cities").val()
+	
 	for city in city_info.c[$('#prov').val()] when c is city
 		$.ajax {
 			type: "GET"
 			url: "/cities/#{c}/scenes"
 			data: "timestamp=#{(new Date().getTime())}"
 			success: (data) ->
-				scenes = msg.data[0].scenes
+				scenes = data.data[0].scenes
 				$("#scenes").typeahead 'destroy'
-				$("#scenes").typeahead {
+				$("#scenes").typeahead({
 					hint: false
 					highlight: true
 					minLength: 1
@@ -103,8 +105,9 @@ get_scenes = (flag)->
 					name: 'staes3'
 					displayKey: 'value'
 					source: substringMatcher(scenes)
-				}
-				$("scenes").show()
+			}).bind('typeahead:selected', (obj, selected, name)  -> show_sub())
+				$("#scenes").show()
+				
 				return
 		}
 
@@ -112,7 +115,7 @@ get_scenes = (flag)->
  * 根据城市和景点名获取详细景点信息
 ###
 get_scene = ->
-	return if event.keyCode isnt 13
+	
 	scene = $("#scenes").val()
 	city = $("#cities").val()
 	$.ajax {
@@ -122,7 +125,26 @@ get_scene = ->
 		success: (data) ->
 			console.log(data)
 			data = JSON.parse(data)
+
+			$("#textare").val (data.data[0].ext.description)
+
+			imgs = data.data[0].ext.images
+			alias = data.data[0].alias
+			$("#textare").val (data.data[0].ext.description)
+			$("textarea[name='images']").val (imgs)
+			$("textarea[name='alias']").val (alias)
+			$("input[name='name']").val (data.data[0].name)
+			$("input[name='city']").val (data.data[0].city)
+			$("input[name='name_en']").val (data.data[0].surl)
+			$("input[name='phone']").val (data.data[0].ext.phone)
+
+
+
+
+	
+
 			console.log(data)
+
 	}
 
 ###
@@ -138,6 +160,13 @@ hide_cities = ->
 hide_scenes = ->
 	$("#scenes").val("")
 	$("#scenes").hide()
+
+hide_sub = ->
+	$("#sub").val("")
+	$("#sub").hide()
+
+show_sub = ->
+	$("#sub").show()
 
 
 substringMatcher = (strs) ->
