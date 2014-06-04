@@ -23,6 +23,8 @@ cities.scenes = {
 		Scene.find {name:scene}, (err, scene) ->
 			return next(err) if err
 			return res.send(404) if not scene
+
+			console.log scene
 			res.send JSON.stringify({status: 'success', data: scene})
 			return
 		return

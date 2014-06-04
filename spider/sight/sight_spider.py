@@ -135,14 +135,14 @@ class Spider:
         for scene in scene_list:
             s = {}
             s['ext'] = {}
-            s['location'] = {}
+            s['loc'] = {}
             s['children'] = []
             s['name'] = scene['sname'].encode('utf-8', 'ignore')
             s['surl'] = scene['surl'].encode('utf-8', 'ignore')
             s['ambiguity_sname'] = scene[
                 'ambiguity_sname'].encode('utf-8', 'ignore')
             s['place_name'] = scene['place_name'].encode('utf-8', 'ignore')
-            s['location']['addr'] = scene['ext']['address'].encode('utf-8', 'ignore')
+            s['loc']['addr'] = scene['ext']['address'].encode('utf-8', 'ignore')
             s['ext']['phone'] = scene['ext']['phone'].encode('utf-8', 'ignore')
             s['abs_desc'] = scene['ext']['abs_desc'].encode('utf-8', 'ignore')
             s['sketch_desc'] = scene['ext'][
@@ -156,12 +156,12 @@ class Spider:
                 if location:
                     s['alias'] = location[
                         'alias'] if location.has_key('alias') else []
-                    s['location']['geo'] = location['geo']
+                    s['loc']['geo'] = location['geo']
                     s['uid'] = location['uid']
-                    s['location']['type'] = location['ext_type']
+                    s['loc']['type'] = location['ext_type']
 
-                    area = self._area(s['uid'], s['location']['type'])
-                    s['location']['area'] = area if area else ""
+                    area = self._area(s['uid'], s['loc']['type'])
+                    s['loc']['area'] = area if area else ""
             except Exception, e:
                 print traceback.format_exc()
             self._scene.append(s)
@@ -175,20 +175,20 @@ class Spider:
     def _save_to_mongo(self):
         ScenesCollection = MongoUtil.db.scenes
         CitiesCollection = MongoUtil.db.cities
-        name = []
+        s_name = []
         for scene in self._scene:
-            name.append(scene['name'])
+            s_name.append(scene['name'])
             ScenesCollection.update(
                 {'name': scene['name']}, {'$set': scene}, safe=True, upsert=True)
 
         CitiesCollection.update(
-            {'name': self._city_cn}, {'$set': {'name': self._city_cn, 'scenes': name}}, safe=True, upsert=True)
+            {'name': self._city_cn}, {'$set': {'name': self._city_cn, 'scenes': s_name}}, safe=True, upsert=True)
         print "success insert into database"
 
     def grab(self):
         flag = True
         city = self._city
-        page_index = 1
+        page_index = 104
         while(flag):
             url = self._get_url(city, page_index)
             data = self._data(url)
