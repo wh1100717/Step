@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+    #album
+        #show
+            #bimg
+        #list
+            .mimg
+                img.miniphoto(src="/images/back.jpg")
+            .mimg
+                img.miniphoto(src="/images/back2.jpg")
+            .mimg
+                img.miniphoto(src="/images/bg.jpg")
+            
+    script
+        :coffee
+            $(document).ready( ()->
+                
+                $(".mimg").click( ()->
+                    url= $(this).find("img").attr("src")
+                    ul= "url("+url+")"
+                    $("#bimg").css "opacity" ,1
+                    $("#bimg").css "background" ,ul
+                    $("#bimg").css "background-size" ,"cover"
+                    console.log(url)
+                );    
+            );
+

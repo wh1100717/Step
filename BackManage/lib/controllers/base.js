@@ -117,6 +117,10 @@ exports.scene = function(req, res) {
   return res.render('partials/scene');
 };
 
+exports.photo = function(req, res) {
+  return res.render('partials/photo');
+};
+
 exports.my = function(req, res) {
   return res.render('partials/my');
 };

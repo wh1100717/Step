@@ -86,6 +86,8 @@ exports.index = (req, res) -> res.render 'partials/index'
 
 exports.scene = (req, res) -> res.render 'partials/scene'
 
+exports.photo = (req, res) -> res.render 'partials/photo'
+
 exports.my = (req, res) -> res.render 'partials/my'
 
 exports.notFound = (req, res) -> res.render '404'
