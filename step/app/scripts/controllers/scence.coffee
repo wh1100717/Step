@@ -137,6 +137,7 @@ get_scene = ->
 			$("input[name='city']").val (data.data[0].city)
 			$("input[name='name_en']").val (data.data[0].surl)
 			$("input[name='phone']").val (data.data[0].ext.phone)
+			$("input[name='_id']").val (data.data[0]._id)
 
 
 
@@ -146,6 +147,47 @@ get_scene = ->
 			console.log(data)
 
 	}
+
+###
+*post ajax
+###
+save = ->
+	scene = $("#scenes").val()
+	city = $("#cities").val()
+	object_id =$("input[name='_id']").val()
+	name =$("input[name='name']").val()
+	name_en =$("input[name='name_en']").val()
+	status =$("input[name='status']").val()
+	last_update =$("input[name='last_update']").val()
+	last_update_user =$("input[name='last_update_user']").val()
+	category =$("input[name='category']").val()
+	alias =$("textarea[name='alias']").val()
+	longitude =$("input[name='longitude']").val()
+	latitude =$("input[name='latitude']").val()
+	altitude =$("input[name='altitude']").val()
+	radius =$("input[name='radius']").val()
+	geo =$("textarea[name='geo']").val()
+	type =$("input[name='type']").val()
+	addr =$("input[name='addr']").val()
+	description =$("textarea[name='description']").val()
+	images =$("textarea[name='images']").val()
+	open_time =$("input[name='open_time']").val()
+	acreage =$("input[name='acreage']").val()
+	ticket_price =$("input[name='ticket_price']").val()
+	phone =$("input[name='phone']").val()
+	$.ajax {
+		type: "POST"
+		url: "/cities/#{city}/scenes/#{scene}"
+		data:    {
+			    object_id: object_id         #mongo生成的id
+			    name: name                      #景区名称
+			    name_en: name_en                #景区英文名称
+			    city: city
+		              }
+		success: (result)->
+			console.log(result)
+		}
+
 
 ###
  * 隐藏城市及景点选择框
