@@ -51,7 +51,7 @@ module.exports = function(grunt) {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
-          livereload: false
+          livereload: true
         }
       },
       styles: {
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
         ],
 
         options: {
-          livereload: false
+          livereload: true
         }
       },
       express: {
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
         ],
         tasks: ['newer:jshint:server', 'express:dev', 'wait'],
         options: {
-          livereload: false,
+          livereload: true,
           nospawn: true //Without this option specified express won't be reloaded
         }
       }
