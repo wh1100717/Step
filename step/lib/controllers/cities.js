@@ -46,13 +46,19 @@ cities.scenes = {
       if (!scene) {
         return res.send(404);
       }
+      console.log(scene);
       res.send(JSON.stringify({
         status: 'success',
         data: scene
       }));
     });
   },
-  save: function() {},
+  save: function(req, res, next) {
+    res.send(JSON.stringify({
+      status: 'success',
+      data: {}
+    }));
+  },
   children: {
     show: function() {},
     save: function() {}

@@ -2,10 +2,27 @@
  
 body {
   padding-top: 0px;
-  padding-bottom: 20px;
-
+  
+  background: url("/images/back.jpg") no-repeat;
+ 
 }
 
+#row2{
+  margin-top: 20px;
+height: 53px;
+ }
+
+#nv,#footnv{
+  background-color: rgba(0,0,0,.5);
+  border:none;
+  height: 1;
+  box-shadow:  0 3px 7px rgba(0,0,0,.7);
+}
+
+
+.nav nav-pills{
+   color:white;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -36,11 +53,19 @@ body {
 /* Customize container */
 @media (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1400px;
+    background-color: rgba(0,0,0,.5);
+  border:none;
+  
+  box-shadow:  0 3px 7px rgba(0,0,0,.7);
+    
+    margin-top: 20px;
+    
   }
 }
 .container-narrow > hr {
   margin: 30px 0;
+
 }
 
 /* Main marketing message and sign up button */
@@ -53,9 +78,12 @@ body {
   padding: 14px 24px;
 }
 #allmapp{
-
- height: 900px;
- width: 45%;
+box-shadow:  0 3px 17px rgba(0,0,0,.9); 
+opacity: 0.9 ;
+margin-left: 30px;
+border-radius:10px;
+ height: 780px;
+ width: 75%;
 border: 1;
   
   }

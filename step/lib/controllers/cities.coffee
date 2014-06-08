@@ -28,7 +28,8 @@ cities.scenes = {
 			res.send JSON.stringify({status: 'success', data: scene})
 			return
 		return
-	save: ->
+	save: (req, res, next)->
+		res.send JSON.stringify({status: 'success', data: {}})
 		return
 	children: {
 		show: ->

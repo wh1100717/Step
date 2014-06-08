@@ -1,33 +1,32 @@
-<div class="row">
+<div class="container">
+<div id="row1"class="row">
     <div ng-include="'partials/navbar'">
     </div>
 </div>
+    
 <div class="row">
-    <div class="col-md-2" id="allmapp">
-    </div>
-    <div class="col-md-1">
-        <div>
-            <input id="prov" class="typeahead" type="text" placeholder="Province"
-            onkeypress="get_provinces(true); " onFocus="hide_cities();">
+        <div class="col-md-2" id="allmapp">
         </div>
-    </div>
-    <div class="col-md-1">
-        <div>
+    
+    <div style="left:80px;"class="col-md-1">
+        <div class="row">
+            <input id="prov" class="typeahead" type="text" placeholder="Province"
+            onFocus="hide_cities();">
+        </div>
+        <div style="margin-top: 30px;"class="row">
             <input id="cities" style="display:none;" class="typeahead" type="text"
             placeholder="city" onkeypress="get_cities(true);" onFocus="hide_scenes();hide_sub();">
         </div>
-    </div>
-    <div class="col-md-1">
-        <div>
+        <div style="margin-top: 30px;" class="row">
             <input id="scenes" style="display:none;" class="typeahead" type="text"
             placeholder="scenes" onkeypress="get_scenes(true);">
         </div>
-    </div>
-    <div class="col-md-1">
-        <button id="sub" style="display:none;" class="btn btn-primary btn-sm"
-        data-toggle="modal" data-target="#myModal" onclick="get_scene();">
-            submit
+        <div style="margin-top: 30px;" class="row">
+        
+        <button id="sub" type="button"style="display:none;width:160px;"class="btn btn-primary btn-lg btn-block" onclick="search();">
+            <span class="glyphicon glyphicon-search">search</span>
         </button>
+         
         <!-- Modal -->
         <div class="modal fade" id="myModal">
             <div class="modal-dialog" style="width: 1200px;">
@@ -152,7 +151,7 @@
                             </h2>
                             <div class="row">
                                 <div class="col-md-3">
-                                    longitude:
+                                    longitu:
                                     <input type="text">
                                 </div>
                                 <div class="col-md-3">
@@ -219,17 +218,45 @@
             </div>
             <!-- /.modal -->
         </div>
+                <div style="margin-top: 30px;" class="row"> 
+                    <button id="change" style="display:none;width: 160px;" class="btn btn-primary btn-lg"
+                    data-toggle="modal" data-target="#myModal" onclick="get_scene();">
+                    <span class="glyphicon glyphicon-wrench">change</span>
+                    </button>
+
+                </div>
+       <div class="row"style="width: 170px;position: absolute;top:400px;">
+        <p><h3 style="color:white;">Map tools</h3></p>
+        <button type="button" class="btn btn-primary btn-lg btn-block" onclick="mark();"><span class="glyphicon glyphicon-map-marker">drawmarker</span></button>
+        <button type="button" class="btn btn-default btn-lg btn-block"><span class="glyphicon glyphicon-arrow-left">back</span></button>
+        <button type="button" class="btn btn-default btn-lg btn-block" onclick="clearmap();"><span class="glyphicon glyphicon-fire">clear</span></button>
+        <button type="button" class="btn btn-default btn-lg btn-block"><span class="glyphicon glyphicon-ok">commit</span></button>
+       
+       
+   </div>
+    </div>
+    
+    
+        
+    
+    
         
     </div>
-    <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    
+     <div id="row2"class="row">
+    <nav id="footnv" class="navbar navbar-inverse navbar-static-bottom" role="navigation">
     </nav>
+    </div>
+</div>
     <script type="text/javascript">
         $(function() {
             // 百度地图API功能
-            var map = new BMap.Map("allmapp");
-            map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
-            var marker1 = new BMap.Marker(new BMap.Point(116.384, 39.925)); // 创建标注
-            map.addOverlay(marker1); // 将标注添加到地图中
+           map = new BMap.Map("allmapp");
+            map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);
+            map.enableScrollWheelZoom()
+            markpoints= new Array();
+           // var marker1 = new BMap.Marker(new BMap.Point(116.384, 39.925)); // 创建标注
+            //map.addOverlay(marker1); // 将标注添加到地图中
             get_provinces()
         });
     </script>

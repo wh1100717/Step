@@ -64,6 +64,9 @@ get_provinces = ->
  * 根据所选省份获取城市
 ###
 get_cities = (flag)->
+	pp=$('#prov').val()
+	map.setCenter(pp)
+	map.setZoom(7)
 	return if flag and event.keyCode isnt 13
 	for province in city_info.p when $('#prov').val() is province
 		$("#cities").val ""
@@ -78,7 +81,8 @@ get_cities = (flag)->
 			displayKey: 'value'
 			source: substringMatcher(city_info.c[province])
 		}).bind('typeahead:selected', (obj, selected, name) -> get_scenes(false))
-		$("#cities").show()
+
+		$("#cities").fadeIn(300)
 	return
 
 ###
@@ -88,7 +92,8 @@ get_scenes = (flag)->
 	return if flag and event.keyCode isnt 13
 
 	c = $("#cities").val()
-	
+	map.setCenter(c)
+	map.setZoom(12);
 	for city in city_info.c[$('#prov').val()] when c is city
 		$.ajax {
 			type: "GET"
@@ -106,7 +111,7 @@ get_scenes = (flag)->
 					displayKey: 'value'
 					source: substringMatcher(scenes)
 			}).bind('typeahead:selected', (obj, selected, name)  -> show_sub())
-				$("#scenes").show()
+				$("#scenes").fadeIn(500)
 				
 				return
 		}
@@ -178,38 +183,65 @@ save = ->
 	$.ajax {
 		type: "POST"
 		url: "/cities/#{city}/scenes/#{scene}"
-		data:    {
-			    object_id: object_id         #mongo生成的id
-			    name: name                      #景区名称
-			    name_en: name_en                #景区英文名称
-			    city: city
-		              }
+		data:{
+			name:"hahah"
+		}
 		success: (result)->
+			result = JSON.parse(result)
+			if result.status == 'success' then $('#myModal').modal('hide')
+			alert("success") 
 			console.log(result)
 		}
+search = ->
+	map.setCenter(new BMap.Point(116.4035,39.915));
+	map.setZoom(15);
+markbiao = (e)->
+	
+	xx=e.point.lng
+	yy=e.point.lat
+	newp= new BMap.Point(xx, yy)
+	markpoints.push(newp)
+	marker1 = new BMap.Marker(newp) 
+	psize= new BMap.Size(5,5)
+	Icon= new BMap.Icon("http://pic3.bbzhi.com/jingxuanbizhi/heiseshawenjianyuechunsebizhi/jingxuan_jingxuanyitu_216725_2.jpg", psize);
+	marker1.setIcon(Icon)
+	map.addOverlay(marker1)            
+	drawline= new BMap.Polyline(markpoints)
+	map.addOverlay(drawline)
+	console.log()
 
-
+mark = ->
+	
+	map.addEventListener("onclick",markbiao)
+	console.log()
+	
+clearmap = ->
+	markpoints.splice(0,markpoints.length)
+	map.clearOverlays()
 ###
  * 隐藏城市及景点选择框
 ###
 hide_cities = ->
-	$("#cities").hide()
-	$("#scenes").hide()
+	$("#cities").fadeOut(500)
+	$("#scenes").fadeOut(500)
+	$("#sub").fadeOut(500)
+	$("#change").fadeOut(500)
 
 ###
  * 隐藏景点选择框
 ###
 hide_scenes = ->
 	$("#scenes").val("")
-	$("#scenes").hide()
+	$("#scenes").fadeOut(500)
 
 hide_sub = ->
 	$("#sub").val("")
-	$("#sub").hide()
-
+	$("#sub").fadeOut(500)
+	$("#change").fadeOut(500)
 show_sub = ->
-	$("#sub").show()
-
+	
+	$("#sub").fadeIn(500)
+	$("#change").fadeIn(500)
 
 substringMatcher = (strs) ->
 	(q, cb) ->
