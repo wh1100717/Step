@@ -63,10 +63,12 @@ get_provinces = ->
 ###
  * 根据所选省份获取城市
 ###
-get_cities = (flag)->
+get_cities = (flag) ->
+	$("#cities").show()
 	pp=$('#prov').val()
 	map.setCenter(pp)
 	map.setZoom(7)
+	
 	return if flag and event.keyCode isnt 13
 	for province in city_info.p when $('#prov').val() is province
 		$("#cities").val ""
@@ -82,18 +84,20 @@ get_cities = (flag)->
 			source: substringMatcher(city_info.c[province])
 		}).bind('typeahead:selected', (obj, selected, name) -> get_scenes(false))
 
-		$("#cities").fadeIn(300)
-	return
+		
+	
 
 ###
  * 根据所选城市获取该城市的旅游景点
 ###
 get_scenes = (flag)->
+	$("#scenes").show()
 	return if flag and event.keyCode isnt 13
 
 	c = $("#cities").val()
 	map.setCenter(c)
 	map.setZoom(12);
+	
 	for city in city_info.c[$('#prov').val()] when c is city
 		$.ajax {
 			type: "GET"
@@ -111,9 +115,9 @@ get_scenes = (flag)->
 					displayKey: 'value'
 					source: substringMatcher(scenes)
 			}).bind('typeahead:selected', (obj, selected, name)  -> show_sub())
-				$("#scenes").fadeIn(500)
 				
-				return
+				
+				
 		}
 
 ###

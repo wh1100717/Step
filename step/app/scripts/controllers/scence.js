@@ -78,7 +78,8 @@ get_provinces = function() {
  */
 
 get_cities = function(flag) {
-  var pp, province, _i, _len, _ref;
+  var pp, province, _i, _len, _ref, _results;
+  $("#cities").show();
   pp = $('#prov').val();
   map.setCenter(pp);
   map.setZoom(7);
@@ -86,6 +87,7 @@ get_cities = function(flag) {
     return;
   }
   _ref = city_info.p;
+  _results = [];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     province = _ref[_i];
     if (!($('#prov').val() === province)) {
@@ -94,7 +96,7 @@ get_cities = function(flag) {
     $("#cities").val("");
     $("#scenes").val("");
     $("#cities").typeahead('destroy');
-    $("#cities").typeahead({
+    _results.push($("#cities").typeahead({
       hint: false,
       highlight: true,
       minLength: 1
@@ -104,9 +106,9 @@ get_cities = function(flag) {
       source: substringMatcher(city_info.c[province])
     }).bind('typeahead:selected', function(obj, selected, name) {
       return get_scenes(false);
-    });
-    $("#cities").fadeIn(300);
+    }));
   }
+  return _results;
 };
 
 
@@ -116,6 +118,7 @@ get_cities = function(flag) {
 
 get_scenes = function(flag) {
   var c, city, _i, _len, _ref, _results;
+  $("#scenes").show();
   if (flag && event.keyCode !== 13) {
     return;
   }
@@ -135,7 +138,7 @@ get_scenes = function(flag) {
           var scenes;
           scenes = data.data[0].scenes;
           $("#scenes").typeahead('destroy');
-          $("#scenes").typeahead({
+          return $("#scenes").typeahead({
             hint: false,
             highlight: true,
             minLength: 1
@@ -146,7 +149,6 @@ get_scenes = function(flag) {
           }).bind('typeahead:selected', function(obj, selected, name) {
             return show_sub();
           });
-          $("#scenes").fadeIn(500);
         }
       }));
     }
