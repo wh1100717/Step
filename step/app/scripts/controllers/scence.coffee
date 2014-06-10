@@ -134,33 +134,28 @@ get_scene = ->
 		success: (data) ->
 			console.log(data)
 			data = JSON.parse(data)
-
-			$("#textare").val (data.data[0].ext.description)
-
 			imgs = data.data[0].ext.images
 			alias = data.data[0].alias
+			geo =data.data[0].loc.geo
+			$("#textare").val (data.data[0].ext.description)
 			$("#textare").val (data.data[0].ext.description)
 			$("textarea[name='images']").val (imgs)
 			$("textarea[name='alias']").val (alias)
+			$("textarea[name='geo']").val(geo)
 			$("input[name='name']").val (data.data[0].name)
 			$("input[name='city']").val (data.data[0].city)
 			$("input[name='name_en']").val (data.data[0].surl)
 			$("input[name='phone']").val (data.data[0].ext.phone)
 			$("input[name='_id']").val (data.data[0]._id)
-
-
-
-
-	
-
 			console.log(data)
 
 	}
 
 ###
-*post ajax
+*修改信息后递交
 ###
 save = ->
+	provv = $("#prov").val()
 	scene = $("#scenes").val()
 	city = $("#cities").val()
 	object_id =$("input[name='_id']").val()
@@ -188,7 +183,34 @@ save = ->
 		type: "POST"
 		url: "/cities/#{city}/scenes/#{scene}"
 		data:{
-			name:"hahah"
+			object_id: object_id
+			name: name
+			name_en: name_en
+			city: city
+			province: provv
+			status: status
+			last_update: (new Date()).getTime()
+			last_update_user: last_update_user
+			category: category
+			alias: alias
+			location: {
+			longitude: longitude
+			latitude: latitude
+			altitude: altitude
+			radius: radius
+			geo: geo
+			type: type
+			addr: addr
+			 }
+			ext: {
+			description: description
+			images: []
+			audio: '/audio/a.amr'
+			open_time: open_time
+			acreage: acreage
+			ticket_price: ticket_price
+			phone: phone
+			}
 		}
 		success: (result)->
 			result = JSON.parse(result)
@@ -196,11 +218,37 @@ save = ->
 			alert("success") 
 			console.log(result)
 		}
+###
+*景点定位
+###
 search = ->
-	map.setCenter(new BMap.Point(116.4035,39.915));
-	map.setZoom(15);
+	scene = $("#scenes").val()
+	city = $("#cities").val()
+	$.ajax {
+		type: "GET"
+		url: "/cities/#{city}/scenes/#{scene}"
+		data: "timestamp=#{(new Date().getTime())}"
+		success: (data) ->
+			console.log(data)
+			data = JSON.parse(data)
+			locps= data.data[0].loc.geo
+			pdeal1= data.data[0].loc.geo.split("|")
+			pdeal2= pdeal1[2].substring(0,pdeal1[2].length-1)
+			pdeal3= pdeal2.split(",")
+			console.log(pdeal3)
+			longitude= pdeal3[1]
+			atitude=  pdeal3[0]
+			alert(longitude+","+atitude);
+			po= new BMap.Point(atitude,longitude)
+			map.setCenter(po)
+			map.setZoom(15)
+}
+
+
+###
+ * 绘制坐标点
+###
 markbiao = (e)->
-	
 	xx=e.point.lng
 	yy=e.point.lat
 	newp= new BMap.Point(xx, yy)
@@ -213,15 +261,92 @@ markbiao = (e)->
 	drawline= new BMap.Polyline(markpoints)
 	map.addOverlay(drawline)
 	console.log()
-
+###
+ * 坐标点点击
+###
 mark = ->
 	
 	map.addEventListener("onclick",markbiao)
 	console.log()
+
+###
+ * 返回上一步
+###
+back = ->
 	
+	markpoints.pop()
+	map.clearOverlays()
+	drawline= new BMap.Polyline(markpoints)
+	map.addOverlay(drawline)
+	console.log()
+
+###
+ * 清空
+###
 clearmap = ->
 	markpoints.splice(0,markpoints.length)
 	map.clearOverlays()
+
+###
+ * 绘制后递交
+###
+commit = ->
+	scene = $("#scenes").val()
+	city = $("#cities").val()
+	$.ajax {
+		type: "GET"
+		url: "/cities/#{city}/scenes/#{scene}"
+		data: "timestamp=#{(new Date().getTime())}"
+		success: (data) ->
+			console.log(data)
+			data = JSON.parse(data)
+			$("#textare").val (data.data[0].ext.description)
+			imgs = data.data[0].ext.images
+			alias = data.data[0].alias
+			description= data.data[0].ext.description
+			name= data.data[0].name
+			city = data.data[0].city
+			name_en = data.data[0].surl
+			phone = data.data[0].ext.phone
+			object_id = data.data[0]._id
+			console.log(data)
+			console.log(markpoints)
+
+	}
+	$.ajax {
+		type: "POST"
+		url: "/cities/#{city}/scenes/#{scene}"
+		data:{
+			object_id: object_id
+			name: name
+			name_en: name_en
+			city: city
+			province: provv
+			status: status
+			last_update: (new Date()).getTime()
+			last_update_user: last_update_user
+			category: category
+			alias: alias
+			location: {
+			longitude: longitude
+			latitude: latitude
+			altitude: altitude
+			radius: radius
+			geo: geo
+			type: type
+			addr: addr
+			 }
+			ext: {
+			description: description
+			images: []
+			audio: '/audio/a.amr'
+			open_time: open_time
+			acreage: acreage
+			ticket_price: ticket_price
+			phone: phone
+			}
+		}
+	}
 ###
  * 隐藏城市及景点选择框
 ###
