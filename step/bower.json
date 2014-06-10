@@ -11,7 +11,8 @@
     "angular-cookies": ">=1.2.*",
     "angular-sanitize": ">=1.2.*",
     "angular-route": ">=1.2.*",
-    "typeahead.js": "~0.10.2"
+    "typeahead.js": "~0.10.2",
+    "BaiduMapPointConverter": "*"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
