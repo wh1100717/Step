@@ -280,7 +280,7 @@ search = function() {
     url: "/cities/" + city + "/scenes/" + scene,
     data: "timestamp=" + (new Date().getTime()),
     success: function(data) {
-      var atitude, locps, longitude, pdeal1, pdeal2, pdeal3, po;
+      var atitude, locps, longitude, p, pdeal1, pdeal2, pdeal3, pt;
       console.log(data);
       data = JSON.parse(data);
       locps = data.data[0].loc.geo;
@@ -290,10 +290,10 @@ search = function() {
       console.log(pdeal3);
       longitude = pdeal3[1];
       atitude = pdeal3[0];
-      alert(longitude + "," + atitude);
-      po = new BMap.Point(atitude, longitude);
-      map.setCenter(po);
-      return map.setZoom(15);
+      p = new ConvertPoint(atitude, longitude);
+      pt = new BMap.Point(p.convertMC2LL().lng, p.convertMC2LL().lat);
+      map.setCenter(pt);
+      return map.setZoom(16);
     }
   });
 };
@@ -367,7 +367,7 @@ commit = function() {
     url: "/cities/" + city + "/scenes/" + scene,
     data: "timestamp=" + (new Date().getTime()),
     success: function(data) {
-      var alias, description, imgs, name, name_en, object_id, phone;
+      var alias, description, geo, imgs, name, name_en, object_id, phone;
       console.log(data);
       data = JSON.parse(data);
       $("#textare").val(data.data[0].ext.description);
@@ -379,6 +379,7 @@ commit = function() {
       name_en = data.data[0].surl;
       phone = data.data[0].ext.phone;
       object_id = data.data[0]._id;
+      geo = data.data[0].loc.geo;
       console.log(data);
       return console.log(markpoints);
     }

@@ -238,10 +238,10 @@ search = ->
 			console.log(pdeal3)
 			longitude= pdeal3[1]
 			atitude=  pdeal3[0]
-			alert(longitude+","+atitude);
-			po= new BMap.Point(atitude,longitude)
-			map.setCenter(po)
-			map.setZoom(15)
+			p = new ConvertPoint(atitude, longitude)
+			pt= new BMap.Point(p.convertMC2LL().lng, p.convertMC2LL().lat)
+			map.setCenter(pt)
+			map.setZoom(16)
 }
 
 
@@ -309,6 +309,7 @@ commit = ->
 			name_en = data.data[0].surl
 			phone = data.data[0].ext.phone
 			object_id = data.data[0]._id
+			geo = data.data[0].loc.geo
 			console.log(data)
 			console.log(markpoints)
 
