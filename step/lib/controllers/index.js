@@ -14,6 +14,7 @@ exports.partials = function(req, res) {
       res.status(404);
       res.send(404);
     } else {
+      console.log(requestedView);
       res.send(html);
     }
   });

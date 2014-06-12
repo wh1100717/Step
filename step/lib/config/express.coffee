@@ -47,7 +47,7 @@ module.exports = (app) ->
   app.use cookieParser()
 
   # Psersist sessions with mongoStore
-  app.use session({
+  app.use session {
     secret: 'step secret'
     store: new mongoStore {
       url: config.mongo.uri
@@ -55,7 +55,7 @@ module.exports = (app) ->
     }, ->
       console.log 'db connection open'
       return
-  })
+  }
 
   # User passport session
   app.use passport.initialize()
