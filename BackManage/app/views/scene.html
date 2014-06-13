@@ -1,0 +1,336 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(app) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload.css" />
+    <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-ui.css" />
+    <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-noscript.css" />
+    <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-ui-noscript.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+	<div class="container">
+<!-- 	    <div id="row1"class="row">
+	        <div ng-include="'partials/navbar'">
+	        </div>
+	    </div>
+ -->
+
+	    <div class="row">
+	        <div class="col-md-2" id="allmapp">
+	        </div>
+	    
+	    <div style="left:80px;"class="col-md-1">
+	        <div class="row">
+	            <input id="prov" class="typeahead" type="text" placeholder="Province"
+	            onFocus="hide_cities();">
+	        </div>
+	        <div style="margin-top: 30px;"class="row">
+	            <input id="cities" style="display:none;" class="typeahead" type="text"
+	            placeholder="city" onkeypress="get_cities(true);" onFocus="hide_scenes();hide_sub();">
+	        </div>
+	        <div style="margin-top: 30px;" class="row">
+	            <input id="scenes" style="display:none;" class="typeahead" type="text"
+	            placeholder="scenes" onkeypress="get_scenes(true);">
+	        </div>
+	        <div style="margin-top: 30px;" class="row">
+	        
+	        <button id="sub" type="button"style="display:none;width:160px;"class="btn btn-primary btn-lg btn-block" onclick="search();">
+	            <span class="glyphicon glyphicon-search">search</span>
+	        </button>
+	         
+	        <!-- Modal -->
+	        <div class="modal fade" id="myModal">
+	            <div class="modal-dialog" style="width: 1200px;">
+	                <div class="modal-content">
+	                    <div class="modal-header">
+	                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+	                            &times;
+	                        </button>
+	                        <h4 class="modal-title" id="myModalLabel">
+	                            scene detail
+	                        </h4>
+	                    </div>
+	                    <div class="modal-body">
+	                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	                            <!-- Indicators -->
+	                            <ol class="carousel-indicators">
+	                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active">
+	                                </li>
+	                                <li data-target="#carousel-example-generic" data-slide-to="1" class="activ2">
+	                                </li>
+	                            </ol>
+	                            <!-- Wrapper for slides -->
+	                            <div class="carousel-inner">
+	                                <div class="item active">
+	                                    <img src="http://c.hiphotos.baidu.com/image/w%3D230/sign=76ac3d8359b5c9ea62f304e0e538b622/7aec54e736d12f2efb0fa5e84dc2d5628535682b.jpg"
+	                                    alt="...">
+	                                </div>
+	                                <div class="item activ2">
+	                                    <img src="http://c.hiphotos.baidu.com/image/h%3D1080%3Bcrop%3D0%2C0%2C1920%2C1080/sign=4c9dafe0d309b3def4bfe068f48f57e2/5ab5c9ea15ce36d3cfea8bb838f33a87e850b14f.jpg"
+	                                    alt="...">
+	                                </div>
+	                            </div>
+	                            <!-- Controls -->
+	                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+	                                <span class="glyphicon glyphicon-chevron-left">
+	                                </span>
+	                            </a>
+	                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+	                                <span class="glyphicon glyphicon-chevron-right">
+	                                </span>
+	                            </a>
+	                        </div>
+	                        <div class="jumbotron">
+	                            <h2>
+	                                base messege
+	                            </h2>
+	                            <div class="row">
+	                                <div class="col-md-4">
+	                                    name:
+	                                    <input name="name" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    city:
+	                                    <input name="city" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    province:
+	                                    <input name="province" type="text" style="vertical-align:middle">
+	                                </div>
+	                            </div>
+	                            <div class="row">
+	                                <div class="col-md-4">
+	                                    update:
+	                                    <input name="last_update" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    user:
+	                                    <input name="last_update_user" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    category:
+	                                    <input name="category" type="text" style="vertical-align:middle">
+	                                </div>
+	                            </div>
+	                            <div class="row">
+	                                <div class="col-md-4">
+	                                    type:
+	                                    <input name="type" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    time:
+	                                    <input name="open_time" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    acreage:
+	                                    <input name="acreage" type="text" style="vertical-align:middle">
+	                                </div>
+	                            </div>
+	                            <div class="row">
+	                                <div class="col-md-4">
+	                                    addr:
+	                                    <input name="addr" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    tprice:
+	                                    <input name="ticket_price" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    phone:
+	                                    <input name="phone" type="text" style="vertical-align:middle">
+	                                </div>
+	                            </div>
+	                            <div class="row">
+	                                <div class="col-md-4">
+	                                    ename:
+	                                    <input name="name_en" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    status:
+	                                    <input name="status" type="text" style="vertical-align:middle">
+	                                </div>
+	                                <div class="col-md-4">
+	                                    objtid:
+	                                    <input name="_id" type="text" style="vertical-align:middle">
+	                                </div>
+	                                
+	                            </div>
+	                        </div>
+	                        <div class="jumbotron">
+	                            <h2>
+	                                location
+	                            </h2>
+	                            <div class="row">
+	                                <div class="col-md-3">
+	                                    longitu:
+	                                    <input type="text">
+	                                </div>
+	                                <div class="col-md-3">
+	                                    latitude:
+	                                    <input type="text">
+	                                </div>
+	                                <div class="col-md-3">
+	                                    altitude:
+	                                    <input type="text">
+	                                </div>
+	                                <div class="col-md-3">
+	                                    radius:
+	                                    <input type="text">
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="jumbotron">
+	                            <h2>
+	                                geo
+	                            </h2>
+	                            <div>
+	                                <textarea style="width: 100%;height:90px;" name="geo">
+	                                </textarea>
+	                            </div>
+	                        </div>
+	                        <div class="jumbotron">
+	                            <h2>
+	                                alias
+	                            </h2>
+	                            <div>
+	                                <textarea style="width: 100%;height:90px;" name="alias">
+	                                </textarea>
+	                            </div>
+	                        </div>
+	                        <div class="jumbotron">
+	                            <h2>
+	                                describition
+	                            </h2>
+	                            <p>
+	                                <textarea style="width: 100%;height:200px;" id="textare" name="describition">
+	                                </textarea>
+	                            </p>
+	                        </div>
+	                        <div class="jumbotron">
+	                            <h2>
+	                                imges_url
+	                            </h2>
+	                            <p>
+	                                <textarea style="width: 100%;height:90px;" id="" name="images">
+	                                </textarea>
+	                            </p>
+	                        </div>
+	                     </div>
+	                        <div class="modal-footer">
+	                            <button type="button" class="btn btn-default" data-dismiss="modal">
+	                                Close
+	                            </button>
+	                             <button type="button" class="btn btn-primary" onclick="save();">Save changes</button>
+	                        </div>
+	                    </div>
+	                    <!-- /.modal-content -->
+	                </div>
+	                <!-- /.modal-dialog -->
+	            </div>
+	            <!-- /.modal -->
+	        </div>
+	                <div style="margin-top: 30px;" class="row"> 
+	                    <button id="change" style="display:none;width: 160px;" class="btn btn-primary btn-lg"
+	                    data-toggle="modal" data-target="#myModal" onclick="get_scene();">
+	                    <span class="glyphicon glyphicon-wrench">change</span>
+	                    </button>
+
+	                </div>
+	       <div class="row"style="width: 170px;position: absolute;top:400px;">
+	        <p><h3 style="color:white;">Map tools</h3></p>
+	                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="mark();"><span class="glyphicon glyphicon-map-marker">drawmarker</span></button>
+	                <button type="button" class="btn btn-default btn-lg btn-block" onclick="back();"><span class="glyphicon glyphicon-arrow-left">back</span></button>
+	                <button type="button" class="btn btn-default btn-lg btn-block" onclick="clearmap();"><span class="glyphicon glyphicon-fire">clear</span></button>
+	                <button type="button" class="btn btn-default btn-lg btn-block" onclick="commit();"><span class="glyphicon glyphicon-ok">commit</span></button>
+	       </div>
+	    </div>
+	 </div>
+	    
+	     <div id="row2"class="row">
+	    <nav id="footnv" class="navbar navbar-inverse navbar-static-bottom" role="navigation">
+	    </nav>
+	    </div>
+	</div>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js(app) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
+    <script src="bower_components/BaiduMapPointConverter/dist/bmpointconverter.js"></script>
+    <script src="bower_components/blueimp-tmpl/js/tmpl.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image-ios.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image-orientation.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image-meta.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image-exif.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image-exif-map.js"></script>
+    <script src="bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+    <script src="bower_components/jquery-file-upload/js/cors/jquery.postmessage-transport.js"></script>
+    <script src="bower_components/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
+    <script src="bower_components/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-validate.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-video.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-jquery-ui.js"></script>
+    <script src="bower_components/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/controllers/scence.js"></script>
+
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=F875087dfb8f52212a94d72eb240ca55"></script>
+        <!-- endbuild -->
+
+	    <script type="text/javascript">
+	        $(function() {
+	            // 百度地图API功能
+	           map = new BMap.Map("allmapp");
+	            map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);
+	            map.enableScrollWheelZoom()
+	            markpoints= new Array();
+	           // var marker1 = new BMap.Marker(new BMap.Point(116.384, 39.925)); // 创建标注
+	            //map.addOverlay(marker1); // 将标注添加到地图中
+	            get_provinces()
+	        });
+	        var p = new ConvertPoint(12958160.97, 4825907.72)
+	        console.log(p.convertMC2LL())
+	        q = new ConvertPoint(116.403874,39.914889)
+	        console.log(q.convertLL2MC())
+	    </script>
+
+</body>
+</html>
