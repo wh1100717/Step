@@ -12,8 +12,7 @@
     "angular-sanitize": ">=1.2.*",
     "angular-route": ">=1.2.*",
     "typeahead.js": "~0.10.2",
-    "BaiduMapPointConverter": "*",
-    "jquery-file-upload": "~9.5.7"
+    "BaiduMapPointConverter": "*"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

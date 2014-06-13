@@ -37,6 +37,19 @@
 	        </div>
 	    </div>
  -->
+ 		<!-- 文件上传 -->
+		<span class="btn btn-success fileinput-button">
+	        <i class="glyphicon glyphicon-plus"></i>
+	        <span>Select files...</span>
+	        <!-- The file input field used as target for the file upload widget -->
+	        <input id="fileupload" type="file" name="files[]" multiple="">
+	    </span>
+
+		<div id="progress" class="progress">
+		    <div class="progress-bar progress-bar-success"></div>
+		</div>
+		<div id="files" class="files"></div>
+		<!-- 文件上传Done -->
 
 	    <div class="row">
 	        <div class="col-md-2" id="allmapp">
@@ -282,31 +295,12 @@
 
     <!-- build:js(app) scripts/vendor.js -->
     <!-- bower:js -->
+
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
     <script src="bower_components/BaiduMapPointConverter/dist/bmpointconverter.js"></script>
-    <script src="bower_components/blueimp-tmpl/js/tmpl.js"></script>
-    <script src="bower_components/blueimp-load-image/js/load-image.js"></script>
-    <script src="bower_components/blueimp-load-image/js/load-image-ios.js"></script>
-    <script src="bower_components/blueimp-load-image/js/load-image-orientation.js"></script>
-    <script src="bower_components/blueimp-load-image/js/load-image-meta.js"></script>
-    <script src="bower_components/blueimp-load-image/js/load-image-exif.js"></script>
-    <script src="bower_components/blueimp-load-image/js/load-image-exif-map.js"></script>
-    <script src="bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
-    <script src="bower_components/jquery-file-upload/js/cors/jquery.postmessage-transport.js"></script>
-    <script src="bower_components/jquery-file-upload/js/cors/jquery.xdr-transport.js"></script>
-    <script src="bower_components/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-process.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-validate.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-image.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-audio.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-video.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-ui.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.fileupload-jquery-ui.js"></script>
-    <script src="bower_components/jquery-file-upload/js/jquery.iframe-transport.js"></script>
-    <!-- endbower -->
+   	<!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -331,6 +325,30 @@
 	        q = new ConvertPoint(116.403874,39.914889)
 	        console.log(q.convertLL2MC())
 	    </script>
-
+<script>
+/*jslint unparam: true */
+/*global window, $ */
+$(function () {
+    'use strict';
+    var url = "/upload/img"
+    $('#fileupload').fileupload({
+        url: url,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo('#files');
+            });
+        },
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('#progress .progress-bar').css(
+                'width',
+                progress + '%'
+            );
+        }
+    }).prop('disabled', !$.support.fileInput)
+        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+});
+</script>
 </body>
 </html>

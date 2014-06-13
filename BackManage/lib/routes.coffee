@@ -5,7 +5,7 @@ module.exports = (app) ->
 	upload = require 'jquery-file-upload-middleware'
 	upload.configure {
 		uploadDir: __dirname + '/public/uploads'
-		uploadUrl: '/uploads'
+		uploadUrl: '/upload/img'
 		imageVersions: {
 			thumbnail: {
 				width: 80
