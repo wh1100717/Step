@@ -18,8 +18,6 @@ module.exports = (app) ->
 		.post session.login
 		.delete session.logout
 
-	app.route('/partials/*')
-		.get base.partials
 	app.route('/scene')
 		.get base.scene
 	app.route('/*')

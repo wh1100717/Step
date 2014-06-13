@@ -51,6 +51,8 @@
 		<div id="files" class="files"></div>
 		<!-- 文件上传Done -->
 
+
+
 	    <div class="row">
 	        <div class="col-md-2" id="allmapp">
 	        </div>
@@ -70,9 +72,9 @@
 	        </div>
 	        <div style="margin-top: 30px;" class="row">
 	        
-	        <button id="sub" type="button"style="display:none;width:160px;"class="btn btn-primary btn-lg btn-block" onclick="search();">
-	            <span class="glyphicon glyphicon-search">search</span>
-	        </button>
+		        <button id="sub" type="button"style="display:none;width:160px;"class="btn btn-primary btn-lg btn-block" onclick="search();">
+		            <span class="glyphicon glyphicon-search">search</span>
+		        </button>
 	         
 	        <!-- Modal -->
 	        <div class="modal fade" id="myModal">
@@ -265,19 +267,18 @@
 	            </div>
 	            <!-- /.modal -->
 	        </div>
-	                <div style="margin-top: 30px;" class="row"> 
-	                    <button id="change" style="display:none;width: 160px;" class="btn btn-primary btn-lg"
-	                    data-toggle="modal" data-target="#myModal" onclick="get_scene();">
-	                    <span class="glyphicon glyphicon-wrench">change</span>
-	                    </button>
-
-	                </div>
+            <div style="margin-top: 30px;" class="row"> 
+                <button id="change" style="display:none;width: 160px;" class="btn btn-primary btn-lg"
+                data-toggle="modal" data-target="#myModal" onclick="get_scene();">
+                <span class="glyphicon glyphicon-wrench">change</span>
+                </button>
+            </div>
 	       <div class="row"style="width: 170px;position: absolute;top:400px;">
 	        <p><h3 style="color:white;">Map tools</h3></p>
-	                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="mark();"><span class="glyphicon glyphicon-map-marker">drawmarker</span></button>
-	                <button type="button" class="btn btn-default btn-lg btn-block" onclick="back();"><span class="glyphicon glyphicon-arrow-left">back</span></button>
-	                <button type="button" class="btn btn-default btn-lg btn-block" onclick="clearmap();"><span class="glyphicon glyphicon-fire">clear</span></button>
-	                <button type="button" class="btn btn-default btn-lg btn-block" onclick="commit();"><span class="glyphicon glyphicon-ok">commit</span></button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="mark();"><span class="glyphicon glyphicon-map-marker">drawmarker</span></button>
+            <button type="button" class="btn btn-default btn-lg btn-block" onclick="back();"><span class="glyphicon glyphicon-arrow-left">back</span></button>
+            <button type="button" class="btn btn-default btn-lg btn-block" onclick="clearmap();"><span class="glyphicon glyphicon-fire">clear</span></button>
+            <button type="button" class="btn btn-default btn-lg btn-block" onclick="commit();"><span class="glyphicon glyphicon-ok">commit</span></button>
 	       </div>
 	    </div>
 	 </div>

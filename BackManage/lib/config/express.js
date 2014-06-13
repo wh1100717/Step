@@ -57,8 +57,7 @@ module.exports = function(app) {
       app.use(express["static"](path.join(config.root, 'public')));
       app.set('views', config.root + '/views');
   }
-  app.engine('html', require('ejs').renderFile);
-  app.set('view engine', 'html');
+  app.set('view engine', 'jade');
   app.use(morgan('dev'));
   app.use(bodyParser());
   app.use(methodOverride());

@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     },
     express: {
       options: {
-        port: process.env.PORT || 80
+        port: process.env.PORT || 9000
       },
       dev: {
         options: {
@@ -112,7 +112,7 @@ module.exports = function(grunt) {
         options: {
           nodeArgs: ['--debug-brk'],
           env: {
-            PORT: process.env.PORT || 80
+            PORT: process.env.PORT || 9000
           },
           callback: function(nodemon) {
             nodemon.on('log', function(event) {
@@ -127,10 +127,9 @@ module.exports = function(grunt) {
         }
       }
     },
-    'bower-install': {
-      app: {
-        html: '<%= BackManage.app %>/views/index.html',
-        ignorePath: '<%= BackManage.app %>/'
+    bowerInstall: {
+      target: {
+        src: '<%= BackManage.app %>/views/layout.jade'
       }
     },
     rev: {
@@ -141,7 +140,7 @@ module.exports = function(grunt) {
       }
     },
     useminPrepare: {
-      html: ['<%= BackManage.app %>/views/index.html', '<%= BackManage.app %>/views/index.jade'],
+      html: ['<%= BackManage.app %>/views/layout.jade'],
       options: {
         dest: '<%= BackManage.dist %>/public'
       }
@@ -267,13 +266,13 @@ module.exports = function(grunt) {
       return grunt.task.run(['build', 'express:prod', 'open', 'express-keepalive']);
     }
     if (target === 'debug') {
-      return grunt.task.run(['clean:server', 'bower-install', 'concurrent:server', 'autoprefixer', 'concurrent:debug']);
+      return grunt.task.run(['clean:server', 'bowerInstall', 'concurrent:server', 'autoprefixer', 'concurrent:debug']);
     }
-    return grunt.task.run(['clean:server', 'bower-install', 'concurrent:server', 'autoprefixer', 'express:dev', 'open', 'watch']);
+    return grunt.task.run(['clean:server', 'bowerInstall', 'concurrent:server', 'autoprefixer', 'express:dev', 'open', 'watch']);
   });
   grunt.registerTask('server', function() {
     return grunt.task.run(['serve']);
   });
-  grunt.registerTask('build', ['clean:dist', 'bower-install', 'useminPrepare', 'concurrent:dist', 'autoprefixer', 'concat', 'ngmin', 'copy:dist', 'cssmin', 'uglify', 'rev', 'usemin']);
-  return grunt.registerTask('default', ['newer:jshint', 'build']);
+  grunt.registerTask('build', ['newer:jshint', 'clean:dist', 'bowerInstall', 'useminPrepare', 'concurrent:dist', 'autoprefixer', 'concat', 'ngmin', 'copy:dist', 'cssmin', 'uglify', 'rev', 'usemin']);
+  return grunt.registerTask('default', ['serve']);
 };

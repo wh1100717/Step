@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-  User = mongoose.model('User')
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
 // Clear old users, then add a default user
 User.find({}).remove(function() {

@@ -21,7 +21,7 @@ module.exports = (grunt) ->
     }
     express: {
       options: {
-        port: process.env.PORT or 80
+        port: process.env.PORT or 9000
       }
       dev: {
         options: {
@@ -103,16 +103,6 @@ module.exports = (grunt) ->
           ]
         }]
       }
-      # heroku: {
-      #   files: [{
-      #     dot: true
-      #     src: [
-      #       'heroku/*'
-      #       '!heroku/.git*'
-      #       '!heroku/Procfile'
-      #     ]
-      #   }]
-      # }
       server: '.tmp'
     }
     # Add vendor prefixed styles
@@ -144,7 +134,7 @@ module.exports = (grunt) ->
         options: {
           nodeArgs: ['--debug-brk']
           env: {
-            PORT: process.env.PORT or 80
+            PORT: process.env.PORT or 9000
           }
           callback: (nodemon) ->
             nodemon.on 'log', (event) -> console.log event.colour
@@ -157,10 +147,9 @@ module.exports = (grunt) ->
       }
     }
     # Automatically inject Bower components into the app
-    'bower-install': {
-      app: {
-        html: '<%= BackManage.app %>/views/index.html'
-        ignorePath: '<%= BackManage.app %>/'
+    bowerInstall: {
+      target: {
+        src: '<%= BackManage.app %>/views/layout.jade'
       }
     }
     # Renames files for browser caching purposes
@@ -181,8 +170,7 @@ module.exports = (grunt) ->
     # additional tasks can operate on them
     useminPrepare: {
       html: [
-        '<%= BackManage.app %>/views/index.html'
-        '<%= BackManage.app %>/views/index.jade'
+        '<%= BackManage.app %>/views/layout.jade'
       ]
       options: {
         dest: '<%= BackManage.dist %>/public'
@@ -358,14 +346,15 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'serve', (target) ->
     return grunt.task.run ['build', 'express:prod', 'open', 'express-keepalive'] if target is 'dist'
-    return grunt.task.run ['clean:server', 'bower-install', 'concurrent:server', 'autoprefixer', 'concurrent:debug'] if target is 'debug'
-    grunt.task.run ['clean:server', 'bower-install', 'concurrent:server', 'autoprefixer', 'express:dev', 'open', 'watch']
+    return grunt.task.run ['clean:server', 'bowerInstall', 'concurrent:server', 'autoprefixer', 'concurrent:debug'] if target is 'debug'
+    grunt.task.run ['clean:server', 'bowerInstall', 'concurrent:server', 'autoprefixer', 'express:dev', 'open', 'watch']
 
   grunt.registerTask 'server', -> grunt.task.run ['serve']
 
   grunt.registerTask 'build', [
+    'newer:jshint'
     'clean:dist'
-    'bower-install'
+    'bowerInstall'
     'useminPrepare'
     'concurrent:dist'
     'autoprefixer'
@@ -382,5 +371,6 @@ module.exports = (grunt) ->
   #   grunt.log.warn 'The `heroku` task has been deprecated. Use `grunt build` to build for deployment.'
   #   grunt.task.run ['build']
 
-  grunt.registerTask 'default', ['newer:jshint', 'build']
+
+  grunt.registerTask 'default', ['serve']
 

@@ -33,14 +33,14 @@ module.exports = (app) ->
         return
       app.use express.static(path.join(config.root, '.tmp'))
       app.use express.static(path.join(config.root, 'app'))
-      app.set 'views', config.root + '/app/views'    
+      app.set 'views', config.root + '/app/views'
     when 'production'
       app.use compression()
       app.use favicon(path.join(config.root, 'public', 'favicon.ico'))
       app.use express.static(path.join(config.root, 'public'))
       app.set 'views', config.root + '/views'
-  app.engine 'html', require('ejs').renderFile
-  app.set 'view engine', 'html'
+  # app.engine 'html', require('ejs').renderFile
+  app.set 'view engine', 'jade'
   app.use morgan('dev')
   app.use bodyParser()
   app.use methodOverride()

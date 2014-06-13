@@ -4,36 +4,10 @@ var path;
 
 path = require('path');
 
-
-/*
- * Send partial, or 404 if it doesn't exist
- */
-
-exports.partials = function(req, res) {
-  var requestedView, stripped;
-  stripped = req.url.split('.')[0];
-  requestedView = path.join('./', stripped);
-  return res.render(requestedView, function(err, html) {
-    if (err) {
-      console.log("Error rendering partials '" + requestedView + "'\n" + err);
-      res.status(404);
-      return res.send(404);
-    } else {
-      console.log(requestedView);
-      return res.send(html);
-    }
-  });
-};
-
-
-/*
- * Send our single page app
- */
-
 exports.index = function(req, res) {
-  return res.render('index');
+  return res.render('partials/index');
 };
 
 exports.scene = function(req, res) {
-  return res.render('scene');
+  return res.render('partials/scene');
 };

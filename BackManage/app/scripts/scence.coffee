@@ -1,9 +1,14 @@
 'use strict'
 
-# angular.module('stepApp')
-#   .controller 'ScenceCtrl', ($scope, $http) ->
-#     $http.get('/api/awesomeThings').success (awesomeThings) ->
-#       $scope.awesomeThings = awesomeThings
+$ ->
+	# 百度地图API功能
+	map = new BMap.Map("allmap")
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 5)
+	map.enableScrollWheelZoom()
+	markpoints = new Array()
+	# var marker1 = new BMap.Marker(new BMap.Point(116.384, 39.925)); // 创建标注
+	# map.addOverlay(marker1); // 将标注添加到地图中
+	get_provinces()
 
 ###
  * 省市信息
