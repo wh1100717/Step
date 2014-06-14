@@ -12,4 +12,12 @@ module.exports = {
       db: {safe: true}
     }
   }
+  upyun: {
+    img: {
+      bucketname: 'westep'
+      username: 'westep'
+      password: 'westep0000'
+      base_url: 'http://westep.b0.upaiyun.com'
+    }
+  }
 }
