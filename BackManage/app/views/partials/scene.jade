@@ -1,36 +1,35 @@
 extends ../layout
 
 block content
-	.container
-		.row#row1
-		.row
-			#allmap.col-md-2
-			.col-md-1(style="left:80px;")
-				.row
-					input#prov.typeahead(type="text" placeholder="Province" onFocus="hide_cities();")
-				.row(style="margin-top: 30px;")
-					input#cities.typeahead(type="text" placeholder="city" onkeypress="get_cities(true);" onFocus="hide_scenes();hide_sub();" style="display:none;")
-				.row(style="margin-top: 30px;")
-					input#scenes.typeahead(type="text" placeholder="scenes" onkeypress="get_scenes(true);" style="display:none;")
-				.row(style="margin-top: 30px")
-					button#sub(type="button" class="btn btn-primary btn-lg btn-block" onclick="search();" style="display:none;width:160px;")
-						span(class="glyphicon glyphicon-search") search
-					include ./scene_model
-				.row(style="margin-top: 30px;")
-					button#change(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="get_scene();" style="display:none;width: 160px;")
-						span(class="glyphicon glyphicon-wrench") change
-				.row(style="width: 170px;position: absolute;top:400px;")
-					P: h3(style="color:white;") Map tools
-					button(type="button" class="btn btn-primary btn-lg btn-block" onclick="mark();")
-						span(class="glyphicon glyphicon-map-marker") drawmarker
-					button(type="button" class="btn btn-primary btn-lg btn-block" onclick="back();")
-						span(class="glyphicon glyphicon-arrow-left") back
-					button(type="button" class="btn btn-primary btn-lg btn-block" onclick="clearmap();")
-						span(class="glyphicon glyphicon-fire") clear
-					button(type="button" class="btn btn-primary btn-lg btn-block" onclick="commit();")
-						span(class="glyphicon glyphicon-ok") commit
-		#row2.row
-			nav#footnv(class="navbar navbar-inverse navbar-static-bottom" role="navigation")
+	.row#row1
+	.row
+		#allmap.col-md-2
+		.col-md-1(style="left:80px;")
+			.row
+				input#prov.typeahead(type="text" placeholder="Province" onFocus="hide_cities();")
+			.row(style="margin-top: 30px;")
+				input#cities.typeahead(type="text" placeholder="city" onkeypress="get_cities(true);" onFocus="hide_scenes();hide_sub();" style="display:none;")
+			.row(style="margin-top: 30px;")
+				input#scenes.typeahead(type="text" placeholder="scenes" onkeypress="get_scenes(true);" style="display:none;")
+			.row(style="margin-top: 30px")
+				button#sub(type="button" class="btn btn-primary btn-lg btn-block" onclick="search();" style="display:none;width:160px;")
+					span(class="glyphicon glyphicon-search") search
+				include ./scene_model
+			.row(style="margin-top: 30px;")
+				button#change(class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="get_scene();" style="display:none;width: 160px;")
+					span(class="glyphicon glyphicon-wrench") change
+			.row(style="width: 170px;position: absolute;top:400px;")
+				P: h3(style="color:white;") Map tools
+				button(type="button" class="btn btn-primary btn-lg btn-block" onclick="mark();")
+					span(class="glyphicon glyphicon-map-marker") drawmarker
+				button(type="button" class="btn btn-primary btn-lg btn-block" onclick="back();")
+					span(class="glyphicon glyphicon-arrow-left") back
+				button(type="button" class="btn btn-primary btn-lg btn-block" onclick="clearmap();")
+					span(class="glyphicon glyphicon-fire") clear
+				button(type="button" class="btn btn-primary btn-lg btn-block" onclick="commit();")
+					span(class="glyphicon glyphicon-ok") commit
+	#row2.row
+		nav#footnv(class="navbar navbar-inverse navbar-static-bottom" role="navigation")
 	script(src='http://api.map.baidu.com/api?ak=F875087dfb8f52212a94d72eb240ca55&v=2.0')
 	script(src="scripts/scence.js")
 	script.

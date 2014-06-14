@@ -26,5 +26,21 @@ html
 		//build:js({.tmp,app}) scripts/scripts.js
 		//endbuild
 
-		block content
+		.container
+			nav.navbar.navbar-inverse.navbar-static-top(role="navigation")
+				.col-md-1
+				div
+					ul.nav.nav-pills
+						li.btn-lg(name="nav_home"): a.text-center(href="/") Home
+						li.btn-lg(name="nav_scene"): a.text-center(href="/scene") Scene
+						li.btn-lg(name="nav_about"): a.text-center(href="#") About
+			script
+				:coffee
+					nav_url = document.URL.split('/')[3]
+					nav_url = "home" if nav_url is ""
+					nav_url = "nav_#{nav_url}"
+					console.log nav_url
+					$(".nav.nav-pills > li[name='#{nav_url}']").addClass('active')
+					console.log $(".nav.nav-pills > li[name='#{nav_url}']").html()
+			block content
 

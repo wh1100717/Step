@@ -7,6 +7,7 @@ middleware = require('../middleware')
 
 
 module.exports = (app) ->
+
 	app.route('/api/users')
 		.get users.create
 		.put users.changePassword
@@ -17,7 +18,6 @@ module.exports = (app) ->
 	app.route('/api/session')
 		.post session.login
 		.delete session.logout
-
 	app.route('/scene')
 		.get base.scene
 	app.route('/*')

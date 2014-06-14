@@ -1,0 +1,112 @@
+//Modal
+#myMal.modal.fade
+	.modal-dialog(style="width: 1200px;")
+		.modal-content
+			.modal-header
+				button.close(type="button" data-dismiss="modal" aria-hidden="true") &times;
+				h4#myModalLabel.modal-title scene detail
+			.modal-body
+				#carousel-example-generic.carousel.slide(data-ride="carousel")
+					ol.carousel-indicators
+						li.active(data-target="#carousel-example-generic" data-slide-to="0")
+						li.activ2(data-target="#carousel-example-generic" data-slide-to="1")
+					.carousel-inner
+						.item.active
+							img(src="http://c.hiphotos.baidu.com/image/w%3D230/sign=76ac3d8359b5c9ea62f304e0e538b622/7aec54e736d12f2efb0fa5e84dc2d5628535682b.jpg" alt="...")
+						.item.activ2
+							img(src="http://c.hiphotos.baidu.com/image/h%3D1080%3Bcrop%3D0%2C0%2C1920%2C1080/sign=4c9dafe0d309b3def4bfe068f48f57e2/5ab5c9ea15ce36d3cfea8bb838f33a87e850b14f.jpg" alt="...")
+					a.carousel-control.left(href="#carousel-example-generic" data-slide="prev")
+						span.glyphicon.glyphicon-chevron-left
+					a.carousel-control.right(href="#carousel-example-generic" data-slide="next")
+						span.glyphicon.glyphicon-chevron-right
+				.jumbotron
+					h2 base message
+					.row
+						.col-md-4
+							span name:
+							input(name="name" type="text" style="vertical-align:middle")
+						.col-md-4
+							span city:
+							input(name="city" type="text" style="vertical-align:middle")
+						.col-md-4
+							span province:
+							input(name="province" type="text" style="vertical-align:middle")
+					.row
+						.col-md-4
+							span update:
+							input(name="last_update" type="text" style="vertical-align:middle")
+						.col-md-4
+							span user:
+							input(name="last_update_user" type="text" style="vertical-align:middle")
+						.col-md-4
+							span category:
+							input(name="category" type="text" style="vertical-align:middle")
+					.row
+						.col-md-4
+							span type:
+							input(name="type" type="text" style="vertical-align:middle")
+						.col-md-4
+							span time:
+							input(name="open_time" type="text" style="vertical-align:middle")
+						.col-md-4
+							span acreage:
+							input(name="acreage" type="text" style="vertical-align:middle")
+					.row
+						.col-md-4
+							span addr:
+							input(name="addr" type="text" style="vertical-align:middle")
+						.col-md-4
+							span tprice:
+							input(name="ticket_price" type="text" style="vertical-align:middle")
+						.col-md-4
+							span phone:
+							input(name="phone" type="text" style="vertical-align:middle")
+					.row
+						.col-md-4
+							span ename:
+							input(name="name_en" type="text" style="vertical-align:middle")
+						.col-md-4
+							span status:
+							input(name="status" type="text" style="vertical-align:middle")
+						.col-md-4
+							span objtid:
+							input(name="objtid" type="text" style="vertical-align:middle")
+				.jumbotron
+					h2 location
+					.row
+						.col-md-3
+							span longtitude:
+							input(type="text")
+						.col-md-3
+							span latitude:
+							input(type="text")
+						.col-md-3
+							span altitude:
+							input(type="text")
+						.col-md-3
+							span radius:
+							input(type="text")
+				.jumbotron
+					h2 geo
+					textarea(name="geo" style="width: 100%;height:90px;")
+				.jumbotron
+					h2 alias
+					textarea(name="alias" style="width: 100%;height:90px;")
+				.jumbotron
+					h2 description
+					textarea(name="description" style="width: 100%;height:90px;")
+				.jumbotron
+					h2 imges_url
+					textarea(name="imges_url" style="width: 100%;height:90px;")
+			.modal-footer
+				button.btn.btn-default(type="button" data-dismiss="modal") Close
+				button.btn.btn-primary(type="button" onclick="save();") Save Changes
+
+
+
+
+
+
+
+
+
