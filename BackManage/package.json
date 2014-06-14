@@ -18,7 +18,8 @@
     "passport": "~0.2.0",
     "passport-local": "~0.1.6",
     "ejs": "~0.8.4",
-    "jquery-file-upload-middleware": "^0.1.2"
+    "jquery-file-upload-middleware": "^0.1.2",
+    "connect-busboy": "0.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

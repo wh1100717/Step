@@ -13,6 +13,7 @@ path = require('path')
 config = require('./config')
 passport = require('passport')
 mongoStore = require('connect-mongo')(session)
+busboy = require('connect-busboy')
 
 ###
  * Express 配置文件
@@ -45,6 +46,7 @@ module.exports = (app) ->
   app.use bodyParser()
   app.use methodOverride()
   app.use cookieParser()
+  app.use busboy()
 
   # Psersist sessions with mongoStore
   app.use session {

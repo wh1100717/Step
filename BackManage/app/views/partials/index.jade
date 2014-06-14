@@ -1,4 +1,101 @@
 extends ../layout
 
 block content
-	h1 This is Index Page
+	h1 This is Image Upload Page
+	.grid
+		a.g-u.ks-uploader-button.imageUploader-button(href="javascript:void(0)" style="position: relative;")
+			span.btn-text 上传图片
+			.file-input-wrapper(style="overflow: hidden")
+				input#J_UploaderBtn.g-u.file-input(type="file" value="上传图片" name="Filedata")
+		input#J_Urls(type="hidden" name="imageUrls" value="")
+	ul#J_UploaderQueue.grid.ks-uploader-queue.imageUploader-queue
+	script.
+
+		KISSY.use(
+			'gallery/uploader/1.5/index,' + 
+			'gallery/uploader/1.5/themes/imageUploader/index,' + 
+			'gallery/uploader/1.5/themes/imageUploader/style.css', 
+			function (S, Uploader,ImageUploader) {
+				//上传组件插件
+				var plugins = 'gallery/uploader/1.5/plugins/auth/auth,' +
+				'gallery/uploader/1.5/plugins/urlsInput/urlsInput,' +
+				'gallery/uploader/1.5/plugins/proBars/proBars,' +
+				'gallery/uploader/1.5/plugins/filedrop/filedrop,' +
+				'gallery/uploader/1.5/plugins/preview/preview,' +
+				'gallery/uploader/1.5/plugins/tagConfig/tagConfig';
+
+				S.use(plugins,function(S,Auth,UrlsInput,ProBars,Filedrop,Preview,TagConfig){
+					var uploader = new Uploader('#J_UploaderBtn',{
+						//处理上传的服务器端脚本路径
+						action:"/upload/img"
+					});
+					//使用主题
+					uploader.theme(new ImageUploader({
+						queueTarget:'#J_UploaderQueue'
+					}))
+					//验证插件
+					uploader.plug(new Auth({
+						//最多上传个数
+						max:3,
+						//图片最大允许大小
+						maxSize:8000
+					}))
+					//url保存插件
+					.plug(new UrlsInput({target:'#J_Urls'}))
+					//进度条集合
+					.plug(new ProBars())
+					//拖拽上传
+					.plug(new Filedrop())
+					//图片预览
+					.plug(new Preview())
+					.plug(new TagConfig())
+					;
+
+					S.log('action:'+uploader.get('action'));
+					S.log(uploader.get('data'));
+					var auth = uploader.getPlugin('auth');
+					S.log(auth.get('max'));
+					S.log(auth.get('maxSize'));
+			});
+		})
+
+
+
+//- block content
+//- 	h1 This is File Upload Page
+//- 	.grid
+//- 		a.g-u.ks-uploader-button.defaultTheme-button(href="javascript:void(0)")
+//- 			span.btn-text 上传文件
+//- 			div.file-input-wrapper(style="overflow:hidden;")
+//- 				input#J_UploaderBtn.g-u.file-input(type="file" value="上传文件" name="Filedata")
+//- 		input#J_Urls(type="hidden" name="urls" value="")
+//- 	ul#J_UploaderQueue.ks-uploader-queue.defaultTheme-queue
+//- 	script.
+//- 		KISSY.use('gallery/uploader/1.5/index,gallery/uploader/1.5/themes/default/index,gallery/uploader/1.5/themes/default/style.css', 
+//- 			function (S, Uploader,DefaultTheme) {
+//- 			//上传组件插件
+//- 			var plugins = 'gallery/uploader/1.5/plugins/auth/auth,' +
+//- 			'gallery/uploader/1.5/plugins/urlsInput/urlsInput,' +
+//- 			'gallery/uploader/1.5/plugins/proBars/proBars';
+
+//- 			S.use(plugins,function(S,Auth,UrlsInput,ProBars){
+//- 				var uploader = new Uploader('#J_UploaderBtn',{
+//- 					//处理上传的服务器端脚本路径
+//- 					action:"/upload/img"
+//- 				});
+//- 				//使用主题
+//- 				uploader.theme(new DefaultTheme({
+//- 					queueTarget:'#J_UploaderQueue'
+//- 				}))
+//- 				//验证插件
+//- 				uploader.plug(new Auth({
+//- 				//最多上传个数
+//- 					max:3
+//- 				}))
+//- 				//url保存插件
+//- 				.plug(new UrlsInput({target:'#J_Urls'}))
+//- 				//进度条集合
+//- 				.plug(new ProBars())
+//- 				;
+//- 			});
+//- 		})

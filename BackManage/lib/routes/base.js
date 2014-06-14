@@ -11,6 +11,7 @@ session = require('../controllers/session');
 middleware = require('../middleware');
 
 module.exports = function(app) {
+  app.route('/upload/img').post(base.imgUpload);
   app.route('/api/users').get(users.create).put(users.changePassword);
   app.route('/api/users/me').get(users.me);
   app.route('/api/users/:id').get(users.show);

@@ -1,12 +1,14 @@
 'use strict'
 
-base = require('../controllers/base')
-users = require('../controllers/users')
-session = require('../controllers/session')
-middleware = require('../middleware')
-
+base = require '../controllers/base'
+users = require '../controllers/users'
+session = require '../controllers/session'
+middleware = require '../middleware'
 
 module.exports = (app) ->
+
+	app.route('/upload/img')
+		.post base.imgUpload
 
 	app.route('/api/users')
 		.get users.create
