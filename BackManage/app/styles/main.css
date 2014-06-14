@@ -78,15 +78,26 @@ height: 53px;
   padding: 14px 24px;
 }
 #allmap{
-box-shadow:  0 3px 17px rgba(0,0,0,.9); 
-opacity: 0.9 ;
-margin-left: 30px;
-border-radius:10px;
- height: 780px;
- width: 75%;
-border: 1;
-  
-  }
+  box-shadow:  0 3px 17px rgba(0,0,0,.9); 
+  opacity: 0.9 ;
+  margin-left: 30px;
+  border-radius:10px;
+  height: 600px;
+}
+
+#sidetool .row{
+  margin-top: 30px;
+  padding-left: 5%;
+  padding-right: 5%
+}
+
+#sidetool .row button, input{
+  width: 90%;
+}
+
+
+
+
 
 /* Supporting marketing content */
 .marketing {
@@ -117,7 +128,6 @@ border: 1;
 .typeahead,
 .tt-query,
 .tt-hint {
-  width: 150px;
   height: 30px;
   padding: 8px 12px;
   font-size: 20px;
