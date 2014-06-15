@@ -19,5 +19,6 @@ module.exports = function(app) {
   app.route('/api/users/:id').get(users.show);
   app.route('/api/session').post(session.login)["delete"](session.logout);
   app.route('/scene').get(base.scene);
-  return app.route('/*').get(middleware.setUserCookie, base.index);
+  app.route('/').get(base.index);
+  return app.route('/*').get(base.notFound);
 };

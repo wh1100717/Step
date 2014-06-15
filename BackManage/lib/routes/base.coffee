@@ -22,5 +22,7 @@ module.exports = (app) ->
 		.delete session.logout
 	app.route('/scene')
 		.get base.scene
+	app.route('/')
+		.get(base.index)
 	app.route('/*')
-		.get(middleware.setUserCookie, base.index)
+		.get(base.notFound)

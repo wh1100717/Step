@@ -30,10 +30,6 @@ testCallback = (err, data) ->
 		console.log 'Data: '
 		console.log data
 
-exports.index = (req, res) -> res.render 'partials/index'
-
-exports.scene = (req, res) -> res.render 'partials/scene'
-
 exports.imgUpload = (req, res) ->
 	req.pipe req.busboy
 	req.busboy.on 'file', (fieldname, file, filename) ->
@@ -63,6 +59,12 @@ exports.imgUpload = (req, res) ->
 					res.send 200, """{"status":1,"type":null,"name":"#{filename}","url":"#{img_config.base_url + uploadpath + filename}"}"""
 				return
 			return
+
+exports.index = (req, res) -> res.render 'partials/index'
+
+exports.scene = (req, res) -> res.render 'partials/scene'
+
+exports.notFound = (req, res) -> res.render '404'
 
 
 

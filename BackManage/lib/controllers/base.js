@@ -45,14 +45,6 @@ testCallback = function(err, data) {
   }
 };
 
-exports.index = function(req, res) {
-  return res.render('partials/index');
-};
-
-exports.scene = function(req, res) {
-  return res.render('partials/scene');
-};
-
 exports.imgUpload = function(req, res) {
   req.pipe(req.busboy);
   return req.busboy.on('file', function(fieldname, file, filename) {
@@ -87,4 +79,16 @@ exports.imgUpload = function(req, res) {
       });
     });
   });
+};
+
+exports.index = function(req, res) {
+  return res.render('partials/index');
+};
+
+exports.scene = function(req, res) {
+  return res.render('partials/scene');
+};
+
+exports.notFound = function(req, res) {
+  return res.render('404');
 };

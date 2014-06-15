@@ -40,8 +40,6 @@ html
 						nav_url = document.URL.split('/')[3]
 						nav_url = "home" if nav_url is ""
 						nav_url = "nav_#{nav_url}"
-						console.log nav_url
 						$(".nav.nav-pills > li[name='#{nav_url}']").addClass('active')
-						console.log $(".nav.nav-pills > li[name='#{nav_url}']").html()
 			block content
 
