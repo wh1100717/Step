@@ -14,7 +14,6 @@ config = require('./config')
 passport = require('passport')
 mongoStore = require('connect-mongo')(session)
 busboy = require('connect-busboy')
-timeout = require('connect-timeout')
 
 ###
  * Express 配置文件
@@ -43,7 +42,6 @@ module.exports = (app) ->
       app.set 'views', config.root + '/views'
   # app.engine 'html', require('ejs').renderFile
   app.set 'view engine', 'jade'
-  app.use timeout(120000)
   app.use morgan('dev')
   app.use bodyParser()
   app.use methodOverride()

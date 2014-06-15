@@ -69,6 +69,7 @@ exports.imgUpload = function(req, res) {
     file.pipe(fstream);
     return fstream.on('close', function() {
       var fileContent, img_config, md5Str, upyun;
+      console.log("finish file downloading to server");
       img_config = config.upyun.img;
       upyun = new UPYun(img_config.bucketname, img_config.username, img_config.password);
       upyun.getBucketUsage(testCallback);
@@ -76,6 +77,7 @@ exports.imgUpload = function(req, res) {
       md5Str = md5(fileContent);
       upyun.setContentMD5(md5Str);
       upyun.writeFile(uploadpath + filename, fileContent, true, function(err, data) {
+        console.log("Finish dile uploading to cloud");
         if (err) {
           console.log(err);
           res.send(err.statusCode, err.message + data);

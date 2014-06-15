@@ -4,11 +4,11 @@ base = require '../controllers/base'
 users = require '../controllers/users'
 session = require '../controllers/session'
 middleware = require '../middleware'
+timeout = require 'connect-timeout'
 
 module.exports = (app) ->
 
-	app.route('/upload/img')
-		.post base.imgUpload
+	app.post '/upload/img', timeout(45000), base.imgUpload
 
 	app.route('/api/users')
 		.get users.create

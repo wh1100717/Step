@@ -5,7 +5,6 @@ fs = require 'fs'
 config = require '../config/config'
 UPYun = require('../util/upyun').UPYun
 
-
 # 创建多层文件夹 同步
 mkdirsSync = (dirpath) ->
 	return true if fs.existsSync dirpath
@@ -48,6 +47,7 @@ exports.imgUpload = (req, res) ->
 		fstream = fs.createWriteStream localpath + filename
 		file.pipe fstream
 		fstream.on 'close', ->
+			console.log "finish file downloading to server"
 			img_config = config.upyun.img
 			upyun = new UPYun(img_config.bucketname, img_config.username, img_config.password)
 			upyun.getBucketUsage(testCallback)
@@ -55,6 +55,7 @@ exports.imgUpload = (req, res) ->
 			md5Str = md5(fileContent)
 			upyun.setContentMD5(md5Str)
 			upyun.writeFile uploadpath + filename, fileContent, true, (err, data) ->
+				console.log "Finish dile uploading to cloud"
 				if err
 					console.log err
 					res.send err.statusCode, err.message + data
