@@ -57,6 +57,7 @@ exports.imgUpload = function(req, res) {
       res.send(500, "internal error when making dirs");
       return;
     }
+    filename = md5(d.getTime().toString()) + "." + filename.split('.').pop();
     fstream = fs.createWriteStream(localpath + filename);
     file.pipe(fstream);
     return fstream.on('close', function() {

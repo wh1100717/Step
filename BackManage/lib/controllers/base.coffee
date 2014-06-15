@@ -40,6 +40,7 @@ exports.imgUpload = (req, res) ->
 		if not mkdirsSync(localpath)
 			res.send 500, "internal error when making dirs"
 			return
+		filename = md5(d.getTime().toString()) + "." + filename.split('.').pop()
 		fstream = fs.createWriteStream localpath + filename
 		file.pipe fstream
 		fstream.on 'close', ->
