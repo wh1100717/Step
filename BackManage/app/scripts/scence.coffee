@@ -41,12 +41,13 @@ city_info = {
 	get_cities: (province)-> this.c[province]
 }
 
+
 ###
  * 获取省份
 ###
 get_provinces = ->
-	$("#prov").typeahead({
-		hint: false
+	$("#provinces").typeahead({
+		hint: true
 		highlight: true
 		minLength: 1
 	},{
@@ -60,17 +61,17 @@ get_provinces = ->
 ###
 get_cities = (flag) ->
 	$("#cities").show()
-	pp=$('#prov').val()
+	pp=$('#provinces').val()
 	map.setCenter(pp)
 	map.setZoom(7)
 	
 	return if flag and event.keyCode isnt 13
-	for province in city_info.p when $('#prov').val() is province
+	for province in city_info.p when $('#provinces').val() is province
 		$("#cities").val ""
 		$("#scenes").val ""
 		$("#cities").typeahead 'destroy'
 		$("#cities").typeahead({
-			hint: false
+			hint: true
 			highlight: true
 			minLength: 1
 		}, {
@@ -93,7 +94,7 @@ get_scenes = (flag)->
 	map.setCenter(c)
 	map.setZoom(12);
 	
-	for city in city_info.c[$('#prov').val()] when c is city
+	for city in city_info.c[$('#provinces').val()] when c is city
 		$.ajax {
 			type: "GET"
 			url: "/cities/#{c}/scenes"
@@ -102,7 +103,7 @@ get_scenes = (flag)->
 				scenes = data.data[0].scenes
 				$("#scenes").typeahead 'destroy'
 				$("#scenes").typeahead({
-					hint: false
+					hint: true
 					highlight: true
 					minLength: 1
 				},{
@@ -150,7 +151,7 @@ get_scene = ->
 *修改信息后递交
 ###
 save = ->
-	provv = $("#prov").val()
+	provv = $("#provinces").val()
 	scene = $("#scenes").val()
 	city = $("#cities").val()
 	object_id =$("input[name='_id']").val()

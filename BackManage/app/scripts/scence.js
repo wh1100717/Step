@@ -52,8 +52,8 @@ city_info = {
  */
 
 get_provinces = function() {
-  return $("#prov").typeahead({
-    hint: false,
+  return $("#provinces").typeahead({
+    hint: true,
     highlight: true,
     minLength: 1
   }, {
@@ -73,7 +73,7 @@ get_provinces = function() {
 get_cities = function(flag) {
   var pp, province, _i, _len, _ref, _results;
   $("#cities").show();
-  pp = $('#prov').val();
+  pp = $('#provinces').val();
   map.setCenter(pp);
   map.setZoom(7);
   if (flag && event.keyCode !== 13) {
@@ -83,14 +83,14 @@ get_cities = function(flag) {
   _results = [];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     province = _ref[_i];
-    if (!($('#prov').val() === province)) {
+    if (!($('#provinces').val() === province)) {
       continue;
     }
     $("#cities").val("");
     $("#scenes").val("");
     $("#cities").typeahead('destroy');
     _results.push($("#cities").typeahead({
-      hint: false,
+      hint: true,
       highlight: true,
       minLength: 1
     }, {
@@ -118,7 +118,7 @@ get_scenes = function(flag) {
   c = $("#cities").val();
   map.setCenter(c);
   map.setZoom(12);
-  _ref = city_info.c[$('#prov').val()];
+  _ref = city_info.c[$('#provinces').val()];
   _results = [];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     city = _ref[_i];
@@ -132,7 +132,7 @@ get_scenes = function(flag) {
           scenes = data.data[0].scenes;
           $("#scenes").typeahead('destroy');
           return $("#scenes").typeahead({
-            hint: false,
+            hint: true,
             highlight: true,
             minLength: 1
           }, {
@@ -191,7 +191,7 @@ get_scene = function() {
 
 save = function() {
   var acreage, addr, alias, altitude, category, city, description, geo, images, last_update, last_update_user, latitude, longitude, name, name_en, object_id, open_time, phone, provv, radius, scene, status, ticket_price, type;
-  provv = $("#prov").val();
+  provv = $("#provinces").val();
   scene = $("#scenes").val();
   city = $("#cities").val();
   object_id = $("input[name='_id']").val();

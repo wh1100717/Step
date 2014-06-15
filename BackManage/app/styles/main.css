@@ -139,6 +139,10 @@ height: 53px;
   outline: none;
 }
 
+.tt-hint {
+  color: #999;
+}
+
 .typeahead {
   background-color: #fpf;
 

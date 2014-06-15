@@ -6,7 +6,7 @@ block content
 			#allmap
 		#sidetool.col-md-2
 			.row
-				input#prov.typeahead(type="text" placeholder="Province" onFocus="hide_cities();")
+				input#provinces.typeahead(type="text" placeholder="Province" onFocus="hide_cities();" onchange= "alert(123);")
 			.row
 				input#cities.typeahead(type="text" placeholder="city" onkeypress="get_cities(true);" onFocus="hide_scenes();hide_sub();" style="display:none;")
 			.row
