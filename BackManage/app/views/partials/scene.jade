@@ -6,17 +6,15 @@ block content
 			#allmap
 		#sidetool.col-md-2
 			.row
-				input#provinces.typeahead(type="text" placeholder="Province" onFocus="hide_cities();" onchange= "alert(123);")
+				input#prov_city.typeahead(type="text" placeholder="输入省或者市")
 			.row
-				input#cities.typeahead(type="text" placeholder="city" onkeypress="get_cities(true);" onFocus="hide_scenes();hide_sub();" style="display:none;")
+				input#scenes.typeahead(type="text" placeholder="输入景点名")
 			.row
-				input#scenes.typeahead(type="text" placeholder="scenes" onkeypress="get_scenes(true);" style="display:none;")
-			.row
-				button#sub.btn.btn-primary.btn-lg.btn-block(type="button" onclick="search();" style="display:none;")
+				button#sub.btn.btn-primary.btn-lg.btn-block(type="button" onclick="search();")
 					span.glyphicon.glyphicon-search search
 				include ./scene_model
 			.row
-				button#change.btn.btn-primary.btn-lg(data-toggle="modal" data-target="#myModal" onclick="get_scene();" style="display:none;")
+				button#change.btn.btn-primary.btn-lg(data-toggle="modal" data-target="#myModal" onclick="get_scene();")
 					span.glyphicon.glyphicon-wrench change
 			.row
 				P: h3(style="color:white;") Map tools
@@ -41,7 +39,7 @@ block content
 			markpoints = new Array()
 			// var marker1 = new BMap.Marker(new BMap.Point(116.384, 39.925)); // 创建标注
 			// map.addOverlay(marker1); // 将标注添加到地图中
-			get_provinces()
+			city_init()
 		})
 
 
