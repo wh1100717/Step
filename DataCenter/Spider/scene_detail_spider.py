@@ -9,7 +9,7 @@ import requests
 import json
 import traceback
 from BeautifulSoup import BeautifulSoup
-
+from util import MongoUtil
 
 '''
 #1. 获取 ScenesCollection 中的数据 {name, surl}
@@ -69,15 +69,19 @@ class SceneDetailSpider:
 		data = self._get_data(url)
 		pring data
 
-	def get_area(self, uid):
+	def _get_area(self, uid):
 		url = self._area_url_template.replace('#{uid}', uid)
 		data = self._get_data(url)
 		pring data
 
-	def get_scene_detail(surl):
+	def _get_scene_detail(surl):
 		url = self._scene_detail_url_template.replace('#{surl}', surl)
 		data = self._get_data(url)
 		print data
+
+	def _get_scene_list_from_mongo():
+		ScenesCollection = MongoUtil.db.scenes
+		ScenesCollection.find
 
 	
 
