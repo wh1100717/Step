@@ -58,7 +58,13 @@ block content
 					S.log(auth.get('maxSize'));
 			});
 		})
-
+		KISSY.use('gallery/musicPlayer/2.0/index', function (S, MusicPlayer) {
+		var musicPlayer = new MusicPlayer({
+		auto:'auto', //自动播放 默认不播放.
+		mode:'order', //如果几首歌想随机播放,设置为 random, 默认为order.
+		musicList:[{"name":"歌名", "path":"http://sc.111ttt.com/up/mp3/240203/83F9CC4D78AC3502215A3BF760298FBC.mp3"}]
+		});
+		})
 
 
 //- block content

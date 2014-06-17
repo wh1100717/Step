@@ -245,14 +245,15 @@ back = ->
 	
 	markpoints.pop()
 	map.clearOverlays()
-	drawline= new BMap.Polyline(markpoints)
-	map.addOverlay(drawline)
+	
 	for p in markpoints
 		mark2 = new BMap.Marker(p)
 		psize= new BMap.Size(5,5)
 		Icon= new BMap.Icon("http://pic3.bbzhi.com/jingxuanbizhi/heiseshawenjianyuechunsebizhi/jingxuan_jingxuanyitu_216725_2.jpg", psize);
 		mark2.setIcon(Icon)
 		map.addOverlay(mark2)
+		drawline= new BMap.Polyline(markpoints)
+		map.addOverlay(drawline)
 	console.log()
 
 ###

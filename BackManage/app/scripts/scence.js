@@ -285,8 +285,6 @@ back = function() {
   var Icon, drawline, mark2, p, psize, _i, _len;
   markpoints.pop();
   map.clearOverlays();
-  drawline = new BMap.Polyline(markpoints);
-  map.addOverlay(drawline);
   for (_i = 0, _len = markpoints.length; _i < _len; _i++) {
     p = markpoints[_i];
     mark2 = new BMap.Marker(p);
@@ -294,6 +292,8 @@ back = function() {
     Icon = new BMap.Icon("http://pic3.bbzhi.com/jingxuanbizhi/heiseshawenjianyuechunsebizhi/jingxuan_jingxuanyitu_216725_2.jpg", psize);
     mark2.setIcon(Icon);
     map.addOverlay(mark2);
+    drawline = new BMap.Polyline(markpoints);
+    map.addOverlay(drawline);
   }
   return console.log();
 };
