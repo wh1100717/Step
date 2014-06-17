@@ -87,7 +87,7 @@ class SceneNameSpider:
 		#ScenesCollection insert操作，将抓取到的经典名插入到Mongo中
 		for scene in self._scenes:
 			s_name_list.add(scene['name'])
-			if not ScenesCollection.find({'name':scene['name']}):
+			if not ScenesCollection.find_one({'name':scene['name']}):
 				times = 0
 				while times < 10:
 					try:
