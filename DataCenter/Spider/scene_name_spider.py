@@ -7,6 +7,7 @@ sys.setdefaultencoding('utf-8')
 
 import requests
 import json
+import time
 import traceback
 from util import ProxyUtil
 from util import MongoUtil
@@ -114,6 +115,7 @@ class SceneNameSpider:
 	def run(self):
 		page_index = 1
 		while True:
+			time.sleep(ProxyUtil.getRandomDelayTime())
 			url = self._get_url(page_index)
 			data = self._get_data(url)
 			if not self._get_name(data): break

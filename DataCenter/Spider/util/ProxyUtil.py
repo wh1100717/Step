@@ -3,6 +3,12 @@
 
 import random
 
+
+def getRandomDelayTime():
+    minimalTime = 1000
+    delayTime = 3000
+    return random.randint(minimalTime,delayTime) / 1000.0
+
 '''
 构建代理池方案：
 1.  http://blog.csdn.net/xuyaqun/article/details/19120239
