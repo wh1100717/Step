@@ -8,7 +8,6 @@ sys.setdefaultencoding('utf-8')
 import requests
 import json
 import traceback
-from BeautifulSoup import BeautifulSoup
 from util import ProxyUtil
 from util import MongoUtil
 from uitl import PinyinUtil
@@ -18,7 +17,6 @@ from uitl import PinyinUtil
 
 http://lvyou.baidu.com/destination/ajax/jingdian?format=ajax&surl=#{1}&pn=#{2}
 '''
-
 class SceneNameSpider:
 	'''
 	 # 初始化SceneNameSpider类时，需要指定config的内容，其中包括以下内容：

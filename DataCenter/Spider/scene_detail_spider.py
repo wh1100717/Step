@@ -5,6 +5,12 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+import requests
+import json
+import traceback
+from BeautifulSoup import BeautifulSoup
+
+
 '''
 #1. 获取 ScenesCollection 中的数据 {name, surl}
 #2. 通过 name 模拟查询地图数据
@@ -24,3 +30,56 @@ sys.setdefaultencoding('utf-8')
 '''
 
 class SceneDetailSpider:
+
+	def __init__(self):
+		self._scenes = []
+		self._loc_url_template = "http://map.baidu.com/?qt=s&wd=#{name}&l=1"
+		self._area_url_template = "http://map.baidu.com/?qt=ext&uid=#{uid}&l=1&ext_ver=new"
+		self._scene_detail_url_template = "http://http://lvyou.baidu.com/#{surl}"
+
+	def _get_area_url(self, uid):
+		return self._area_url_template.replace('#{uid}', uid)
+
+	def _get_scene_detail_url(self, surl):
+		return self._scene_detail_url_template.replace('#{surl}', surl)
+
+	def _get_data(self, url):
+		headers = {
+			#动态更改userAgent
+			'User-Agent': ProxyUtil.getRandomUserAgent()
+		}
+		times = 0
+		while times < 10:
+			try:
+				response = requests.get(url, headers=headers)
+				response.encoding = 'gbk'
+				return response.text
+			except Exception, e:
+				print traceback.format_exc()
+				times += 1
+	def _to_dict(self, string):
+		try:
+			return json.loads(string.encode('utf-8','ignore'))
+		except Exception, e:
+			print traceback.format_exc()
+			return None
+
+	def _get_loc(self, name):
+		url = self._loc_url_template.replace('#{name}', name)
+		data = self._get_data(url)
+		pring data
+
+	def get_area(self, uid):
+		url = self._area_url_template.replace('#{uid}', uid)
+		data = self._get_data(url)
+		pring data
+
+	def get_scene_detail(surl):
+		url = self._scene_detail_url_template.replace('#{surl}', surl)
+		data = self._get_data(url)
+		print data
+
+	
+
+
+
