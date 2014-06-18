@@ -10,6 +10,7 @@ import json
 import traceback
 from BeautifulSoup import BeautifulSoup
 from util import MongoUtil
+from util import ProxyUtil
 
 '''
 #1. 获取 ScenesCollection 中的数据 {name, surl}
@@ -29,24 +30,23 @@ from util import MongoUtil
 #5. 对解析出来的数据做格式化处理并更新数据库
 '''
 
+ak = "sEMQwtUKqGTucHvsS0ssukrW"
+
 class SceneDetailSpider:
 
 	def __init__(self):
 		self._scenes = []
-		self._loc_url_template = "http://map.baidu.com/?qt=s&wd=#{name}&l=1"
+		self._loc_url_template = "http://api.map.baidu.com/geocoder/v2/?address=#{name}&output=json&ak=#{ak}&city=#{city}"
 		self._area_url_template = "http://map.baidu.com/?qt=ext&uid=#{uid}&l=1&ext_ver=new"
 		self._scene_detail_url_template = "http://http://lvyou.baidu.com/#{surl}"
 
-	def _get_area_url(self, uid):
-		return self._area_url_template.replace('#{uid}', uid)
 
-	def _get_scene_detail_url(self, surl):
-		return self._scene_detail_url_template.replace('#{surl}', surl)
 
 	def _get_data(self, url):
 		headers = {
 			#动态更改userAgent
-			'User-Agent': ProxyUtil.getRandomUserAgent()
+			'User-Agent': ProxyUtil.getRandomUserAgent(),
+			'Referer': 'http://127.0.0.1'
 		}
 		times = 0
 		while times < 10:
@@ -64,10 +64,15 @@ class SceneDetailSpider:
 			print traceback.format_exc()
 			return None
 
-	def _get_loc(self, name):
-		url = self._loc_url_template.replace('#{name}', name)
+	def _get_location(self, name, city_cn):
+		url = self._loc_url_template.replace('#{name}', name).replace('#{ak}', ak).replace('#{city}', city_cn)
+		print url
 		data = self._get_data(url)
-		print data
+		data = self._to_dict(data)
+		if data['status'] == 0:
+			print data
+			return (data['result']['location']['lng'], data['result']['location']['lat'])
+		return (0,0)
 
 	def _get_area(self, uid):
 		url = self._area_url_template.replace('#{uid}', uid)
@@ -84,11 +89,26 @@ class SceneDetailSpider:
 		for scene in ScenesCollection.find():
 			self._scenes.append(scene)
 
+	def _update_mongo(self):
+		ScenesCollection = MongoUtil.db.scene
+		for scene in self._scenes:
+			ScenesCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': scene})
+
+
+
 	def run(self):
 		self._get_scene_list_from_mongo()
 		print "Scenes Count:", len(self._scenes)
 		for scene in self._scenes:
-			name = scene['name']
+			#如果scene中没有location信息，则获取location
+			if not scene.has_key('location'):
+				(lng, lat) = self._get_location(scene['name'],scene['city_cn'])
+				if (lng, lat) != (0, 0):
+					scene['location'] = {'lng': lng, 'lat': lat}
+		self._update_mongo()
+
+
+
 
 
 def populate():
@@ -97,7 +117,8 @@ def populate():
 
 def test():
 	sd_spider = SceneDetailSpider()
-	sd_spider._get_loc("故宫")
+	sd_spider._get_location("故宫","北京")
 
+populate()
 
 

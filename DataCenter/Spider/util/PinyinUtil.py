@@ -55,7 +55,8 @@ class PinYin(object):
             "厦门": ["xia","men"],
             "莆田": ["pu","tian"],
             "莱芜": ["lai","wu"],
-            "漯河": ["luo","he"]
+            "漯河": ["luo","he"],
+            "西藏": ["xi","zang"]
         }
 
 
