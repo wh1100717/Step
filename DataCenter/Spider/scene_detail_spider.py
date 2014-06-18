@@ -19,15 +19,11 @@ from util import ProxyUtil
 		http://map.baidu.com/?qt=s&wd=#{name}&l=1
 	```
 	获取对应的uid等信息
-#3. 通过 uid 来查询区域范围坐标等信息
-	```
-		http://map.baidu.com/?qt=ext&uid=#{uid}&l=1&ext_ver=new
-	```
-#4. 根据对应的 surl 构造请求访问百度旅游中景点详细页
+#3. 根据对应的 surl 构造请求访问百度旅游中景点详细页
 	```
 		http://http://lvyou.baidu.com/#{surl}
 	```
-#5. 对解析出来的数据做格式化处理并更新数据库
+#4. 对解析出来的数据做格式化处理并更新数据库
 '''
 
 ak = "sEMQwtUKqGTucHvsS0ssukrW"
@@ -37,7 +33,6 @@ class SceneDetailSpider:
 	def __init__(self):
 		self._scenes = []
 		self._loc_url_template = "http://api.map.baidu.com/geocoder/v2/?address=#{name}&output=json&ak=#{ak}&city=#{city}"
-		self._area_url_template = "http://map.baidu.com/?qt=ext&uid=#{uid}&l=1&ext_ver=new"
 		self._scene_detail_url_template = "http://http://lvyou.baidu.com/#{surl}"
 
 
@@ -104,7 +99,7 @@ class SceneDetailSpider:
 			if not scene.has_key('location'):
 				(lng, lat) = self._get_location(scene['name'],scene['city_cn'])
 				if (lng, lat) != (0, 0):
-					scene['location'] = {'lng': lng, 'lat': lat}
+					scene['location'] = {'longitude': lng, 'latitude': lat}
 		self._update_mongo()
 
 
