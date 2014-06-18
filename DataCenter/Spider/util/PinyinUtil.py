@@ -5,7 +5,7 @@ import os.path
 
 
 class PinYin(object):
-    def __init__(self, dict_file='util/word.data'):
+    def __init__(self, dict_file='word.data'):
         self.word_dict = {}
         self.dict_file = dict_file
 
@@ -46,7 +46,7 @@ class PinYin(object):
 
 if __name__ == "__main__":
     test = PinYin()
-    string = "钓鱼岛是中国的"
+    string = "沈阳"
     print "in: %s" % string
     print "out: %s" % str(test.hanzi2pinyin(string=string))
     print "out: %s" % test.hanzi2pinyin_split(string=string, split="-")

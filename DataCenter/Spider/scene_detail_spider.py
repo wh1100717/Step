@@ -67,22 +67,32 @@ class SceneDetailSpider:
 	def _get_loc(self, name):
 		url = self._loc_url_template.replace('#{name}', name)
 		data = self._get_data(url)
-		pring data
+		print data
 
 	def _get_area(self, uid):
 		url = self._area_url_template.replace('#{uid}', uid)
 		data = self._get_data(url)
-		pring data
+		print data
 
-	def _get_scene_detail(surl):
+	def _get_scene_detail(self, surl):
 		url = self._scene_detail_url_template.replace('#{surl}', surl)
 		data = self._get_data(url)
 		print data
 
-	def _get_scene_list_from_mongo():
+	def _get_scene_list_from_mongo(self):
 		ScenesCollection = MongoUtil.db.scenes
-		ScenesCollection.find
+		for scene in ScenesCollection.find():
+			self._scenes.append(scene)
 
+	def run(self):
+		self._get_scene_list_from_mongo()
+		print len(self._scenes)
+
+def populate():
+	sd_spider = SceneDetailSpider()
+	sd_spider.run()
+
+populate()
 	
 
 
