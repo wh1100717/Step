@@ -34,8 +34,7 @@ class SceneDetailSpider:
 		self._scenes = []
 		self._loc_url_template = "http://api.map.baidu.com/geocoder/v2/?address=#{name}&output=json&ak=#{ak}&city=#{city}"
 		self._scene_detail_url_template = "http://http://lvyou.baidu.com/#{surl}"
-
-
+		self._province = ['北京', '天津', '上海', '重庆', '河北', '山西', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '海南', '四川', '贵州', '云南', '陕西', '甘肃', '青海']
 
 	def _get_data(self, url):
 		headers = {
@@ -59,14 +58,26 @@ class SceneDetailSpider:
 			print traceback.format_exc()
 			return None
 
+	def _parse_city(self, city_cn):
+		if city_cn in self._province:
+			return city_cn + "省"
+		else:
+			return city_cn + "市"
+
+
 	def _get_location(self, name, city_cn):
-		url = self._loc_url_template.replace('#{name}', name).replace('#{ak}', ak).replace('#{city}', city_cn)
+		url = self._loc_url_template.replace('#{name}', name).replace('#{ak}', ak).replace('#{city}', self._parse_city(city_cn))
 		print url
 		data = self._get_data(url)
 		data = self._to_dict(data)
-		if data['status'] == 0:
+		if data['status'] == 0 and data.has_key('result'):
 			print data
 			return (data['result']['location']['lng'], data['result']['location']['lat'])
+		else:
+			print "---------------------------------------------"
+			print "Did Not Find Required Data!\n"
+			print "The Data is: ", data
+			print "---------------------------------------------"
 		return (0,0)
 
 	def _get_area(self, uid):
@@ -112,8 +123,8 @@ def populate():
 
 def test():
 	sd_spider = SceneDetailSpider()
-	sd_spider._get_location("故宫","北京")
+	sd_spider._get_location("蔚县","河北")
 
 populate()
-
+# test()
 
