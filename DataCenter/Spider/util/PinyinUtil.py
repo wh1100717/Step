@@ -5,7 +5,7 @@ import os.path
 
 
 class PinYin(object):
-    def __init__(self, dict_file='word.data'):
+    def __init__(self, dict_file='util/word.data'):
         self.word_dict = {}
         self.dict_file = dict_file
 
@@ -27,6 +27,9 @@ class PinYin(object):
     def hanzi2pinyin(self, string=""):
         self.__load_word__()
         result = []
+        specificCities = self.getSpecificCities()
+        if specificCities.has_key(string):
+            return specificCities[string]
         if not isinstance(string, unicode):
             string = string.decode("utf-8")
         
@@ -39,14 +42,26 @@ class PinYin(object):
 
     def hanzi2pinyin_split(self, string="", split=""):
         result = self.hanzi2pinyin(string=string)
-        if split == "":
-            return result
-        else:
-            return split.join(result)
+        return split.join(result)
+
+    def getSpecificCities(self):
+        return {
+            "重庆": ["chong","qing"],
+            "忻州": ["xin","zhou"],
+            "沈阳": ["shen","yang"],
+            "抚顺": ["fu","shun"],
+            "朝阳": ["chao","yang"],
+            "蚌埠": ["beng","bu"],
+            "厦门": ["xia","men"],
+            "莆田": ["pu","tian"],
+            "莱芜": ["lai","wu"],
+            "漯河": ["luo","he"]
+        }
+
 
 if __name__ == "__main__":
-    test = PinYin()
+    test = PinYin("word.data")
     string = "沈阳"
     print "in: %s" % string
     print "out: %s" % str(test.hanzi2pinyin(string=string))
-    print "out: %s" % test.hanzi2pinyin_split(string=string, split="-")
+    print "out: %s" % test.hanzi2pinyin_split(string=string)

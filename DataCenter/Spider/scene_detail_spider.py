@@ -86,14 +86,18 @@ class SceneDetailSpider:
 
 	def run(self):
 		self._get_scene_list_from_mongo()
-		print len(self._scenes)
+		print "Scenes Count:", len(self._scenes)
+		for scene in self._scenes:
+			name = scene['name']
+
 
 def populate():
 	sd_spider = SceneDetailSpider()
 	sd_spider.run()
 
-populate()
-	
+def test():
+	sd_spider = SceneDetailSpider()
+	sd_spider._get_loc("故宫")
 
 
 
