@@ -9,6 +9,13 @@ block content
 				input#J_UploaderBtn.g-u.file-input(type="file" value="上传图片" name="Filedata")
 		input#J_Urls(type="hidden" name="imageUrls" value="")
 	ul#J_UploaderQueue.grid.ks-uploader-queue.imageUploader-queue
+	.row
+		.col-md-3
+			button#haha.btn.btn-primary.btn-lg.btn-block(type="button")
+				span play
+		.col-md-3
+			button#haha2.btn.btn-primary.btn-lg.btn-block(type="button")
+				span stop
 	script.
 
 		KISSY.use(
@@ -60,11 +67,22 @@ block content
 		})
 		KISSY.use('gallery/musicPlayer/2.0/index', function (S, MusicPlayer) {
 		var musicPlayer = new MusicPlayer({
-		auto:'auto', //自动播放 默认不播放.
+		auto:false, //自动播放 默认不播放.
 		mode:'order', //如果几首歌想随机播放,设置为 random, 默认为order.
 		musicList:[{"name":"歌名", "path":"http://sc.111ttt.com/up/mp3/240203/83F9CC4D78AC3502215A3BF760298FBC.mp3"}]
+		
 		});
+		
+		S.all("#haha").on('click', function(ev) {
+			musicPlayer.play();
+			
+			});
+		S.all("#haha2").on('click', function(ev) {
+			musicPlayer.pause();
+			});
+
 		})
+
 
 
 //- block content
