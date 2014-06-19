@@ -10,6 +10,13 @@ block content
 		input#J_Urls(type="hidden" name="imageUrls" value="")
 	ul#J_UploaderQueue.grid.ks-uploader-queue.imageUploader-queue
 	.row
+		.col-md-9
+			.progress.progress-striped.active
+				#process.progress-bar(role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%")
+					span.sr-only Complete
+		.col-md-3
+			span#num(style="color: white;font-size:23px") 
+	.row
 		.col-md-3
 			button#haha.btn.btn-primary.btn-lg.btn-block(type="button")
 				span play
@@ -69,8 +76,14 @@ block content
 		var musicPlayer = new MusicPlayer({
 		auto:false, //自动播放 默认不播放.
 		mode:'order', //如果几首歌想随机播放,设置为 random, 默认为order.
-		musicList:[{"name":"歌名", "path":"http://sc.111ttt.com/up/mp3/240203/83F9CC4D78AC3502215A3BF760298FBC.mp3"}]
+		musicList:[{"name":"歌名", "path":"http://qzone.haoduoge.com/music/83f9c7FP59c4d78ac3502215a3bf760298fbc.mp3"}]
 		
+		});
+		musicPlayer.on("progress", function(ev) {
+		S.log([ev.curtime, ev.counttime, ev.progress]);
+		S.all("#process").css("width",ev.progress+"%");
+		S.all("#num").html(ev.curtime+"/"+ev.counttime);
+		console.log(ev.curtime+","+ev.progress+","+ev.counttime);
 		});
 		
 		S.all("#haha").on('click', function(ev) {
@@ -80,6 +93,7 @@ block content
 		S.all("#haha2").on('click', function(ev) {
 			musicPlayer.pause();
 			});
+		
 
 		})
 
