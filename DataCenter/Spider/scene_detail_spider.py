@@ -127,6 +127,6 @@ def test():
 	sd_spider = SceneDetailSpider()
 	sd_spider._get_location("蔚县","河北")
 
-populate()
+# populate()
 # test()
 
