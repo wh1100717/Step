@@ -95,15 +95,16 @@ class SceneDetailSpider:
 		for scene in ScenesCollection.find():
 			self._scenes.append(scene)
 
-	def _update_mongo(self):
-		ScenesCollection = MongoUtil.db.scene
-		for scene in self._scenes:
-			ScenesCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': scene})
+	# def _update_mongo(self):
+	# 	ScenesCollection = MongoUtil.db.scene
+	# 	for scene in self._scenes:
+	# 		ScenesCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': scene})
 
 
 
 	def run(self):
 		self._get_scene_list_from_mongo()
+		ScenesCollection = MongoUtil.db.scenes
 		print "Scenes Count:", len(self._scenes)
 		for scene in self._scenes:
 			#如果scene中没有location信息，则获取location
@@ -111,7 +112,8 @@ class SceneDetailSpider:
 				(lng, lat) = self._get_location(scene['name'],scene['city_cn'])
 				if (lng, lat) != (0, 0):
 					scene['location'] = {'longitude': lng, 'latitude': lat}
-		self._update_mongo()
+					ScenesCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': {'location': scene['location']}})
+		# self._update_mongo()
 
 
 
