@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "53a38c45332ff8a6a7aeeae3" }, "name" : "Test User", "hashedPassword" : "M6owi4XfjcYccGI6pnkW5beCr22BCIjLMXwwHkcj8jLCsedD8667Jmbte6HERCccB3Bh4Ifna3HHxDgV6iQvBw==", "__v" : 0, "role" : "user", "provider" : "local", "salt" : "bEHYCZZE6l4ZnWRLieiYJQ==", "email" : "test@test.com" }

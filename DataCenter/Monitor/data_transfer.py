@@ -101,7 +101,8 @@ if __name__ == '__main__':
 	}
 
 	remotehost_config = {
-	'host': '0.0.0.0', 			#目的数据库IP
+	'host': '0.0.0.0'
+	# 'host': '192.168.1.136', 			#目的数据库IP
 	'port': 27017,
 	'db': 'step-dev'			#对应的db name，默认为step-dev
 	}
