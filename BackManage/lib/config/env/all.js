@@ -19,10 +19,16 @@ module.exports = {
   },
   upyun: {
     img: {
-      bucketname: 'westep',
+      bucketname: 'westep-img',
       username: 'westep',
       password: 'westep0000',
-      base_url: 'http://westep.b0.upaiyun.com'
+      base_url: 'http://westep-img.b0.upaiyun.com'
+    },
+    file: {
+      bucketname: 'westep-file',
+      username: 'westep',
+      password: 'westep0000',
+      base_url: 'http://westep-file.b0.upaiyun.com'
     }
   }
 };
