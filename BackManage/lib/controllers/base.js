@@ -30,7 +30,47 @@ testCallback = function(err, data) {
   }
 };
 
+// 图片上传，未完成
 exports.imgUpload = function(req, res) {
+  req.pipe(req.busboy);
+  return req.busboy.on('file', function(fieldname, file, filename) {
+    var d, localpath, uploadpath;
+    console.log("Uploading: " + filename);
+    d = new Date();
+    uploadpath = "/" + (d.getYear() + 1900) + "/" + (d.getMonth()) + "/";
+    localpath = "" + config.root + "/app/upload" + uploadpath;
+    return mkdirp(localpath, function(err) {
+      var fstream;
+      if (err) {
+        res.send(500, "internal error when making dirs: " + err);
+      }
+      filename = md5(d.getTime().toString()) + "." + filename.split('.').pop();
+      fstream = fs.createWriteStream(localpath + filename);
+      file.pipe(fstream);
+      return fstream.on('close', function() {
+        var fileContent, img_config, md5Str, upyun;
+        console.log("finish file downloading to server");
+        img_config = config.upyun.img;
+        upyun = new UPYun(img_config.bucketname, img_config.username, img_config.password);
+        upyun.getBucketUsage(testCallback);
+        fileContent = fs.readFileSync(localpath + filename);
+        md5Str = md5(fileContent);
+        upyun.setContentMD5(md5Str);
+        upyun.writeFile(uploadpath + filename, fileContent, true, function(err, data) {
+          console.log("Finish dile uploading to cloud");
+          if (err) {
+            console.log(err);
+            res.send(err.statusCode, err.message + data);
+          } else {
+            res.send(200, "{\"status\":1,\"type\":null,\"name\":\"" + filename + "\",\"url\":\"" + (img_config.base_url + uploadpath + filename) + "\"}");
+          }
+        });
+      });
+    });
+  });
+};
+
+exports.audioUpload = function(req, res) {
   req.pipe(req.busboy);
   return req.busboy.on('file', function(fieldname, file, filename) {
     var d, localpath, uploadpath;

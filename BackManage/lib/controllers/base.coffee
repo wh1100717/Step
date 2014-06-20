@@ -51,6 +51,36 @@ exports.imgUpload = (req, res) ->
 					return
 				return
 
+exports.audioUpload = (req, res) ->
+	req.pipe req.busboy
+	req.busboy.on 'file', (fieldname, file, filename) ->
+		console.log "Uploading: #{filename}"
+		d = new Date()
+		uploadpath = "/#{d.getYear()+1900}/#{d.getMonth()}/"
+		localpath = "#{config.root}/app/upload#{uploadpath}"
+		mkdirp localpath, (err) ->
+			res.send 500, "internal error when making dirs: #{err}" if err
+			filename = md5(d.getTime().toString()) + "." + filename.split('.').pop()
+			fstream = fs.createWriteStream localpath + filename
+			file.pipe fstream
+			fstream.on 'close', ->
+				console.log "finish file downloading to server"
+				img_config = config.upyun.img
+				upyun = new UPYun(img_config.bucketname, img_config.username, img_config.password)
+				upyun.getBucketUsage(testCallback)
+				fileContent = fs.readFileSync(localpath + filename)
+				md5Str = md5(fileContent)
+				upyun.setContentMD5(md5Str)
+				upyun.writeFile uploadpath + filename, fileContent, true, (err, data) ->
+					console.log "Finish dile uploading to cloud"
+					if err
+						console.log err
+						res.send err.statusCode, err.message + data
+					else
+						res.send 200, """{"status":1,"type":null,"name":"#{filename}","url":"#{img_config.base_url + uploadpath + filename}"}"""
+					return
+				return
+
 exports.index = (req, res) -> res.render 'partials/index'
 
 exports.scene = (req, res) -> res.render 'partials/scene'
