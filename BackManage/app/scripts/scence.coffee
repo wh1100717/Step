@@ -1,5 +1,15 @@
 'use strict'
 
+root = exports ? this
+
+#初始化
+$ ->
+	root.scene_map = new BMap.Map "allmap"
+	scene_map.centerAndZoom new BMap.Point(116.404, 39.915), 5
+	scene_map.enableScrollWheelZoom()
+	city_init()
+
+
 Array.prototype.contains = (item) ->
 	for i in @ when i is item
 		return true
@@ -58,8 +68,8 @@ city_init = ->
 
 get_scenes = (name) ->
 	return false if not prov_city.p.contains(name) and not prov_city.c.contains(name)
-	map.setZoom if is_province(name) then 7 else 12
-	map.setCenter name
+	scene_map.setZoom if is_province(name) then 7 else 12
+	scene_map.setCenter name
 
 	$.ajax {
 		type: "GET"
@@ -118,13 +128,13 @@ get_scene = ->
 				alert "该景点坐标尚未收录"
 				return
 			point = new BMap.Point location.longitude, location.latitude
-			map.centerAndZoom point, 15
-			map.clearOverlays()
+			scene_map.centerAndZoom point, 15
+			scene_map.clearOverlays()
 			scene_marker = new BMap.Marker point
 			scene_marker.enableDragging()
 			scene_marker.addEventListener "dragend", (e) ->
 				alert "当前位置：#{e.point.lng}, #{e.point.lat}"
-			map.addOverlay scene_marker
+			scene_map.addOverlay scene_marker
 			scene_marker.setAnimation BMAP_ANIMATION_BOUNCE
 
 			# data = JSON.parse(data)
@@ -236,9 +246,9 @@ search = ->
 			p = new ConvertPoint(atitude, longitude)
 			pt= new BMap.Point(p.convertMC2LL().lng, p.convertMC2LL().lat)
 			thismarker = new BMap.Marker(pt)
-			map.addOverlay(thismarker)
-			map.setCenter(pt)
-			map.setZoom(16)
+			scene_map.addOverlay(thismarker)
+			scene_map.setCenter(pt)
+			scene_map.setZoom(16)
 }
 
 
@@ -254,34 +264,32 @@ markbiao = (e)->
 	psize= new BMap.Size(5,5)
 	Icon= new BMap.Icon("http://pic3.bbzhi.com/jingxuanbizhi/heiseshawenjianyuechunsebizhi/jingxuan_jingxuanyitu_216725_2.jpg", psize);
 	marker1.setIcon(Icon)
-	map.addOverlay(marker1)            
+	scene_map.addOverlay(marker1)            
 	drawline= new BMap.Polyline(markpoints)
-	map.addOverlay(drawline)
+	scene_map.addOverlay(drawline)
 	console.log()
 ###
  * 坐标点点击
 ###
 mark = ->
 	
-	map.addEventListener("onclick",markbiao)
+	scene_map.addEventListener("onclick",markbiao)
 	console.log()
 
 ###
  * 返回上一步
 ###
 back = ->
-	
 	markpoints.pop()
-	map.clearOverlays()
-	
+	scene_map.clearOverlays()
 	for p in markpoints
 		mark2 = new BMap.Marker(p)
 		psize= new BMap.Size(5,5)
 		Icon= new BMap.Icon("http://pic3.bbzhi.com/jingxuanbizhi/heiseshawenjianyuechunsebizhi/jingxuan_jingxuanyitu_216725_2.jpg", psize);
 		mark2.setIcon(Icon)
-		map.addOverlay(mark2)
+		scene_map.addOverlay(mark2)
 		drawline= new BMap.Polyline(markpoints)
-		map.addOverlay(drawline)
+		scene_map.addOverlay(drawline)
 	console.log()
 
 ###
@@ -289,7 +297,7 @@ back = ->
 ###
 clearmap = ->
 	markpoints.splice(0,markpoints.length)
-	map.clearOverlays()
+	scene_map.clearOverlays()
 
 ###
  * 绘制后递交
@@ -352,28 +360,5 @@ commit = ->
 			}
 		}
 	}
-###
- * 隐藏城市及景点选择框
-###
-hide_cities = ->
-	$("#cities").fadeOut(500)
-	$("#scenes").fadeOut(500)
-	$("#sub").fadeOut(500)
-	$("#change").fadeOut(500)
 
-###
- * 隐藏景点选择框
-###
-hide_scenes = ->
-	$("#scenes").val("")
-	$("#scenes").fadeOut(500)
-
-hide_sub = ->
-	$("#sub").val("")
-	$("#sub").fadeOut(500)
-	$("#change").fadeOut(500)
-show_sub = ->
-	
-	$("#sub").fadeIn(500)
-	$("#change").fadeIn(500)
 
