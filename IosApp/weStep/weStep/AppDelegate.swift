@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MSDynamicsDrawerViewContr
         /*
          *此处可能桥接 不好用 swift里面调用OC的类似乎没起作用 WeStep-Bridging-Header.h桥接文件
         */
-        self.dynamicsDrawerViewController!.addStylersFromArray(stylers, forDirection: MSDynamicsDrawerDirection.MSDynamicsDrawerDirectionLeft)
+        self.dynamicsDrawerViewController!.addStylersFromArray(stylers, forDirection: MSDynamicsDrawerDirection.Left)
         
         
         
