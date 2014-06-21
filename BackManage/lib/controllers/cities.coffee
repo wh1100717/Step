@@ -17,10 +17,9 @@ cities.scenes = {
 		return
 	show: (req, res, next)->
 		city = req.params.city
-		console.log city
-		scene = req.params.scenes
-		console.log scene
-		Scene.find {name:scene}, (err, scene) ->
+		scene_name = req.params.scenes
+		console.log "City: #{city} | SceneName: #{scene_name}"
+		Scene.find {name:scene_name}, (err, scene) ->
 			return next(err) if err
 			return res.send(404) if not scene
 

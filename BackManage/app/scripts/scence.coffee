@@ -48,7 +48,6 @@ city_init = ->
 	$("#prov_city").keydown (event)->
 		return if event.keyCode isnt 13
 		get_scenes event.target.value
-
 	return
 
 get_scenes = (name) ->
@@ -77,10 +76,11 @@ get_scenes = (name) ->
 					source: substringMatcher(scenes)
 				}
 			)
-			scenes_typeahead.bind 'typeahead:selected', (obj, selected, name) ->
-				console.log selected
-				console.log name
-				return
+			scenes_typeahead.bind 'typeahead:selected', (obj, selected, name) -> get_scene selected.value
+			$("#scenes").keydown (event) ->
+				return if event.keyCode isnt 13
+				get_scene event.target.value
+				$("#change").focus()
 			$("#scenes").focus()
 			return
 	}
@@ -91,31 +91,31 @@ is_province = (name) -> if name in prov_city.p then true else false
 ###
  * 根据城市和景点名获取详细景点信息
 ###
-get_scene = ->
-	
-	scene = $("#scenes").val()
-	city = $("#cities").val()
+get_scene = (scene_name)->
+	city = $("#prov_city").val()
+	return false if not prov_city.p.contains(city) and not prov_city.c.contains(city)
+
 	$.ajax {
 		type: "GET"
-		url: "/cities/#{city}/scenes/#{scene}"
+		url: "/cities/#{city}/scenes/#{scene_name}"
 		data: "timestamp=#{(new Date().getTime())}"
 		success: (data) ->
 			console.log(data)
-			data = JSON.parse(data)
-			imgs = data.data[0].ext.images
-			alias = data.data[0].alias
-			geo =data.data[0].loc.geo
-			$("#textare").val (data.data[0].ext.description)
-			$("#textare").val (data.data[0].ext.description)
-			$("textarea[name='images']").val (imgs)
-			$("textarea[name='alias']").val (alias)
-			$("textarea[name='geo']").val(geo)
-			$("input[name='name']").val (data.data[0].name)
-			$("input[name='city']").val (data.data[0].city)
-			$("input[name='name_en']").val (data.data[0].surl)
-			$("input[name='phone']").val (data.data[0].ext.phone)
-			$("input[name='_id']").val (data.data[0]._id)
-			console.log(data)
+			# data = JSON.parse(data)
+			# imgs = data.data[0].ext.images
+			# alias = data.data[0].alias
+			# geo =data.data[0].loc.geo
+			# $("#textare").val (data.data[0].ext.description)
+			# $("#textare").val (data.data[0].ext.description)
+			# $("textarea[name='images']").val (imgs)
+			# $("textarea[name='alias']").val (alias)
+			# $("textarea[name='geo']").val(geo)
+			# $("input[name='name']").val (data.data[0].name)
+			# $("input[name='city']").val (data.data[0].city)
+			# $("input[name='name_en']").val (data.data[0].surl)
+			# $("input[name='phone']").val (data.data[0].ext.phone)
+			# $("input[name='_id']").val (data.data[0]._id)
+			# console.log(data)
 
 	}
 

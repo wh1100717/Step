@@ -94,8 +94,14 @@ get_scenes = function(name) {
         source: substringMatcher(scenes)
       });
       scenes_typeahead.bind('typeahead:selected', function(obj, selected, name) {
-        console.log(selected);
-        console.log(name);
+        return get_scene(selected.value);
+      });
+      $("#scenes").keydown(function(event) {
+        if (event.keyCode !== 13) {
+          return;
+        }
+        get_scene(event.target.value);
+        return $("#change").focus();
       });
       $("#scenes").focus();
     }
@@ -115,31 +121,17 @@ is_province = function(name) {
  * 根据城市和景点名获取详细景点信息
  */
 
-get_scene = function() {
-  var city, scene;
-  scene = $("#scenes").val();
-  city = $("#cities").val();
+get_scene = function(scene_name) {
+  var city;
+  city = $("#prov_city").val();
+  if (!prov_city.p.contains(city) && !prov_city.c.contains(city)) {
+    return false;
+  }
   return $.ajax({
     type: "GET",
-    url: "/cities/" + city + "/scenes/" + scene,
+    url: "/cities/" + city + "/scenes/" + scene_name,
     data: "timestamp=" + (new Date().getTime()),
     success: function(data) {
-      var alias, geo, imgs;
-      console.log(data);
-      data = JSON.parse(data);
-      imgs = data.data[0].ext.images;
-      alias = data.data[0].alias;
-      geo = data.data[0].loc.geo;
-      $("#textare").val(data.data[0].ext.description);
-      $("#textare").val(data.data[0].ext.description);
-      $("textarea[name='images']").val(imgs);
-      $("textarea[name='alias']").val(alias);
-      $("textarea[name='geo']").val(geo);
-      $("input[name='name']").val(data.data[0].name);
-      $("input[name='city']").val(data.data[0].city);
-      $("input[name='name_en']").val(data.data[0].surl);
-      $("input[name='phone']").val(data.data[0].ext.phone);
-      $("input[name='_id']").val(data.data[0]._id);
       return console.log(data);
     }
   });

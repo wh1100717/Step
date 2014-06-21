@@ -32,13 +32,12 @@ cities.scenes = {
     });
   },
   show: function(req, res, next) {
-    var city, scene;
+    var city, scene_name;
     city = req.params.city;
-    console.log(city);
-    scene = req.params.scenes;
-    console.log(scene);
+    scene_name = req.params.scenes;
+    console.log("City: " + city + " | SceneName: " + scene_name);
     Scene.find({
-      name: scene
+      name: scene_name
     }, function(err, scene) {
       if (err) {
         return next(err);
