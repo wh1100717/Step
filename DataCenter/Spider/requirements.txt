@@ -1,0 +1,3 @@
+requests==2.3.0
+upyun=2.2.0
+BeautifulSoup=3.2.1
