@@ -43,10 +43,16 @@ city_init = ->
 			}
 		}
 	)
-	prov_city_typeahead.bind 'typeahead:selected', (obj, selected, type) -> get_scenes selected.value
+	prov_city_flag = false
+	prov_city_typeahead.bind 'typeahead:selected', (obj, selected, type) -> 
+		prov_city_flag = true
+		get_scenes selected.value
+		setTimeout ->
+			prov_city_flag = false
+		,100
 	$("#prov_city").focus()
 	$("#prov_city").keydown (event)->
-		return if event.keyCode isnt 13
+		return if event.keyCode isnt 13 or prov_city_flag
 		get_scenes event.target.value
 	return
 
@@ -59,9 +65,7 @@ get_scenes = (name) ->
 		type: "GET"
 		url: "/cities/#{name}/scenes?timestamp=#{new Date().getTime()}"
 		success: (data) ->
-			console.log data
 			scenes = data.data[0].scenes
-			console.log scenes
 			$("#scenes").val("")
 			$("#scenes").typeahead 'destroy'
 			scenes_typeahead = $("#scenes").typeahead(
@@ -76,11 +80,16 @@ get_scenes = (name) ->
 					source: substringMatcher(scenes)
 				}
 			)
-			scenes_typeahead.bind 'typeahead:selected', (obj, selected, name) -> get_scene selected.value
+			scenes_flag = false
+			scenes_typeahead.bind 'typeahead:selected', (obj, selected, name) ->
+				scenes_flag = true
+				get_scene selected.value
+				setTimeout ->
+					scenes_flag = false
+				,100
 			$("#scenes").keydown (event) ->
-				return if event.keyCode isnt 13
-				get_scene event.target.value
-				$("#change").focus()
+				return if event.keyCode isnt 13 or scenes_flag
+				get_scene()
 			$("#scenes").focus()
 			return
 	}
@@ -91,7 +100,8 @@ is_province = (name) -> if name in prov_city.p then true else false
 ###
  * 根据城市和景点名获取详细景点信息
 ###
-get_scene = (scene_name)->
+get_scene = ->
+	scene_name = $("#scenes").val()
 	city = $("#prov_city").val()
 	return false if not prov_city.p.contains(city) and not prov_city.c.contains(city)
 
@@ -100,7 +110,23 @@ get_scene = (scene_name)->
 		url: "/cities/#{city}/scenes/#{scene_name}"
 		data: "timestamp=#{(new Date().getTime())}"
 		success: (data) ->
-			console.log(data)
+			data = JSON.parse data
+			return if data.status isnt "success"
+			scene = data.data[0]
+			location = scene.location[0]
+			if not location
+				alert "该景点坐标尚未收录"
+				return
+			point = new BMap.Point location.longitude, location.latitude
+			map.centerAndZoom point, 15
+			map.clearOverlays()
+			scene_marker = new BMap.Marker point
+			scene_marker.enableDragging()
+			scene_marker.addEventListener "dragend", (e) ->
+				alert "当前位置：#{e.point.lng}, #{e.point.lat}"
+			map.addOverlay scene_marker
+			scene_marker.setAnimation BMAP_ANIMATION_BOUNCE
+
 			# data = JSON.parse(data)
 			# imgs = data.data[0].ext.images
 			# alias = data.data[0].alias
@@ -116,6 +142,7 @@ get_scene = (scene_name)->
 			# $("input[name='phone']").val (data.data[0].ext.phone)
 			# $("input[name='_id']").val (data.data[0]._id)
 			# console.log(data)
+			$("#change").focus()
 
 	}
 

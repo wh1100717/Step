@@ -36,7 +36,7 @@ prov_city = {
 };
 
 city_init = function() {
-  var prov_city_typeahead;
+  var prov_city_flag, prov_city_typeahead;
   prov_city_typeahead = $("#prov_city").typeahead({
     hint: true,
     highlight: true,
@@ -56,12 +56,17 @@ city_init = function() {
       header: '<h3 style="margin: 0 20px 5px 20px;padding: 3px 0;border-bottom: 1px solid #777;">城市</h3>'
     }
   });
+  prov_city_flag = false;
   prov_city_typeahead.bind('typeahead:selected', function(obj, selected, type) {
-    return get_scenes(selected.value);
+    prov_city_flag = true;
+    get_scenes(selected.value);
+    return setTimeout(function() {
+      return prov_city_flag = false;
+    }, 100);
   });
   $("#prov_city").focus();
   $("#prov_city").keydown(function(event) {
-    if (event.keyCode !== 13) {
+    if (event.keyCode !== 13 || prov_city_flag) {
       return;
     }
     return get_scenes(event.target.value);
@@ -78,10 +83,8 @@ get_scenes = function(name) {
     type: "GET",
     url: "/cities/" + name + "/scenes?timestamp=" + (new Date().getTime()),
     success: function(data) {
-      var scenes, scenes_typeahead;
-      console.log(data);
+      var scenes, scenes_flag, scenes_typeahead;
       scenes = data.data[0].scenes;
-      console.log(scenes);
       $("#scenes").val("");
       $("#scenes").typeahead('destroy');
       scenes_typeahead = $("#scenes").typeahead({
@@ -93,15 +96,19 @@ get_scenes = function(name) {
         displayKey: "value",
         source: substringMatcher(scenes)
       });
+      scenes_flag = false;
       scenes_typeahead.bind('typeahead:selected', function(obj, selected, name) {
-        return get_scene(selected.value);
+        scenes_flag = true;
+        get_scene(selected.value);
+        return setTimeout(function() {
+          return scenes_flag = false;
+        }, 100);
       });
       $("#scenes").keydown(function(event) {
-        if (event.keyCode !== 13) {
+        if (event.keyCode !== 13 || scenes_flag) {
           return;
         }
-        get_scene(event.target.value);
-        return $("#change").focus();
+        return get_scene();
       });
       $("#scenes").focus();
     }
@@ -121,8 +128,9 @@ is_province = function(name) {
  * 根据城市和景点名获取详细景点信息
  */
 
-get_scene = function(scene_name) {
-  var city;
+get_scene = function() {
+  var city, scene_name;
+  scene_name = $("#scenes").val();
   city = $("#prov_city").val();
   if (!prov_city.p.contains(city) && !prov_city.c.contains(city)) {
     return false;
@@ -132,7 +140,28 @@ get_scene = function(scene_name) {
     url: "/cities/" + city + "/scenes/" + scene_name,
     data: "timestamp=" + (new Date().getTime()),
     success: function(data) {
-      return console.log(data);
+      var location, point, scene, scene_marker;
+      data = JSON.parse(data);
+      if (data.status !== "success") {
+        return;
+      }
+      scene = data.data[0];
+      location = scene.location[0];
+      if (!location) {
+        alert("该景点坐标尚未收录");
+        return;
+      }
+      point = new BMap.Point(location.longitude, location.latitude);
+      map.centerAndZoom(point, 15);
+      map.clearOverlays();
+      scene_marker = new BMap.Marker(point);
+      scene_marker.enableDragging();
+      scene_marker.addEventListener("dragend", function(e) {
+        return alert("当前位置：" + e.point.lng + ", " + e.point.lat);
+      });
+      map.addOverlay(scene_marker);
+      scene_marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+      return $("#change").focus();
     }
   });
 };
