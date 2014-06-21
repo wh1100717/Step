@@ -14,8 +14,10 @@ SceneSchema = new Schema({
   category: String
   alias: []
   location: {
+    latitude: String
+    longitude: String
     geo: String
-    area:String
+    area: String
     type: Number
     addr: String
   }
