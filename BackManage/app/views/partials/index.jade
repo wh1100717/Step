@@ -6,8 +6,14 @@ block content
 		a.g-u.ks-uploader-button.imageUploader-button(href="javascript:void(0)" style="position: relative;")
 			span.btn-text 上传图片
 			.file-input-wrapper(style="overflow: hidden")
-				input#J_UploaderBtn.g-u.file-input(type="file" value="上传图片" name="Filedata")
+				input#J_UploaderImgBtn.g-u.file-input(type="file" value="上传图片" name="Filedata")
 		input#J_Urls(type="hidden" name="imageUrls" value="")
+	//- .grid
+	//- 	a.g-u.ks-uploader-button.imageUploader-button(href="javascript:void(0)" style="position: relative;")
+	//- 		span.btn-text 上传音频
+	//- 		.file-input-wrapper(style="overflow: hidden")
+	//- 			input#J_UploaderAudioBtn.g-u.file-input(type="file" value="上传音频" name="Filedata")
+	//- 	input#J_Urls(type="hidden" name="imageUrls" value="")
 	ul#J_UploaderQueue.grid.ks-uploader-queue.imageUploader-queue
 	.row
 		.col-md-9
@@ -39,10 +45,16 @@ block content
 				'gallery/uploader/1.5/plugins/tagConfig/tagConfig';
 
 				S.use(plugins,function(S,Auth,UrlsInput,ProBars,Filedrop,Preview,TagConfig){
-					var uploader = new Uploader('#J_UploaderBtn',{
-						//处理上传的服务器端脚本路径
+					var uploaderImg = new Uploader('#J_UploaderImgBtn',{
+						//处理上传img的服务器端脚本路径
 						action:"/upload/img"
 					});
+					//- var uploaderAudio = new Uploader('#J_UploaderAudioBtn',{
+					//- 	//处理上传audio的服务器端脚本路径
+					//- 	action:"/upload/file"
+					//- });
+					var uploader = uploaderImg
+					//- uploaderImg isinstanceof Object ? uploader = uploaderImg : uploader = uploaderAudio
 					//使用主题
 					uploader.theme(new ImageUploader({
 						queueTarget:'#J_UploaderQueue'

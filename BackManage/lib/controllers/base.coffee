@@ -51,7 +51,7 @@ exports.imgUpload = (req, res) ->
 					return
 				return
 
-exports.audioUpload = (req, res) ->
+exports.fileUpload = (req, res) ->
 	req.pipe req.busboy
 	req.busboy.on 'file', (fieldname, file, filename) ->
 		console.log "Uploading: #{filename}"
@@ -65,8 +65,8 @@ exports.audioUpload = (req, res) ->
 			file.pipe fstream
 			fstream.on 'close', ->
 				console.log "finish file downloading to server"
-				img_config = config.upyun.img
-				upyun = new UPYun(img_config.bucketname, img_config.username, img_config.password)
+				file_config = config.upyun.file
+				upyun = new UPYun(file_config.bucketname, file_config.username, file_config.password)
 				upyun.getBucketUsage(testCallback)
 				fileContent = fs.readFileSync(localpath + filename)
 				md5Str = md5(fileContent)
@@ -77,7 +77,7 @@ exports.audioUpload = (req, res) ->
 						console.log err
 						res.send err.statusCode, err.message + data
 					else
-						res.send 200, """{"status":1,"type":null,"name":"#{filename}","url":"#{img_config.base_url + uploadpath + filename}"}"""
+						res.send 200, """{"status":1,"type":null,"name":"#{filename}","url":"#{file_config.base_url + uploadpath + filename}"}"""
 					return
 				return
 

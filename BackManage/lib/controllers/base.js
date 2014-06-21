@@ -30,7 +30,6 @@ testCallback = function(err, data) {
   }
 };
 
-// 图片上传，未完成
 exports.imgUpload = function(req, res) {
   req.pipe(req.busboy);
   return req.busboy.on('file', function(fieldname, file, filename) {
@@ -70,7 +69,7 @@ exports.imgUpload = function(req, res) {
   });
 };
 
-exports.audioUpload = function(req, res) {
+exports.fileUpload = function(req, res) {
   req.pipe(req.busboy);
   return req.busboy.on('file', function(fieldname, file, filename) {
     var d, localpath, uploadpath;
@@ -87,10 +86,10 @@ exports.audioUpload = function(req, res) {
       fstream = fs.createWriteStream(localpath + filename);
       file.pipe(fstream);
       return fstream.on('close', function() {
-        var fileContent, img_config, md5Str, upyun;
+        var fileContent, file_config, md5Str, upyun;
         console.log("finish file downloading to server");
-        img_config = config.upyun.img;
-        upyun = new UPYun(img_config.bucketname, img_config.username, img_config.password);
+        file_config = config.upyun.file;
+        upyun = new UPYun(file_config.bucketname, file_config.username, file_config.password);
         upyun.getBucketUsage(testCallback);
         fileContent = fs.readFileSync(localpath + filename);
         md5Str = md5(fileContent);
@@ -101,7 +100,7 @@ exports.audioUpload = function(req, res) {
             console.log(err);
             res.send(err.statusCode, err.message + data);
           } else {
-            res.send(200, "{\"status\":1,\"type\":null,\"name\":\"" + filename + "\",\"url\":\"" + (img_config.base_url + uploadpath + filename) + "\"}");
+            res.send(200, "{\"status\":1,\"type\":null,\"name\":\"" + filename + "\",\"url\":\"" + (file_config.base_url + uploadpath + filename) + "\"}");
           }
         });
       });

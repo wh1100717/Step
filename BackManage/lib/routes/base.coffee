@@ -9,6 +9,7 @@ timeout = require 'connect-timeout'
 module.exports = (app) ->
 
 	app.post '/upload/img', timeout(45000), base.imgUpload
+	app.post '/upload/file', timeout(45000), base.fileUpload
 
 	app.route('/api/users')
 		.get users.create

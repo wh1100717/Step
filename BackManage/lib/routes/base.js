@@ -14,6 +14,7 @@ timeout = require('connect-timeout');
 
 module.exports = function(app) {
   app.post('/upload/img', timeout(45000), base.imgUpload);
+  app.post('/upload/file', timeout(45000), base.fileUpload);
   app.route('/api/users').get(users.create).put(users.changePassword);
   app.route('/api/users/me').get(users.me);
   app.route('/api/users/:id').get(users.show);
