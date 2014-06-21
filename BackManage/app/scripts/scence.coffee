@@ -43,20 +43,19 @@ city_init = ->
 			}
 		}
 	)
-	prov_city_typeahead.bind 'typeahead:selected', (obj, selected, type) ->
-		map.setCenter(selected.value)
-		map.setZoom(if type is 'province' then 7 else 12)
-		get_scenes(selected.value)
-		return
+	prov_city_typeahead.bind 'typeahead:selected', (obj, selected, type) -> get_scenes selected.value
 	$("#prov_city").focus()
 	$("#prov_city").keydown (event)->
 		return if event.keyCode isnt 13
-		get_scenes(event.target.value)
+		get_scenes event.target.value
 
 	return
 
 get_scenes = (name) ->
 	return false if not prov_city.p.contains(name) and not prov_city.c.contains(name)
+	map.setZoom if is_province(name) then 7 else 12
+	map.setCenter name
+
 	$.ajax {
 		type: "GET"
 		url: "/cities/#{name}/scenes?timestamp=#{new Date().getTime()}"
@@ -86,6 +85,8 @@ get_scenes = (name) ->
 			return
 	}
 	return
+
+is_province = (name) -> if name in prov_city.p then true else false
 
 ###
  * 根据城市和景点名获取详细景点信息
