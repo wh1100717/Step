@@ -14,6 +14,8 @@ body {
   z-index: 1000;
 }
 
+/* 导航栏 */
+
 .main-nav,
 .sub-nav {
   margin: 0;
@@ -53,6 +55,7 @@ body {
   width: 100px;
   background-color: #fff;
   pointer-events: none;
+  z-index: 1000;
   transition: all .3s;
 }
 
@@ -122,7 +125,9 @@ height: 53px;
 
 /* Customize container */
 @media (min-width: 768px) {
-  
+  .container {
+    margin-top: 10px;
+  }
 }
 .container-narrow > hr {
   margin: 30px 0;
