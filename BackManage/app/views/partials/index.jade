@@ -7,14 +7,18 @@ block content
 			span.btn-text 上传图片
 			.file-input-wrapper(style="overflow: hidden")
 				input#J_UploaderImgBtn.g-u.file-input(type="file" value="上传图片" name="Filedata")
-		input#J_Urls(type="hidden" name="imageUrls" value="")
-	//- .grid
-	//- 	a.g-u.ks-uploader-button.imageUploader-button(href="javascript:void(0)" style="position: relative;")
-	//- 		span.btn-text 上传音频
-	//- 		.file-input-wrapper(style="overflow: hidden")
-	//- 			input#J_UploaderAudioBtn.g-u.file-input(type="file" value="上传音频" name="Filedata")
-	//- 	input#J_Urls(type="hidden" name="imageUrls" value="")
-	ul#J_UploaderQueue.grid.ks-uploader-queue.imageUploader-queue
+		input#J_ImgUrls(type="hidden" name="imageUrls" value="")
+	ul#J_UploaderImgQueue.grid.ks-uploader-queue.imageUploader-queue
+
+	.grid
+		a.g-u.ks-uploader-button.defaultTheme-button(href="javascript:void(0)")
+			span.btn-text 上传文件
+			.file-input-wrapper(style="overflow: hidden")
+				input#J_UploaderBtn.g-u.file-input(type="file" value="上传文件" name="Filedata")
+		input#J_Urls(type="hidden" name="urls" value="")
+	ul#J_UploaderQueue.ks-uploader-queue.defaultTheme-queue
+	
+
 	.row
 		.col-md-9
 			.progress.progress-striped.active
@@ -32,6 +36,30 @@ block content
 	script.
 
 		KISSY.use(
+			'gallery/uploader/1.5/index,'+
+			'gallery/uploader/1.5/themes/default/index,'+
+			'gallery/uploader/1.5/themes/default/style.css', 
+			function (S, Uploader,DefaultTheme) {
+				var plugins = 'gallery/uploader/1.5/plugins/auth/auth,gallery/uploader/1.5/plugins/urlsInput/urlsInput,gallery/uploader/1.5/plugins/proBars/proBars';
+
+				S.use(plugins,function(S,Auth,UrlsInput,ProBars){
+					var uploader = new Uploader('#J_UploaderBtn',{
+
+					action:"/upload/file"
+					});
+					uploader.theme(new DefaultTheme({
+						queueTarget:'#J_UploaderQueue'
+					}))
+					uploader.plug(new Auth({
+						max:3
+					}))
+				.plug(new UrlsInput({target:'#J_Urls'}))
+				.plug(new ProBars())
+				;
+			});
+		})
+
+		KISSY.use(
 			'gallery/uploader/1.5/index,' + 
 			'gallery/uploader/1.5/themes/imageUploader/index,' + 
 			'gallery/uploader/1.5/themes/imageUploader/style.css', 
@@ -45,19 +73,15 @@ block content
 				'gallery/uploader/1.5/plugins/tagConfig/tagConfig';
 
 				S.use(plugins,function(S,Auth,UrlsInput,ProBars,Filedrop,Preview,TagConfig){
-					var uploaderImg = new Uploader('#J_UploaderImgBtn',{
+					var uploader = new Uploader('#J_UploaderImgBtn',{
 						//处理上传img的服务器端脚本路径
 						action:"/upload/img"
 					});
-					//- var uploaderAudio = new Uploader('#J_UploaderAudioBtn',{
-					//- 	//处理上传audio的服务器端脚本路径
-					//- 	action:"/upload/file"
-					//- });
-					var uploader = uploaderImg
-					//- uploaderImg isinstanceof Object ? uploader = uploaderImg : uploader = uploaderAudio
+					
+					
 					//使用主题
 					uploader.theme(new ImageUploader({
-						queueTarget:'#J_UploaderQueue'
+						queueTarget:'#J_UploaderImgQueue'
 					}))
 					//验证插件
 					uploader.plug(new Auth({
@@ -67,7 +91,7 @@ block content
 						maxSize:8000
 					}))
 					//url保存插件
-					.plug(new UrlsInput({target:'#J_Urls'}))
+					.plug(new UrlsInput({target:'#J_ImgUrls'}))
 					//进度条集合
 					.plug(new ProBars())
 					//拖拽上传
@@ -109,6 +133,8 @@ block content
 
 		})
 
+
+		
 
 
 //- block content
