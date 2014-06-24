@@ -1,24 +1,31 @@
 /* Space out content a bit */
  
 body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   padding-top: 0px;
   
-  background: url("/images/back.jpg") no-repeat;
- 
 }
 
 .main {
   top: 0;
   width: 100%;
-  background-color: rgba(0,0,0,.5);
+  margin-bottom: 10px;
+  color: #fff;
+  background: url("/images/bg1.jpg") no-repeat center;
+  background-color: #9B59B6;
+  background-size: auto 100%;
   z-index: 1000;
+}
+.cover {
+  background-image: linear-gradient(-45deg, rgba(39, 174, 96, .8), rgba(22, 160, 133, .8));
 }
 
 /* 导航栏 */
 
 .main-nav,
 .sub-nav {
-  margin: 0;
+  width: 203px;
+  margin: 0 auto;
   padding: 0;
 }
 
@@ -77,15 +84,76 @@ body {
 }
 
 nav {
-  border-bottom: 1px solid rgba(255, 255, 255, .15)
+  border-bottom: 1px solid rgba(255, 255, 255, .35);
 }
+
+nav h1 {
+  float: left;
+  line-height: 50px;
+  margin: 0 20px 0 0;
+}
+
+nav p {
+  float: left;
+  margin: 25px 0 0 0;
+}
+
+.blank {
+  height: 1px;
+}
+
+.demo-row {
+  margin-bottom: 10px;
+}
+
+/* 按钮 */
+
+.btn {
+  border: none;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1.4;
+  border-radius: 4px;
+  padding: 10px 15px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+  transition: border .25s linear, color .25s linear, background-color .25s linear;
+}
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #1abc9c;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #48c9b0;
+  border-color: #48c9b0;
+}
+
+.btn-lg {
+  padding: 10px 19px;
+  font-size: 17px;
+  line-height: 1.471;
+  border-radius: 6px;
+}
+
+.btn-block {
+  white-space: normal;
+}
+
+
 
 #row2 {
   margin-top: 20px;
-height: 53px;
+  height: 53px;
  }
 
-#nv,#footnv{
+#nv,#footnv {
   background-color: rgba(0,0,0,.5);
   border:none;
   height: 1;
@@ -93,7 +161,7 @@ height: 53px;
 }
 
 
-.nav nav-pills{
+.nav nav-pills {
    color:white;
 }
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -123,12 +191,7 @@ height: 53px;
   border-top: 1px solid #e5e5e5;
 }
 
-/* Customize container */
-@media (min-width: 768px) {
-  .container {
-    margin-top: 10px;
-  }
-}
+
 .container-narrow > hr {
   margin: 30px 0;
 
@@ -143,27 +206,12 @@ height: 53px;
   font-size: 21px;
   padding: 14px 24px;
 }
+
 #allmap{
-  box-shadow:  0 3px 17px rgba(0,0,0,.9); 
   opacity: 0.9 ;
-  margin-left: 30px;
-  border-radius:10px;
+  border-radius:6px;
   height: 600px;
 }
-
-#sidetool .row{
-  margin-top: 30px;
-  padding-left: 5%;
-  padding-right: 5%
-}
-
-#sidetool .row button, input{
-  width: 90%;
-}
-
-
-
-
 
 /* Supporting marketing content */
 .marketing {
@@ -213,8 +261,19 @@ input {
   background-color: rgba(255,255,255,.9);
 }
 .typeahead {
-  background-color: #fpf;
-
+  border: 2px solid #bdc3c7;
+  color: #34495e;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.467;
+  padding: 8px 12px;
+  height: 42px;
+  -webkit-appearance: none;
+  border-radius: 6px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+  transition: border .25s linear, color .25s linear, background-color .25s linear;
 }
 .tt-suggestion {
   padding: 3px 20px;
@@ -241,4 +300,8 @@ input {
   -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
      -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
           box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+button span {
+  margin: 0 5px;
 }

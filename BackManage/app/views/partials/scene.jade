@@ -1,31 +1,56 @@
 extends ../layout
 
 block content
-	.row
-		.col-md-10
-			#allmap
-		#sidetool.col-md-2
-			.row
-				input#prov_city.typeahead(type="text" placeholder="输入省或者市" )
-			.row
-				input#scenes.typeahead(type="text" placeholder="输入景点名")
-			.row
-				button#sub.btn.btn-primary.btn-lg.btn-block(type="button" onclick="search();")
-					span.glyphicon.glyphicon-search search
-				include ./scene_model
-			.row
-				button#change.btn.btn-primary.btn-lg(data-toggle="modal" data-target="#myModal" onclick="get_scene();")
-					span.glyphicon.glyphicon-wrench change
-			.row
-				P: h3(style="color:white;") Map tools
-				button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="mark();")
-					span.glyphicon.glyphicon-map-marker drawmarker
-				button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="back();")
-					span.glyphicon.glyphicon-arrow-left back
-				button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="clearmap();")
-					span.glyphicon.glyphicon-fire clear
-				button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="commit();")
-					span.glyphicon.glyphicon-ok commit
+	.row.demo-row
+		.col-md-1
+		.col-md-3
+			input#prov_city.typeahead(type="text" placeholder="输入省或者市" )
+		.col-md-3
+			input#scenes.typeahead(type="text" placeholder="输入景点名")
+		.col-md-1
+			button#sub.btn.btn-primary.btn-lg.btn-block(type="button" onclick="search();")
+				span.glyphicon.glyphicon-search
+			include ./scene_model
+		.col-md-1
+		.col-md-2
+			button#change.btn.btn-primary.btn-lg.btn-block(data-toggle="modal" data-target="#myModal" onclick="get_scene();")
+				span.glyphicon.glyphicon-wrench
+				span change
+		.col-md-1
+	.row.demo-row
+		#allmap
+		//
+			#sidetool.col-md-2
+				.row
+					input#prov_city.typeahead(type="text" placeholder="输入省或者市" )
+				.row
+					input#scenes.typeahead(type="text" placeholder="输入景点名")
+				.row
+					button#sub.btn.btn-primary.btn-lg.btn-block(type="button" onclick="search();")
+						span.glyphicon.glyphicon-search search
+					include ./scene_model
+				.row
+					button#change.btn.btn-primary.btn-lg(data-toggle="modal" data-target="#myModal" onclick="get_scene();")
+						span.glyphicon.glyphicon-wrench change
+	
+	h3(style="color:black;") Map tools
+	#sidetool.row.demo-row
+		.col-md-3
+			button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="mark();")
+				span.glyphicon.glyphicon-map-marker
+				span drawmarker
+		.col-md-3
+			button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="back();")
+				span.glyphicon.glyphicon-arrow-left
+				span back
+		.col-md-3
+			button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="clearmap();")
+				span.glyphicon.glyphicon-fire
+				span clear
+		.col-md-3
+			button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="commit();")
+				span.glyphicon.glyphicon-ok
+				span commit
 	#row2.row
 		nav#footnv.navbar.navbar-inverse.navbar-static-bottom(role="navigation")
 	script(src='http://api.map.baidu.com/api?ak=F875087dfb8f52212a94d72eb240ca55&v=2.0')
