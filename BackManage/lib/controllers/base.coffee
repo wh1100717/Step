@@ -72,7 +72,7 @@ exports.fileUpload = (req, res) ->
 				md5Str = md5(fileContent)
 				upyun.setContentMD5(md5Str)
 				upyun.writeFile uploadpath + filename, fileContent, true, (err, data) ->
-					console.log "++Finish dile uploading to cloud"
+					console.log "Finish dile uploading to cloud"
 					console.log uploadpath + filename
 					if err
 						console.log err

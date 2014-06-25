@@ -29,13 +29,13 @@ class SceneNameSpider:
 		self._city_cn = config['city_cn']
 		self._city = config['city']
 		self._scenes = []
-
+	# 设置获取景点的url
 	def _get_url(self, page_index):
 		print self._city
 		url = self._scene_url_template.replace('#{1}', self._city).replace('#{2}', str(page_index))
 		print "Paring url: ",url
 		return url
-
+	# 通过URL获取城市景点信息
 	def _get_data(self, url):
 		headers = {
 			#动态更改userAgent
@@ -50,14 +50,14 @@ class SceneNameSpider:
 			except Exception, e:
 				print traceback.format_exc()
 				times += 1
-
+	# String字符串转json字典类型
 	def _to_dict(self,string):
 		try:
 			return json.loads(string.encode('utf-8','ignore'))
 		except Exception, e:
 			print traceback.format_exc()
 			return None
-
+	# 通过data数据获取景点中文名称[sname]和城市名称[city_cn]和英文景点名称[surl]
 	def _get_name(self, data):
 		if data is "": 
 			print "Data is Empty!"
@@ -80,7 +80,7 @@ class SceneNameSpider:
 			s['city_cn'] = self._city_cn
 			self._scenes.append(s)
 		return True
-
+	# 将scenes数据存储到mongodb
 	def _save_to_mongo(self):
 		ScenesCollection = MongoUtil.db.scenes
 		CitiesCollection = MongoUtil.db.cities

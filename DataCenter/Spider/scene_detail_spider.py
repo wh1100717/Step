@@ -35,7 +35,7 @@ class SceneDetailSpider:
 		self._loc_url_template = "http://api.map.baidu.com/geocoder/v2/?address=#{name}&output=json&ak=#{ak}&city=#{city}"
 		self._scene_detail_url_template = "http://http://lvyou.baidu.com/#{surl}"
 		self._province = ['北京', '天津', '上海', '重庆', '河北', '山西', '辽宁', '吉林', '黑龙江', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '海南', '四川', '贵州', '云南', '陕西', '甘肃', '青海']
-
+	# 通过URL获取景点信息数据
 	def _get_data(self, url):
 		headers = {
 			#动态更改userAgent
@@ -51,20 +51,20 @@ class SceneDetailSpider:
 			except Exception, e:
 				print traceback.format_exc()
 				times += 1
+	# String字符串转换成json字典
 	def _to_dict(self, string):
 		try:
 			return json.loads(string.encode('utf-8','ignore'))
 		except Exception, e:
 			print traceback.format_exc()
 			return None
-
+	# 判断city_cn否属于省，是返回xx省，否则返回xx市
 	def _parse_city(self, city_cn):
 		if city_cn in self._province:
 			return city_cn + "省"
 		else:
 			return city_cn + "市"
-
-
+		# 获取景点位置信息
 	def _get_location(self, name, city_cn):
 		url = self._loc_url_template.replace('#{name}', name).replace('#{ak}', ak).replace('#{city}', self._parse_city(city_cn))
 		print url
@@ -84,12 +84,12 @@ class SceneDetailSpider:
 		url = self._area_url_template.replace('#{uid}', uid)
 		data = self._get_data(url)
 		print data
-
+	# 获取景点详细信息
 	def _get_scene_detail(self, surl):
 		url = self._scene_detail_url_template.replace('#{surl}', surl)
 		data = self._get_data(url)
 		print data
-
+	# 从ScenesCollection中获取到scenes景点列表包含景点名称name和景点城市名称city_cn
 	def _get_scene_list_from_mongo(self):
 		ScenesCollection = MongoUtil.db.scenes
 		for scene in ScenesCollection.find():
