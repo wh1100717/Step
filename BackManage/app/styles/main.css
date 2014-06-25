@@ -24,9 +24,20 @@ body {
 
 .main-nav,
 .sub-nav {
-  width: 203px;
   margin: 0 auto;
   padding: 0;
+}
+
+.main-nav {
+  text-align: center;
+  padding-right: 179px;
+}
+
+@media (max-width: 991px) {
+  .main-nav {
+    clear:both;
+    padding-right: 0;
+  }
 }
 
 .main-nav li {
