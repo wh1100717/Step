@@ -6,7 +6,10 @@
     "bootstrap": "~3.1.1",
     "typeahead.js": "~0.10.2",
     "BaiduMapPointConverter": "*",
-    "kissy": "~1.4.3"
+    "kissy": "~1.4.3",
+    "jquery-ui-1.10.3.mouse_core": "http://juanmendez.info/source/library/jqueryui/jquery-ui-1.10.3.mouse_core.js",
+    "jquery.ui.touch-punch": "http://juanmendez.info/source/tutorial/bootstrap/slider/jquery.ui.touch-punch.js",
+    "bower-bootstrap-slider": "~1.0.0"
   },
   "devDependencies": {}
 }
