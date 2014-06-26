@@ -2,22 +2,36 @@
  
 body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  padding-top: 0px;
-  
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  background: url("/images/bg.jpg") no-repeat #f4f4f4;
+  background-size: cover;
+}
+
+.box {
+  position: absolute;
+  top: 12%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
 }
 
 .main {
-  top: 0;
+  position: absolute;
+  top: -51px;
   width: 100%;
-  margin-bottom: 10px;
   color: #fff;
   background: url("/images/bg1.jpg") no-repeat center;
   background-color: #9B59B6;
   background-size: auto 100%;
+  border-radius: 6px 6px 0 0;
   z-index: 1000;
 }
 .cover {
   background-image: linear-gradient(-45deg, rgba(39, 174, 96, .8), rgba(22, 160, 133, .8));
+  border-radius: 6px 6px 0 0;
 }
 
 /* 导航栏 */
@@ -30,7 +44,7 @@ body {
 
 .main-nav {
   text-align: center;
-  padding-right: 179px;
+  padding-right: 199px;
 }
 
 @media (max-width: 991px) {
@@ -101,7 +115,7 @@ nav {
 nav h1 {
   float: left;
   line-height: 50px;
-  margin: 0 20px 0 0;
+  margin: 0 20px;
 }
 
 nav p {
@@ -109,12 +123,20 @@ nav p {
   margin: 25px 0 0 0;
 }
 
-.blank {
-  height: 1px;
+.demo-row {
+  margin: 15px 0;
 }
 
-.demo-row {
-  margin-bottom: 10px;
+.map-head {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.map-foot {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 /* 按钮 */
@@ -123,7 +145,7 @@ nav p {
   border: none;
   font-size: 15px;
   font-weight: normal;
-  line-height: 1.4;
+  line-height: 1.471;
   border-radius: 4px;
   padding: 10px 15px;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -133,7 +155,7 @@ nav p {
 
 .btn-primary {
   color: #ffffff;
-  background-color: #1abc9c;
+  background-color: rgba(26, 188, 156, .9);
 }
 
 .btn-primary:hover,
@@ -144,13 +166,6 @@ nav p {
   color: #ffffff;
   background-color: #48c9b0;
   border-color: #48c9b0;
-}
-
-.btn-lg {
-  padding: 10px 19px;
-  font-size: 17px;
-  line-height: 1.471;
-  border-radius: 6px;
 }
 
 .btn-block {
@@ -220,8 +235,9 @@ nav p {
 
 #allmap{
   opacity: 0.9 ;
-  border-radius:6px;
-  height: 600px;
+  border-radius:0 0 6px 6px;
+  width: 100%;
+  height: 100%;
 }
 
 /* Supporting marketing content */

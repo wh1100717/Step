@@ -27,11 +27,10 @@ html
 		//build:js({.tmp,app}) scripts/scripts.js
 		//endbuild
 
-		
-		.main
-			.cover
-				nav(role="navigation")
-					.container
+		.box
+			.main
+				.cover
+					nav(role="navigation")
 						h1 Step
 						p back Manage
 						ul.main-nav
@@ -46,13 +45,11 @@ html
 										a(href="#") Help
 									li(name="nav_ab")
 										a(href="#") About
-				script
-					:coffee
-						nav_url = document.URL.split('/')[3]
-						nav_url = "home" if nav_url is ""
-						nav_url = "nav_#{nav_url}"
-						$(".main-nav > li[name='#{nav_url}']").addClass('active')
-				.blank
-		.container
+					script
+						:coffee
+							nav_url = document.URL.split('/')[3]
+							nav_url = "home" if nav_url is ""
+							nav_url = "nav_#{nav_url}"
+							$(".main-nav > li[name='#{nav_url}']").addClass('active')
 			block content
 
