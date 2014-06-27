@@ -1,5 +1,5 @@
 .modal-header
-	button.close(type="button" data-dismiss="modal" aria-hidden="true") &times;
+	button.close(type="button" onclick="back();") &times;
 	h4#myModalLabel.modal-title scene detail
 .modal-body
 	#carousel-example-generic.carousel.slide(data-ride="carousel")
@@ -95,5 +95,5 @@
 		h2 imges_url
 		textarea(name="imges_url" style="width: 100%;height:90px;")
 .modal-footer
-	button.btn.btn-default(type="button" data-dismiss="modal") Close
+	button.btn.btn-default(type="button" onclick="back();") Close
 	button.btn.btn-primary(type="button" onclick="save();") Save Changes

@@ -20,7 +20,7 @@ body {
   position: absolute;
   left: 100%;
   width: 100%;
-  background: red;
+  background: rgba(0, 0, 0, .5);
   display: none;
 }
 
