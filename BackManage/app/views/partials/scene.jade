@@ -11,10 +11,11 @@ block content
 			.col-sm-2
 				button#sub.btn.btn-primary.btn-block(type="button" onclick="search();")
 					span.glyphicon.glyphicon-search
-				include ./scene_model
+				//include ./scene_model
 		.col-sm-3
 			.col-sm-12
-				button#change.btn.btn-primary.btn-block(data-toggle="modal" data-target="#myMal" onclick="get_scene();")
+				//button#change.btn.btn-primary.btn-block(data-toggle="modal" data-target="#myMal" onclick="get_scene();")
+				button#change.btn.btn-primary.btn-block(onclick="move();")
 					span.glyphicon.glyphicon-wrench
 					span change
 	
@@ -40,6 +41,7 @@ block content
 		#row2.row
 			nav#footnv.navbar.navbar-inverse.navbar-static-bottom(role="navigation")
 	script(src='http://api.map.baidu.com/api?ak=F875087dfb8f52212a94d72eb240ca55&v=2.0')
+	script(src="scripts/move.js")
 	script(src="scripts/scence.js")
 
 
