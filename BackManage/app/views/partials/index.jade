@@ -27,7 +27,7 @@ block content
 		.col-md-2
 			span#num(style="color: white;font-size:23px")
 		.col-md-2
-			input#ex1(data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.3")
+			input#ex1(data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="3")
 			
 	.row
 		.col-md-3
@@ -122,8 +122,8 @@ block content
 		musicPlayer = new MusicPlayer({
 		auto:false, //自动播放 默认不播放.
 		mode:'random', //如果几首歌想随机播放,设置为 random, 默认为order.
-		musicList:[{"name":"歌名", "path":"http://qzone.haoduoge.com/music/83f9c7FP59c4d78ac3502215a3bf760298fbc.mp3"},{"name":"quiet", "path":"http://shop.cngame.com/res/2007Tuesday134750.mp3"},{"name":"killer", "path":"http://www.5ydj.com/upmusic/18594/D7EFE539154F6F2C6F9AB27A202C95CD.mp3"}]
-		
+		musicList:[{"name":"歌名", "path":"http://qzone.haoduoge.com/music/83f9c7FP59c4d78ac3502215a3bf760298fbc.mp3"},{"name":"quiet", "path":"http://shop.cngame.com/res/2007Tuesday134750.mp3"},{"name":"killer", "path":"http://www.5ydj.com/upmusic/18594/D7EFE539154F6F2C6F9AB27A202C95CD.mp3"}],
+		volume:0.4
 		});
 		musicPlayer.on("progress", function(ev) {
 		S.log([ev.curtime, ev.counttime, ev.progress]);
@@ -147,7 +147,7 @@ block content
 			});
 		setInterval(function(){
 			var vol= $("#ex1").slider('getValue');
-			musicPlayer.volume=0.8;
+			musicPlayer.set("volume",vol/10);
 			},50);
 		
 
