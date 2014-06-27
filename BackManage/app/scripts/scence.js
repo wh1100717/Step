@@ -348,8 +348,7 @@ back = function() {
 
 clearmap = function() {
   markpoints.splice(0, markpoints.length);
-  scene_map.clearOverlays();
-  return scene_map.addOverlay(markers[0]);
+  return scene_map.clearOverlays();
 };
 
 
