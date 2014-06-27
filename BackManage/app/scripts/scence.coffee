@@ -5,6 +5,8 @@ root = exports ? this
 #初始化
 $ ->
 	root.scene_map = new BMap.Map "allmap"
+	root.markpoints= new Array()
+	root.markers= new Array()
 	scene_map.centerAndZoom new BMap.Point(116.404, 39.915), 5
 	scene_map.enableScrollWheelZoom()
 	city_init()
@@ -134,6 +136,7 @@ get_scene = ->
 			scene_marker.enableDragging()
 			scene_marker.addEventListener "dragend", (e) ->
 				alert "当前位置：#{e.point.lng}, #{e.point.lat}"
+			
 			scene_map.addOverlay scene_marker
 			scene_marker.setAnimation BMAP_ANIMATION_BOUNCE
 
@@ -246,6 +249,7 @@ search = ->
 			p = new ConvertPoint(atitude, longitude)
 			pt= new BMap.Point(p.convertMC2LL().lng, p.convertMC2LL().lat)
 			thismarker = new BMap.Marker(pt)
+			markers[0]= thismarker
 			scene_map.addOverlay(thismarker)
 			scene_map.setCenter(pt)
 			scene_map.setZoom(16)
@@ -258,6 +262,7 @@ search = ->
 markbiao = (e)->
 	xx=e.point.lng
 	yy=e.point.lat
+
 	newp= new BMap.Point(xx, yy)
 	markpoints.push(newp)
 	marker1 = new BMap.Marker(newp) 
@@ -267,21 +272,23 @@ markbiao = (e)->
 	scene_map.addOverlay(marker1)            
 	drawline= new BMap.Polyline(markpoints)
 	scene_map.addOverlay(drawline)
-	console.log()
+	console.log(marker1.Size)
 ###
  * 坐标点点击
 ###
 mark = ->
 	
 	scene_map.addEventListener("onclick",markbiao)
+
 	console.log()
 
 ###
  * 返回上一步
 ###
 back = ->
-	markpoints.pop()
+	
 	scene_map.clearOverlays()
+	markpoints.pop()
 	for p in markpoints
 		mark2 = new BMap.Marker(p)
 		psize= new BMap.Size(5,5)
@@ -289,7 +296,8 @@ back = ->
 		mark2.setIcon(Icon)
 		scene_map.addOverlay(mark2)
 		drawline= new BMap.Polyline(markpoints)
-		scene_map.addOverlay(drawline)
+	scene_map.addOverlay(drawline)
+	scene_map.addOverlay(markers[0])
 	console.log()
 
 ###
