@@ -306,7 +306,7 @@ back = ->
 clearmap = ->
 	markpoints.splice(0,markpoints.length)
 	scene_map.clearOverlays()
-	
+	scene_map.addOverlay(markers[0])
 
 ###
  * 绘制后递交
