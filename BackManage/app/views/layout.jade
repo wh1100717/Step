@@ -31,29 +31,28 @@ html
 		//build:js({.tmp,app}) scripts/scripts.js
 		//endbuild
 
-		#first
-			.box:.main:.cover
-				nav(role="navigation")
-					h1 Step
-					p back Manage
-					ul.main-nav
-						li(name="nav_home")
-							a.text-center(href="/") Home
-						li(name="nav_scene")
-							a.text-center(href="/scene") Scene
-						li.menu(name="nav_about")
-							a.text-center(href="#") About
-							ul.sub-nav
-								li(name="nav_help")
-									a(href="#") Help
-								li(name="nav_ab")
-									a(href="#") About
-				script
-					:coffee
-						nav_url = document.URL.split('/')[3]
-						nav_url = "home" if nav_url is ""
-						nav_url = "nav_#{nav_url}"
-						$(".main-nav > li[name='#{nav_url}']").addClass('active')
+		#first:.box:.main:.cover
+			nav(role="navigation")
+				h1 Step
+				p back Manage
+				ul.main-nav
+					li(name="nav_home")
+						a.text-center(href="/") Home
+					li(name="nav_scene")
+						a.text-center(href="/scene") Scene
+					li.menu(name="nav_about")
+						a.text-center(href="#") About
+						ul.sub-nav
+							li(name="nav_help")
+								a(href="#") Help
+							li(name="nav_ab")
+								a(href="#") About
+			script
+				:coffee
+					nav_url = document.URL.split('/')[3]
+					nav_url = "home" if nav_url is ""
+					nav_url = "nav_#{nav_url}"
+					$(".main-nav > li[name='#{nav_url}']").addClass('active')
 		block content
 		#second
 			include partials/test
