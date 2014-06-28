@@ -443,7 +443,7 @@ move = function() {
 
 
 /*
- * 页面过渡
+ * 回退页面过渡
  */
 
 moveback = function() {

@@ -386,7 +386,7 @@ move = ->
 	, 1
 	console.log()
 ###
- * 页面过渡
+ * 回退页面过渡
 ###
 moveback = ->
 	n = -100
