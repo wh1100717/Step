@@ -7,6 +7,72 @@ body {
   margin: 0px;
 }
 
+/* 动画效果 */
+@keyframes moveleft {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes moveright {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+@-webkit-keyframes moveleft {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+@-webkit-keyframes moveright {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes backleft {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+@keyframes backright {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+@-webkit-keyframes backleft {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+@-webkit-keyframes backright {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
 #first {
   position: absolute;
   left: 0;
@@ -14,6 +80,8 @@ body {
   height: 100%;
   background: url("/images/bg.jpg") no-repeat #f4f4f4;
   background-size: cover;
+  animation: 1s ease forwards;
+  -webkit-animation: 1s ease forwards;
 }
 
 #second {
@@ -22,6 +90,8 @@ body {
   width: 100%;
   background: rgba(0, 0, 0, .5);
   display: none;
+  animation: 1s ease forwards;
+  -webkit-animation: 1s ease forwards;
 }
 
 .box {
