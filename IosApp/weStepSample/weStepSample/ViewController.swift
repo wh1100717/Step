@@ -27,11 +27,33 @@ class ViewController: UIViewController {
         morphingTexts = ["Design", "Design is not just", "what it looks like", "and feels like.", "Design", "is how it works.", "- Steve Jobs", "Swift", "Objective-C", "iPhone", "iPad", "Mac Mini", "MacBook Pro", "Mac Pro", "老婆", "老婆+女儿", "老婆+女儿+💰🏡🚘"]
         self.morphingLabel.text = morphingTexts![morphingIndex]
 
+
+        var tapGesture = UITapGestureRecognizer(target: self, action: "viewTapped")
+        
+        tapGesture.cancelsTouchesInView = false;
+        
+//        morphingLabel.addGestureRecognizer(tapGesture)
+        self.view.addGestureRecognizer(tapGesture)
+
         UIComponentsInit()
         
     }
-
-    @IBAction func changeMorphingStyle(sender: AnyObject) {
+    
+    func viewTapped() {
+        if morphingIndex + 1 >= countElements(morphingTexts!) {
+            morphingIndex = 0
+        }else {
+            morphingIndex += 1
+        }
+        morphingLabel.text = morphingTexts![morphingIndex]
+    }
+    
+//    func viewTapped(sender: UITapGestureRecognizer) {
+//        if(sender.numberOfTapsRequired == 1) {
+//            println("11111")
+//        }
+//    }
+    @IBAction func changeStyle(sender: AnyObject) {
         switch morphingStyleIndex {
         case 1:
             morphingLabel.morphingMethod = .EvaporateAndFade
@@ -43,19 +65,11 @@ class ViewController: UIViewController {
             morphingLabel.morphingMethod = .ScaleAndFade
             morphingStyleIndex = 1
         }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-
-    @IBAction func changeMorphingText(sender: AnyObject) {
-        if morphingIndex + 1 >= countElements(morphingTexts!) {
-            morphingIndex = 0
-        }else {
-            morphingIndex += 1
-        }
-        morphingLabel.text = morphingTexts![morphingIndex]
     }
     
     func UIComponentsInit() {
