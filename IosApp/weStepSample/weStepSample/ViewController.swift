@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func changeMorphingText(sender: AnyObject) {
-        if morphingIndex >= countElements(morphingTexts!) {
+        if morphingIndex + 1 >= countElements(morphingTexts!) {
             morphingIndex = 0
         }else {
             morphingIndex += 1
