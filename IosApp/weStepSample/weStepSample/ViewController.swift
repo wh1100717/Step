@@ -11,6 +11,11 @@ import UIKit
 class ViewController: UIViewController {
                             
     @IBOutlet var dateLabel: UILabel
+    @IBOutlet var morphingLabel: LTMorphingLabel
+    
+    var morphingTexts: Array<String>?
+    var morphingIndex = 0
+    var morphingStyleIndex = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +24,40 @@ class ViewController: UIViewController {
 //        let mapView = BMKMapView(frame: CGRectMake(0, 0, 1, 1))
 //        self.view = mapView
 
-        
+        morphingTexts = ["Design", "Design is not just", "what it looks like", "and feels like.", "Design", "is how it works.", "- Steve Jobs", "Swift", "Objective-C", "iPhone", "iPad", "Mac Mini", "MacBook Pro", "Mac Pro", "老婆", "老婆+女儿", "老婆+女儿+💰🏡🚘"]
+        self.morphingLabel.text = morphingTexts![morphingIndex]
+
         UIComponentsInit()
         
+    }
+
+    @IBAction func changeMorphingStyle(sender: AnyObject) {
+        switch morphingStyleIndex {
+        case 1:
+            morphingLabel.morphingMethod = .EvaporateAndFade
+            morphingStyleIndex += 1
+        case 2:
+            morphingLabel.morphingMethod = .FallDownAndFade
+            morphingStyleIndex += 1
+        default:
+            morphingLabel.morphingMethod = .ScaleAndFade
+            morphingStyleIndex = 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func changeMorphingText(sender: AnyObject) {
+        if morphingIndex >= countElements(morphingTexts!) {
+            morphingIndex = 0
+        }else {
+            morphingIndex += 1
+        }
+        morphingLabel.text = morphingTexts![morphingIndex]
+    }
+    
     func UIComponentsInit() {
         self.dateLabel.text = getFormatDate(NSDate.date())
         

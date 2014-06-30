@@ -26,6 +26,8 @@
 		0725F0C2195C0E5300D267E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0725F0C1195C0E5300D267E5 /* Foundation.framework */; };
 		0725F0C4195C0E5C00D267E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0725F0C3195C0E5C00D267E5 /* CoreGraphics.framework */; };
 		0725F0C6195C0EDC00D267E5 /* static_link.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0725F0C5195C0EDC00D267E5 /* static_link.mm */; };
+		07A421C91961614000AA81E2 /* LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A421C71961614000AA81E2 /* LTMorphingLabel.swift */; };
+		07A421CA1961614000AA81E2 /* NSString+LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A421C81961614000AA81E2 /* NSString+LTMorphingLabel.swift */; };
 		7E28B488D66046FDBECF94BA /* libPods-weStepSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BDA6CB84884F23B25FDC5C /* libPods-weStepSample.a */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,8 @@
 		0725F0C1195C0E5300D267E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0725F0C3195C0E5C00D267E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0725F0C5195C0EDC00D267E5 /* static_link.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = static_link.mm; sourceTree = "<group>"; };
+		07A421C71961614000AA81E2 /* LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTMorphingLabel.swift; sourceTree = "<group>"; };
+		07A421C81961614000AA81E2 /* NSString+LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+LTMorphingLabel.swift"; sourceTree = "<group>"; };
 		8A36C025F06C4798AB583320 /* Pods-weStepSample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weStepSample.xcconfig"; path = "Pods/Pods-weStepSample.xcconfig"; sourceTree = "<group>"; };
 		D4BDA6CB84884F23B25FDC5C /* libPods-weStepSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weStepSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -220,6 +224,7 @@
 		0725F065195BED1C00D267E5 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				07A421C61961614000AA81E2 /* LTMorphingLabel */,
 				0725F06A195BEFA200D267E5 /* BaiduMap_Lib */,
 				0725F066195BED1C00D267E5 /* NSDate-Extensions */,
 			);
@@ -310,6 +315,15 @@
 				0725F0A6195BEFA200D267E5 /* BMKVersion.h */,
 			);
 			path = inc;
+			sourceTree = "<group>";
+		};
+		07A421C61961614000AA81E2 /* LTMorphingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				07A421C71961614000AA81E2 /* LTMorphingLabel.swift */,
+				07A421C81961614000AA81E2 /* NSString+LTMorphingLabel.swift */,
+			);
+			path = LTMorphingLabel;
 			sourceTree = "<group>";
 		};
 		E16B5B3353AF4D03AAAFCDE3 /* Frameworks */ = {
@@ -469,6 +483,8 @@
 				0725EFE8195BBE3500D267E5 /* ViewController.swift in Sources */,
 				0725F0C6195C0EDC00D267E5 /* static_link.mm in Sources */,
 				0725F069195BED1C00D267E5 /* NSDate+Utilities.m in Sources */,
+				07A421C91961614000AA81E2 /* LTMorphingLabel.swift in Sources */,
+				07A421CA1961614000AA81E2 /* NSString+LTMorphingLabel.swift in Sources */,
 				0725EFE6195BBE3500D267E5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
