@@ -28,6 +28,7 @@
 		0725F0C6195C0EDC00D267E5 /* static_link.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0725F0C5195C0EDC00D267E5 /* static_link.mm */; };
 		07A421C91961614000AA81E2 /* LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A421C71961614000AA81E2 /* LTMorphingLabel.swift */; };
 		07A421CA1961614000AA81E2 /* NSString+LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A421C81961614000AA81E2 /* NSString+LTMorphingLabel.swift */; };
+		07B294B91962EF8800D4D195 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B294B81962EF8800D4D195 /* libz.dylib */; };
 		7E28B488D66046FDBECF94BA /* libPods-weStepSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4BDA6CB84884F23B25FDC5C /* libPods-weStepSample.a */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +129,9 @@
 		0725F0C5195C0EDC00D267E5 /* static_link.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = static_link.mm; sourceTree = "<group>"; };
 		07A421C71961614000AA81E2 /* LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTMorphingLabel.swift; sourceTree = "<group>"; };
 		07A421C81961614000AA81E2 /* NSString+LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+LTMorphingLabel.swift"; sourceTree = "<group>"; };
+		07AE2BD1196271E800B587E3 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		07AE2BD2196271E800B587E3 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		07B294B81962EF8800D4D195 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8A36C025F06C4798AB583320 /* Pods-weStepSample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weStepSample.xcconfig"; path = "Pods/Pods-weStepSample.xcconfig"; sourceTree = "<group>"; };
 		D4BDA6CB84884F23B25FDC5C /* libPods-weStepSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weStepSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -146,8 +150,9 @@
 				0725F0B8195C0E1E00D267E5 /* OpenGLES.framework in Frameworks */,
 				0725F0B6195C0E1600D267E5 /* MessageUI.framework in Frameworks */,
 				0725F0B4195C0E0E00D267E5 /* Security.framework in Frameworks */,
-				7E28B488D66046FDBECF94BA /* libPods-weStepSample.a in Frameworks */,
 				0725F0B2195C0B2800D267E5 /* libbaidumapapi.a in Frameworks */,
+				07B294B91962EF8800D4D195 /* libz.dylib in Frameworks */,
+				7E28B488D66046FDBECF94BA /* libPods-weStepSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +229,7 @@
 		0725F065195BED1C00D267E5 /* ThirdPartyLibs */ = {
 			isa = PBXGroup;
 			children = (
+				07AE2BD0196271E800B587E3 /* UMAnalytics_Sdk_3.1.2 */,
 				07A421C61961614000AA81E2 /* LTMorphingLabel */,
 				0725F06A195BEFA200D267E5 /* BaiduMap_Lib */,
 				0725F066195BED1C00D267E5 /* NSDate-Extensions */,
@@ -326,9 +332,19 @@
 			path = LTMorphingLabel;
 			sourceTree = "<group>";
 		};
+		07AE2BD0196271E800B587E3 /* UMAnalytics_Sdk_3.1.2 */ = {
+			isa = PBXGroup;
+			children = (
+				07AE2BD1196271E800B587E3 /* libMobClickLibrary.a */,
+				07AE2BD2196271E800B587E3 /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_3.1.2;
+			sourceTree = "<group>";
+		};
 		E16B5B3353AF4D03AAAFCDE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07B294B81962EF8800D4D195 /* libz.dylib */,
 				0725F0C3195C0E5C00D267E5 /* CoreGraphics.framework */,
 				0725F0C1195C0E5300D267E5 /* Foundation.framework */,
 				0725F0BF195C0E4A00D267E5 /* UIKit.framework */,
@@ -604,12 +620,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = weStepSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphoneos",
 					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphonesimulator",
 					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/BaiduMap_IOSSDK_v2.3.0_Lib",
+					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/UMAnalytics_Sdk_3.1.2",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -637,12 +655,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = weStepSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphoneos",
 					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphonesimulator",
 					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/BaiduMap_IOSSDK_v2.3.0_Lib",
+					"$(PROJECT_DIR)/weStepSample/ThirdPartyLibs/UMAnalytics_Sdk_3.1.2",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

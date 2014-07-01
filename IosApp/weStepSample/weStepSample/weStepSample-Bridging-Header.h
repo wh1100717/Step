@@ -7,3 +7,5 @@
 #import "NSDate+Utilities.h"
 
 #import "BMapKit.h"
+
+#import "MobClick.h"
