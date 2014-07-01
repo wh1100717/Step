@@ -42,9 +42,6 @@
     response = urllib2.urlopen('http://lvyou.baidu.com/shuicaotai/')
     result = response.read()
     soup = BeautifulSoup(result)
-    a = soup.findAll('body')
-    b = a[0].findAll('section')
-    c = b[3].findAll('div')
-    print c[2].next
+    print soup.find("p", attrs={"class": "text-p text-desc-p"}).next
 ```
-还有更快的搜索方式，尝试中
+
