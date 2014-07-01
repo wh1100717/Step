@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         
     }
 
-    func getFormatDate(date:NSDate) -> String {
+    func getFormatDate(date: NSDate) -> String {
         let dateFormatter = NSDateFormatter()
         if date.isThisYear() {
             dateFormatter.dateFormat = "MM月dd日"

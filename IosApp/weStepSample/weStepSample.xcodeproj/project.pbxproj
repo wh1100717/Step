@@ -195,9 +195,8 @@
 				0725EFE5195BBE3500D267E5 /* AppDelegate.swift */,
 				0725EFE9195BBE3500D267E5 /* Main.storyboard */,
 				0725EFEC195BBE3500D267E5 /* Images.xcassets */,
-				0725EFE3195BBE3500D267E5 /* Supporting Files */,
 				0725F003195BBE8200D267E5 /* weStepSample-Bridging-Header.h */,
-				0725F0C5195C0EDC00D267E5 /* static_link.mm */,
+				0725EFE3195BBE3500D267E5 /* Supporting Files */,
 			);
 			path = weStepSample;
 			sourceTree = "<group>";
@@ -207,6 +206,7 @@
 			children = (
 				0725F065195BED1C00D267E5 /* ThirdPartyLibs */,
 				0725EFE4195BBE3500D267E5 /* Info.plist */,
+				0725F0C5195C0EDC00D267E5 /* static_link.mm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
