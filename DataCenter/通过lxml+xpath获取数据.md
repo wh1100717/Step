@@ -34,5 +34,17 @@
     
     
 ```
- 可以获取到景点地址
+##利用beautifulSoup获取数据
 
+```python
+    from BeautifulSoup import BeautifulSoup
+    import urllib2
+    response = urllib2.urlopen('http://lvyou.baidu.com/shuicaotai/')
+    result = response.read()
+    soup = BeautifulSoup(result)
+    a = soup.findAll('body')
+    b = a[0].findAll('section')
+    c = b[3].findAll('div')
+    print c[2].next
+```
+还有更快的搜索方式，尝试中
