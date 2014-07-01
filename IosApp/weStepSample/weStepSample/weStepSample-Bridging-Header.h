@@ -10,3 +10,5 @@
 
 //引入友盟插件会产生编译错误，目前ios sdk 8 应该是不支持的，暂时pending.
 //#import "MobClick.h"
+
+#import "DRDynamicSlideShow.h"

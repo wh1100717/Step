@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         morphingTexts = ["Design", "Design is not just", "what it looks like", "and feels like.", "Design", "is how it works.", "- Steve Jobs", "Swift", "Objective-C", "iPhone", "iPad", "Mac Mini", "MacBook Pro", "Mac Pro", "老婆", "老婆+女儿", "老婆+女儿+💰🏡🚘"]
         self.morphingLabel.text = morphingTexts![morphingIndex]
 
-
         var tapGesture = UITapGestureRecognizer(target: self, action: "viewTapped")
         
         tapGesture.cancelsTouchesInView = false;
@@ -35,7 +34,31 @@ class ViewController: UIViewController {
 //        morphingLabel.addGestureRecognizer(tapGesture)
         self.view.addGestureRecognizer(tapGesture)
 
-        UIComponentsInit()
+        
+        //view1
+        let sview1 = UIView(frame: CGRect(x: 0,y: 0,width: self.view.frame.size.width, height: self.view.frame.size.height))
+//        let sview1 = UIView()
+        sview1.backgroundColor = UIColor.whiteColor()
+
+        //view2
+        let sview2 = UIView(frame: CGRect(x: 0,y: 0,width: self.view.frame.size.width, height: self.view.frame.size.height))
+        //        let sview1 = UIView()
+        sview2.backgroundColor = UIColor.redColor()
+
+        //view3
+        let sview3 = UIView(frame: CGRect(x: 0,y: 0,width: self.view.frame.size.width, height: self.view.frame.size.height))
+        //        let sview1 = UIView()
+        sview3.backgroundColor = UIColor.greenColor()
+
+        
+//        self.view.addSubview(sview1)
+//        self.view.addSubview(sview2)
+//        self.view.addSubview(sview3)
+//        self.view.bringSubviewToFront(sview1)
+
+        
+        
+        self.UIComponentsInit()
         
     }
     

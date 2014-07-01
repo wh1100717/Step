@@ -4,6 +4,7 @@ platform :ios, "7.0"
 target "weStepSample" do
 
 pod 'AFNetworking', '~> 2.2'
+pod 'DRDynamicSlideShow'
 
 end
 
