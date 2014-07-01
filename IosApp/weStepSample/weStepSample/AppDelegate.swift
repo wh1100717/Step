@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         
-        MobClick.startWithAppkey("53b239f056240b9c0e010a1b", reportPolicy: SEND_INTERVAL, channelId: "Web")
+//        MobClick.startWithAppkey("53b239f056240b9c0e010a1b", reportPolicy: SEND_INTERVAL, channelId: "Web")
         
         //StatusBar相关
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
