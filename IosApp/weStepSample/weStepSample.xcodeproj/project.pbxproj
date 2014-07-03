@@ -134,6 +134,7 @@
 		07AE2BD2196271E800B587E3 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		07B294B81962EF8800D4D195 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		07B294D819631DF700D4D195 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		07B294DA196467CE00D4D195 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../MyPlayground.playground; sourceTree = "<group>"; };
 		8A36C025F06C4798AB583320 /* Pods-weStepSample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weStepSample.xcconfig"; path = "Pods/Pods-weStepSample.xcconfig"; sourceTree = "<group>"; };
 		D4BDA6CB84884F23B25FDC5C /* libPods-weStepSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-weStepSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -193,6 +194,7 @@
 			children = (
 				07B294D51963113D00D4D195 /* Controller */,
 				0725EFE5195BBE3500D267E5 /* AppDelegate.swift */,
+				07B294DA196467CE00D4D195 /* MyPlayground.playground */,
 				0725EFE9195BBE3500D267E5 /* Main.storyboard */,
 				0725EFEC195BBE3500D267E5 /* Images.xcassets */,
 				0725F003195BBE8200D267E5 /* weStepSample-Bridging-Header.h */,

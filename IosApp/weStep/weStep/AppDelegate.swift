@@ -10,34 +10,41 @@ import UIKit
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate ,MSDynamicsDrawerViewControllerDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-    //声明框架
-    var dynamicsDrawerViewController: MSDynamicsDrawerViewController?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        //StatusBar相关
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: false)
+
+        
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
-        self.window!.backgroundColor = UIColor.whiteColor()
+//        window!.backgroundColor = UIColor.blackColor()
         
-        //初始化框架
-        self.dynamicsDrawerViewController = MSDynamicsDrawerViewController()
-        //设置代理
-//        self.dynamicsDrawerViewController!.delegate = self
-        //左边控制器样式, 添加：缩放、 渐变、视差、暗影、动态大小 等样式
-        let stylers = [MSDynamicsDrawerScaleStyler.styler(),MSDynamicsDrawerFadeStyler.styler(),MSDynamicsDrawerParallaxStyler.styler(),MSDynamicsDrawerShadowStyler.styler(),MSDynamicsDrawerResizeStyler.styler()]
-        /*
-         *此处可能桥接 不好用 swift里面调用OC的类似乎没起作用 WeStep-Bridging-Header.h桥接文件
-        */
-        self.dynamicsDrawerViewController!.addStylersFromArray(stylers, forDirection: MSDynamicsDrawerDirection.Left)
+//        //初始化框架
+//        self.dynamicsDrawerViewController = MSDynamicsDrawerViewController()
+//        //设置代理
+////        self.dynamicsDrawerViewController!.delegate = self
+//        //左边控制器样式, 添加：缩放、 渐变、视差、暗影、动态大小 等样式
+//        let stylers = [MSDynamicsDrawerScaleStyler.styler(),MSDynamicsDrawerFadeStyler.styler(),MSDynamicsDrawerParallaxStyler.styler(),MSDynamicsDrawerShadowStyler.styler(),MSDynamicsDrawerResizeStyler.styler()]
+//        /*
+//         *此处可能桥接 不好用 swift里面调用OC的类似乎没起作用 WeStep-Bridging-Header.h桥接文件
+//        */
+//        self.dynamicsDrawerViewController!.addStylersFromArray(stylers, forDirection: MSDynamicsDrawerDirection.Left)
+//        
+//        
+//        
+//        self.window!.rootViewController = self.dynamicsDrawerViewController
+
+        window!.rootViewController = BaseController()
         
-        
-        
-        self.window!.rootViewController = self.dynamicsDrawerViewController
-        
-        self.window!.makeKeyAndVisible()
+        window!.makeKeyAndVisible()
         return true
     }
 
