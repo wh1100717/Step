@@ -45,3 +45,26 @@
     print soup.find("p", attrs={"class": "text-p text-desc-p"}).next
 ```
 
+获取景点上级节点
+a = soup.findAll("a",attrs={"property":"v:title"})
+b = a[len(a)-2].next
+去过的人数
+a = soup.findAll("span",attrs={"class":"view-head-gray-font"})
+a[1].next[1:-1]
+
+景点详细描述
+a = soup.findAll("div",attrs={"class":"J-sketch-more-info subview-basicinfo-alert-more"})
+for i in a:
+    i.next.next
+
+开放时间
+a = soup.findAll("div",attrs={"class":"val opening_hours-value"})
+建议游玩时间
+a = soup.findAll("span",attrs={"class":"val recommend_visit_time-value"})
+地址
+
+a = soup.findAll("span",attrs={"class":"val address-value“}）
+电话
+a = soup.findAll("span",attrs={"class":"val phone-value"}）
+最佳旅游时间
+a = soup.findAll("span",attrs={"div":"val best-visit-time-value"})

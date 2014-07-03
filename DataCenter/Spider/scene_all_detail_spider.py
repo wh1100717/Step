@@ -26,7 +26,6 @@ class SceneAllDetailSpider:
 		while times < 10:
 			try:
 				req = urllib2.Request(url, headers=headers)
-				
 				return urllib2.urlopen(req).read()
 			except Exception, e:
 				print traceback.format_exc()
@@ -41,8 +40,30 @@ class SceneAllDetailSpider:
 		data = self._get_detail(url)
 		soup = BeautifulSoup(data)
 		scene_detail = {}
-		scene_detail['outline'] = soup.find("p", attrs={"class": "text-p text-desc-p"}).next
-		print scene_detail['outline']
+		scene_detail['parent_scene'] = soup.findAll("a",attrs={"property":"v:title"})
+		scene_detail['parent_scene'] = scene_detail['parent_scene'][len(scene_detail['parent_scene'])-2].next
+		scene_detail['has_gone'] = soup.findAll("span",attrs={"class":"view-head-gray-font"})
+		scene_detail['has_gone'] = scene_detail['has_gone'][1].next[1:-1]
+		scene_detail['content'] = []
+		tmp = soup.findAll("div",attrs={"class":"J-sketch-more-info subview-basicinfo-alert-more"})
+		tmp = tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"})
+
+		# print len(tmp)
+		for i in tmp:
+			scene_detail['content'].append(i.next)
+		scene_detail['content'] = ''.join(scene_detail['content'])
+		# for i in tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"}):
+		# 	print i.next.next
+		# 	scene_detail['content'].append(i.next.next)
+		# scene_detail['content'] = ''.join(scene_detail['content'])
+		scene_detail['open_time'] = soup.find("div",attrs={"class":"val opening_hours-value"}).next.next
+		scene_detail['play_time'] = soup.find("span",attrs={"class":"val recommend_visit_time-value"}).next
+		scene_detail['address'] = soup.find("span",attrs={"class":"val address-value"}).next
+		scene_detail['phone'] = soup.find("span",attrs={"class":"val phone-value"}).next
+		# scene_detail['best_visit_time'] = soup.find("span",attrs={"div":"val best-visit-time-value"}).next
+
+		for i in scene_detail.keys():
+			print scene_detail[i]
 		print scene_detail
 		return scene_detail
 
