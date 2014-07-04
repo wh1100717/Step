@@ -103,15 +103,15 @@ def fromFile(des_config, file_config):
 if __name__ == '__main__':
 	# 通过argParse进行命令行配置
 	localhost_config = {
-	'mongo_path':'/usr/local'
-	'host': '127.0.0.1', 		#源数据库IP
+	'mongo_path':'/usr/local',
+	'host':'127.0.0.1', 		#源数据库IP
 	'port': 27017,
 	'db': 'step-dev' 			#对应的db name，默认为step-dev
 	}
 
 	remotehost_config = {
-	'host': '0.0.0.0'
-	# 'host': '192.168.1.136', 			#目的数据库IP
+	# 'host': '0.0.0.0'
+	'host': '192.168.1.107', 			#目的数据库IP
 	'port': 27017,
 	'db': 'step-dev'			#对应的db name，默认为step-dev
 	}
