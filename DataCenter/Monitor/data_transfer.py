@@ -49,12 +49,20 @@ def toFile(src_config, file_config):
 	src_db = src_client[src_config['db']]
 	sysstr = platform.system()
 	#TODO 目前只支持mac系统，linux需要额外增加判断条件和对应mongoexport的执行路径。	
-	if sysstr == "Darwin":
-		command = "/usr/local/bin/mongoexport"
+	if sysstr == "Darwin" or sysstr == "Linux":
+		command = mongo_path + "/bin/mongoexport"
+		host = src_config['host'] + ":" + str(src_config['port'])
+		db = src_config['db']
+	# if sysstr == "Linux":
+	# 	command = mongo_path + 
+	# 	host = src_config['host'] + ":" + str(src_config['port'])
+	# 	db = src_config['db']
+	if sysstr == "Windows":
+		command = mongo_path + "/bin/mongoexport.exe"
 		host = src_config['host'] + ":" + str(src_config['port'])
 		db = src_config['db']
 	else:
-		print "Unsupport Operating System! Only Support Mac OS now."
+		print "Unsupport Operating System! Only Support Mac OS、windows、Ubuntu now."
 		return
 	for collection in src_db.collection_names():
 		if "system" in collection: continue
@@ -95,6 +103,7 @@ def fromFile(des_config, file_config):
 if __name__ == '__main__':
 	# 通过argParse进行命令行配置
 	localhost_config = {
+	'mongo_path':'/usr/local'
 	'host': '127.0.0.1', 		#源数据库IP
 	'port': 27017,
 	'db': 'step-dev' 			#对应的db name，默认为step-dev
