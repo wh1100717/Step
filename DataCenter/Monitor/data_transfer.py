@@ -48,17 +48,14 @@ def toFile(src_config, file_config):
 	src_client = MongoClient(src_config['host'], src_config['port'])
 	src_db = src_client[src_config['db']]
 	sysstr = platform.system()
-	#TODO 目前只支持mac系统，linux需要额外增加判断条件和对应mongoexport的执行路径。	
+	print sysstr
 	if sysstr == "Darwin" or sysstr == "Linux":
-		command = mongo_path + "/bin/mongoexport"
+		command = src_config['mongo_path'] + "/bin/mongoexport"
 		host = src_config['host'] + ":" + str(src_config['port'])
 		db = src_config['db']
-	# if sysstr == "Linux":
-	# 	command = mongo_path + 
-	# 	host = src_config['host'] + ":" + str(src_config['port'])
-	# 	db = src_config['db']
-	if sysstr == "Windows":
-		command = mongo_path + "/bin/mongoexport.exe"
+	
+	elif sysstr == "Windows":
+		command = src_config['mongo_path'] + "/bin/mongoexport.exe"
 		host = src_config['host'] + ":" + str(src_config['port'])
 		db = src_config['db']
 	else:
@@ -74,13 +71,16 @@ def fromFile(des_config, file_config):
 	des_client = MongoClient(des_config['host'], des_config['port'])
 	des_db = des_client[des_config['db']]
 	sysstr = platform.system()
-	#TODO 目前只支持mac系统，linux需要额外增加判断条件和对应mongoexport的执行路径。	
-	if sysstr == "Darwin":
-		command = "/usr/local/bin/mongoimport"
+	if sysstr == "Darwin" or sysstr == "Linux":
+		command = des_config['mongo_path'] + "/bin/mongoimport"
 		host = des_config['host'] + ":" + str(des_config['port'])
 		db = des_config['db']
+	elif sysstr == "Windows":
+		command = src_config['mongo_path'] + "/bin/mongoexport.exe"
+		host = src_config['host'] + ":" + str(src_config['port'])
+		db = src_config['db']
 	else:
-		print "Unsupport Operating System! Only Support Mac OS now."
+		print "Unsupport Operating System! Only Support Mac OS、windows、Ubuntu  now."
 		return
 
 	file_list = os.listdir(file_config['dir'])
@@ -110,8 +110,8 @@ if __name__ == '__main__':
 	}
 
 	remotehost_config = {
-	# 'host': '0.0.0.0'
-	'host': '192.168.1.107', 			#目的数据库IP
+	'host': '0.0.0.0',
+	# 'host': '192.168.1.136', 			#目的数据库IP
 	'port': 27017,
 	'db': 'step-dev'			#对应的db name，默认为step-dev
 	}
