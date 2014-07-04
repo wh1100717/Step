@@ -117,6 +117,10 @@ exports.scene = function(req, res) {
   return res.render('partials/scene');
 };
 
+exports.my = function(req, res) {
+  return res.render('partials/my');
+};
+
 exports.notFound = function(req, res) {
   return res.render('404');
 };

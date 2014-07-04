@@ -23,6 +23,12 @@ module.exports = (app) ->
 		.delete session.logout
 	app.route('/scene')
 		.get base.scene
+
+
+	app.route('/my')
+		.get base.my
+
+
 	app.route('/')
 		.get(base.index)
 	app.route('/*')

@@ -20,6 +20,7 @@ module.exports = function(app) {
   app.route('/api/users/:id').get(users.show);
   app.route('/api/session').post(session.login)["delete"](session.logout);
   app.route('/scene').get(base.scene);
+  app.route('/my').get(base.my);
   app.route('/').get(base.index);
   return app.route('/*').get(base.notFound);
 };
