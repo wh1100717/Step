@@ -10,10 +10,13 @@ import Foundation
 
 class BaseController: UIViewController {
 
+    var frameRect: CGRect?
+    
     override func viewDidLoad(){
         super.viewDidLoad()
+        frameRect = CGRect(x: 0,y: 0,width: self.view.bounds.size.width, height: self.view.bounds.size.height)
         self.view.backgroundColor = UIColor.blackColor()
-        let slideShow = DRDynamicSlideShow()
+        let slideShow = DRDynamicSlideShow(frame: frameRect!)
         slideShow.addSubview(viewGenerator(NSDate.date()), onPage: 0)
         slideShow.addSubview(viewGenerator(NSDate.dateYesterday()), onPage: 1)
         slideShow.addSubview(viewGenerator(NSDate.dateTomorrow()), onPage: 2)
@@ -22,7 +25,7 @@ class BaseController: UIViewController {
     }
 
     func viewGenerator(date: NSDate) -> UIView {
-        let viewG = UIView(frame: CGRect(x: 0,y: 0,width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        let viewG = UIView(frame: frameRect!)
         let dateLabel = UILabel(frame: CGRect(x: 0,y: self.view.bounds.size.height*0.1,width:self.view.bounds.size.width,height:self.view.bounds.size.height*0.2))
         dateLabel.textAlignment = .Center
         dateLabel.text = getFormatDate(date)
