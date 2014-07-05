@@ -9,13 +9,18 @@ from BeautifulSoup import BeautifulSoup
 import urllib2
 import requests
 import traceback
+import time
+import json
 from util import MongoUtil
 from util import ProxyUtil
 
 class SceneAllDetailSpider:
+	#初始化
 	def __init__(self):
-		self._scenes=[]
+		self._scenes = []
+		self._scene_detail = {}
 		self._scenes_url_template = "http://lvyou.baidu.com/#{surl}/"
+	#获取景点信息
 	def _get_detail(self,url):
 		headers = {
 			#动态更改userAgent
@@ -30,52 +35,118 @@ class SceneAllDetailSpider:
 			except Exception, e:
 				print traceback.format_exc()
 				times += 1
+	#获取scenes表中的数据
 	def _get_scene_list_from_mongo(self):
 		ScenesCollection = MongoUtil.db.scenes
 		for scene in ScenesCollection.find():
 			self._scenes.append(scene)
-
+	#通过beautifulsoup获取网页中景点信息
 	def _get_scene_detail(self,surl):
 		url = self._scenes_url_template.replace('#{surl}',surl)
 		data = self._get_detail(url)
 		soup = BeautifulSoup(data)
-		scene_detail = {}
-		scene_detail['parent_scene'] = soup.findAll("a",attrs={"property":"v:title"})
-		scene_detail['parent_scene'] = scene_detail['parent_scene'][len(scene_detail['parent_scene'])-2].next
-		scene_detail['has_gone'] = soup.findAll("span",attrs={"class":"view-head-gray-font"})
-		scene_detail['has_gone'] = scene_detail['has_gone'][1].next[1:-1]
-		scene_detail['content'] = []
+		self._scene_detail['parent_scene'] = soup.findAll("a",attrs={"property":"v:title"})
+		self._scene_detail['parent_scene'] = self._scene_detail['parent_scene'][len(self._scene_detail['parent_scene'])-2].next
+		self._scene_detail['has_gone'] = soup.findAll("span",attrs={"class":"view-head-gray-font"})
+		self._scene_detail['has_gone'] = self._scene_detail['has_gone'][1].next[1:-1]
+		self._scene_detail['content'] = []
 		tmp = soup.findAll("div",attrs={"class":"J-sketch-more-info subview-basicinfo-alert-more"})
-		tmp = tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"})
+		if len(tmp) == 0:
+			tmp = soup.findAll("span",attrs={"class":"view-head-scene-abstract"})
+		else:
+			tmp = tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"})
 
 		# print len(tmp)
 		for i in tmp:
-			scene_detail['content'].append(i.next)
-		scene_detail['content'] = ''.join(scene_detail['content'])
+			self._scene_detail['content'].append(i.next)
+		self._scene_detail['content'] = ''.join(self._scene_detail['content'])
 		# for i in tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"}):
 		# 	print i.next.next
 		# 	scene_detail['content'].append(i.next.next)
 		# scene_detail['content'] = ''.join(scene_detail['content'])
-		scene_detail['open_time'] = soup.find("div",attrs={"class":"val opening_hours-value"}).next.next
-		scene_detail['play_time'] = soup.find("span",attrs={"class":"val recommend_visit_time-value"}).next
-		scene_detail['address'] = soup.find("span",attrs={"class":"val address-value"}).next
-		scene_detail['phone'] = soup.find("span",attrs={"class":"val phone-value"}).next
-		# scene_detail['best_visit_time'] = soup.find("span",attrs={"div":"val best-visit-time-value"}).next
+		open_time = soup.find("div",attrs={"class":"val opening_hours-value"})
+		self._scene_detail['open_time'] = open_time.next.next if open_time != None else ""
+		self._scene_detail['play_time'] = soup.find("span",attrs={"class":"val recommend_visit_time-value"}).next
+		address = soup.find("span",attrs={"class":"val address-value"})
+		self._scene_detail['address'] = address.next if address != None else ""
+		phone = soup.find("span",attrs={"class":"val phone-value"})
+		self._scene_detail['phone'] = phone.next if phone != None else ""
+		best_visit_time = soup.find("div",attrs={"class":"val best-visit-time-value"})
+		self._scene_detail['best_visit_time'] =  best_visit_time.next.next if best_visit_time != None else ""
+		self._scene_detail['children_scenes'] = []
+		self._get_children_scenes(surl)
+		for i in self._scene_detail.keys():
+			print self._scene_detail[i]
+		print self._scene_detail
+		return self._scene_detail
+	#获取景点子景点
+	def _get_children_scenes(self,surl):
+		children_url = "http://lvyou.baidu.com/destination/ajax/jingdian?format=ajax&surl=#{1}&pn=#{2}"
+		page_index = 1
+		while True:
+			time.sleep(ProxyUtil.getRandomDelayTime())
+			url = children_url.replace('#{1}', surl).replace('#{2}', str(page_index))
+			data = self._get_data(url)
+			if not self._get_name(data): break
+			page_index += 1
+	#获取子景点数据
+	def _get_data(self, url):
+		headers = {
+			#动态更改userAgent
+			'User-Agent': ProxyUtil.getRandomUserAgent()
+		}
+		times = 0
+		while times < 10:
+			try:
+				response = requests.get(url, headers=headers)
+				response.encoding = 'gbk'
+				return response.text
+			except Exception, e:
+				print traceback.format_exc()
+				times += 1
+	#获取子景点名称
+	def _get_name(self, data):
+		if data is "": 
+			print "Data is Empty!"
+			return False
+		data = self._to_dict(data)
+		if data is None: 
+			print "Data is None"
+			return False
+		try:
+			scene_list = data['data']['scene_list']
+		except Exception, e:
+			print traceback.format_exc()
+			return False
+		if len(scene_list) <= 0: 
+			return False
 
-		for i in scene_detail.keys():
-			print scene_detail[i]
-		print scene_detail
-		return scene_detail
-
-
+		for scene in scene_list:
+			
+			self._scene_detail['children_scenes'].append(scene['sname'].encode('utf-8','ignore'))
+		return True
+	#str转json
+	def _to_dict(self,string):
+		try:
+			return json.loads(string.encode('utf-8','ignore'))
+		except Exception, e:
+			print traceback.format_exc()
+			return None
 
 	def run(self):
 		self._get_scene_list_from_mongo()
 		ScenesCollection = MongoUtil.db.scenes
+		SceneDetailsCollection = MongoUtil.db.scenedetails
 		for scene in self._scenes:
 			print scene['surl']
-			scene_detail = self._get_scene_detail(scene['surl'])
-			ScenesCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': scene_detail})
+			sele._scene_detail = {}
+			self._get_scene_detail(scene['surl'])
+			SceneDetailsCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': dict(scene, **self._scene_detail)})
+		# scene = self._scenes[0]
+		# print scene['surl']
+		# self._scene_detail = {}
+		# self._get_scene_detail(scene['surl'])
+		# SceneDetailsCollection.insert(dict(scene, **self._scene_detail))
 
 
 def populate():
@@ -83,6 +154,7 @@ def populate():
 	sal_spider.run()
 def test():
 	sal_spider = SceneAllDetailSpider()
-	sal_spider._get_scene_detail("gulangyu")
+	sal_spider._get_scene_detail("qinhuangdao")
 
-test()
+populate()
+# test()
