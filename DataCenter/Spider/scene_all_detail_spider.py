@@ -66,7 +66,8 @@ class SceneAllDetailSpider:
 		# scene_detail['content'] = ''.join(scene_detail['content'])
 		open_time = soup.find("div",attrs={"class":"val opening_hours-value"})
 		self._scene_detail['open_time'] = open_time.next.next if open_time != None else ""
-		self._scene_detail['play_time'] = soup.find("span",attrs={"class":"val recommend_visit_time-value"}).next
+		play_time = soup.find("span",attrs={"class":"val recommend_visit_time-value"})
+		self._scene_detail['play_time'] = play_time.next if play_time !=None else ""
 		address = soup.find("span",attrs={"class":"val address-value"})
 		self._scene_detail['address'] = address.next if address != None else ""
 		phone = soup.find("span",attrs={"class":"val phone-value"})
@@ -139,7 +140,7 @@ class SceneAllDetailSpider:
 		SceneDetailsCollection = MongoUtil.db.scenedetails
 		for scene in self._scenes:
 			print scene['surl']
-			sele._scene_detail = {}
+			self._scene_detail = {}
 			self._get_scene_detail(scene['surl'])
 			SceneDetailsCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': dict(scene, **self._scene_detail)})
 		# scene = self._scenes[0]
