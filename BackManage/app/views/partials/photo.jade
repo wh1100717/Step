@@ -5,17 +5,15 @@ block content
         #show
             #bimg
         #list
-            .mimg
-                img.miniphoto(src="/images/back.jpg")
-            .mimg
-                img.miniphoto(src="/images/back2.jpg")
-            .mimg
-                img.miniphoto(src="/images/bg.jpg")
+            
             
     script
         :coffee
             $(document).ready( ()->
-                
+                photos = ["/images/back.jpg","/images/back2.jpg","/images/bg.jpg"]
+                for n in [0..photos.length-1]
+                    $("#list").append("<div class='mimg'><img id='p"+n+"'class='miniphoto'></div>")
+                    $("#p"+n).attr "src", photos[n]
                 $(".mimg").click( ()->
                     url= $(this).find("img").attr("src")
                     ul= "url("+url+")"

@@ -400,7 +400,7 @@ moveback = ->
 		$("#second").css "display" , "none"
 		console.log()
 	,1000
-
+	
 	console.log()
 
 
