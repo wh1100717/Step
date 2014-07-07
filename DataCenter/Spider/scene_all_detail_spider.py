@@ -45,16 +45,18 @@ class SceneAllDetailSpider:
 		url = self._scenes_url_template.replace('#{surl}',surl)
 		data = self._get_detail(url)
 		soup = BeautifulSoup(data)
-		self._scene_detail['parent_scene'] = soup.findAll("a",attrs={"property":"v:title"})
-		self._scene_detail['parent_scene'] = self._scene_detail['parent_scene'][len(self._scene_detail['parent_scene'])-2].next
-		self._scene_detail['has_gone'] = soup.findAll("span",attrs={"class":"view-head-gray-font"})
-		self._scene_detail['has_gone'] = self._scene_detail['has_gone'][1].next[1:-1]
+		parent_scene = soup.findAll("a",attrs={"property":"v:title"})
+		self._scene_detail['parent_scene'] = parent_scene[len(parent_scene)-2].next
+		has_gone = soup.findAll("span",attrs={"class":"view-head-gray-font"})
+		self._scene_detail['has_gone'] = has_gone[1].next[1:-1]
 		self._scene_detail['content'] = []
 		tmp = soup.findAll("div",attrs={"class":"J-sketch-more-info subview-basicinfo-alert-more"})
 		if len(tmp) == 0:
 			tmp = soup.findAll("span",attrs={"class":"view-head-scene-abstract"})
-		else:
-			tmp = tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"})
+		if len(tmp) == 0:
+			tmp = soup.findAll("div",attrs={"id":"J_scene-desc-all"})
+		
+		tmp = tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"})
 
 		# print len(tmp)
 		for i in tmp:
@@ -142,7 +144,8 @@ class SceneAllDetailSpider:
 			print scene['surl']
 			self._scene_detail = {}
 			self._get_scene_detail(scene['surl'])
-			SceneDetailsCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': dict(scene, **self._scene_detail)})
+			print dict(scene, **self._scene_detail)
+			SceneDetailsCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': dict(scene, **self._scene_detail)},upsert=True)
 		# scene = self._scenes[0]
 		# print scene['surl']
 		# self._scene_detail = {}
@@ -155,7 +158,7 @@ def populate():
 	sal_spider.run()
 def test():
 	sal_spider = SceneAllDetailSpider()
-	sal_spider._get_scene_detail("qinhuangdao")
+	sal_spider._get_scene_detail("shuangyashan")
 
 populate()
 # test()
