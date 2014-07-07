@@ -231,12 +231,23 @@ nav p {
   position: absolute;
   top: 0;
   width: 100%;
+  padding: 0 15px;
+}
+
+.map-head-content {
+  float: left;
+  margin-right: 15px;
 }
 
 .map-foot {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.map-foot-content {
+  float: right;
+  margin-right: 15px;
 }
 
 /* 按钮 */
