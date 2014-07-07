@@ -73,6 +73,7 @@ body {
   }
 }
 
+/* 第一屏 */
 #first {
   position: absolute;
   left: 0;
@@ -80,16 +81,6 @@ body {
   height: 100%;
   background: url("/images/bg.jpg") no-repeat #f4f4f4;
   background-size: cover;
-  animation: 1s ease forwards;
-  -webkit-animation: 1s ease forwards;
-}
-
-#second {
-  position: absolute;
-  left: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, .5);
-  display: none;
   animation: 1s ease forwards;
   -webkit-animation: 1s ease forwards;
 }
@@ -108,9 +99,6 @@ body {
   top: -51px;
   width: 100%;
   color: #fff;
-  background: url("/images/bg1.jpg") no-repeat center;
-  background-color: #9B59B6;
-  background-size: auto 100%;
   border-radius: 6px 6px 0 0;
   z-index: 1000;
 }
@@ -253,7 +241,7 @@ nav p {
   margin-right: 15px;
 }
 
-/* 按钮 */
+/* 按钮 
 .btn {
   border: none;
   font-size: 15px;
@@ -283,7 +271,7 @@ nav p {
 
 .btn-block {
   white-space: normal;
-}
+}*/
 
 /*
 #row2 {
@@ -499,5 +487,48 @@ margin: -10px;
   
 }
 
+/* 第二屏 */
+#second {
+  position: absolute;
+  left: 100%;
+  width: 100%;
+  display: none;
+  animation: 1s ease forwards;
+  -webkit-animation: 1s ease forwards;
+}
 
+.model-head {
+  width: 100%;
+  background-image: linear-gradient(-45deg, rgba(39, 174, 96, .8), rgba(22, 160, 133, .8));
+  font-size: 30px;
+  color: #fff;
+}
+.model-head p {
+  margin: 0 15px;
+}
+.close {
+  font-size: 30px;
+  line-height: 42px;
+  margin: 0 15px;
+}
+.add {
+  border-radius: 50%;
+}
+.tag {
+  margin: 5px 0; 
+}
+#garbage {
+  height: 60px;
+  padding: 5px 10px;
+  font-size: 22px;
+  line-height: 50px;
+  text-align: center;
+  border: 1px dotted #ccc;
+  border-radius: 3px;
+}
+.model-foot {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  text-align: right;
+}
 

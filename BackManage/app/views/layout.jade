@@ -12,8 +12,9 @@ html
 		//endbower
 		//endbuild
 		//build:css({.tmp,app}) styles/main.css
-		link(rel="stylesheet" href="styles/main.css")
+		
 		link(rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/css/bootstrap-slider.css")
+		link(rel="stylesheet" href="styles/main.css")
 		//endbuild
 		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
 	body
@@ -59,6 +60,6 @@ html
 							$(".main-nav > li[name='#{nav_url}']").addClass('active')
 				block content
 		#second
-			include partials/test
+			include partials/demo
 		
 
