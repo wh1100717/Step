@@ -9,18 +9,16 @@ block content
             
     script
         :coffee
-            $(document).ready( ()->
+            $ ->
                 photos = ["/images/back.jpg","/images/back2.jpg","/images/bg.jpg"]
-                for n in [0..photos.length-1]
-                    $("#list").append("<div class='mimg'><img id='p"+n+"'class='miniphoto'></div>")
+                for n in [0...photos.length]
+                    $("#list").append("<div class='mimg'><img id='p#{n}'class='miniphoto'></div>")
                     $("#p"+n).attr "src", photos[n]
-                $(".mimg").click( ()->
+                $(".mimg").click ->
                     url= $(this).find("img").attr("src")
                     ul= "url("+url+")"
                     $("#bimg").css "opacity" ,1
                     $("#bimg").css "background" ,ul
                     $("#bimg").css "background-size" ,"cover"
                     console.log(url)
-                );    
-            );
 
