@@ -19,21 +19,21 @@ block content
 	
 	#sidetool.row.demo-row.map-foot
 		.map-foot-content
-			button.btn.btn-primary.btn-block(type="button" onclick="mark();")
-				span.glyphicon.glyphicon-map-marker
-				//span drawmarker
-		.map-foot-content
-			button.btn.btn-primary.btn-block(type="button" onclick="back();")
-				span.glyphicon.glyphicon-arrow-left
-				//span back
+			button.btn.btn-primary.btn-block(type="button" onclick="commit();")
+				span.glyphicon.glyphicon-ok
+				span commit
 		.map-foot-content
 			button.btn.btn-primary.btn-block(type="button" onclick="clearmap();")
 				span.glyphicon.glyphicon-fire
-				//span clear
+				span clear
 		.map-foot-content
-			button.btn.btn-primary.btn-block(type="button" onclick="commit();")
-				span.glyphicon.glyphicon-ok
-				//span commit
+			button.btn.btn-primary.btn-block(type="button" onclick="back();")
+				span.glyphicon.glyphicon-arrow-left
+				span back
+		.map-foot-content
+			button.btn.btn-primary.btn-block(type="button" onclick="mark();")
+				span.glyphicon.glyphicon-map-marker
+				span drawmarker
 	//
 		#row2.row
 			nav#footnv.navbar.navbar-inverse.navbar-static-bottom(role="navigation")
