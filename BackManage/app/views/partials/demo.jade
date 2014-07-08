@@ -108,12 +108,12 @@
 			.col-sm-3.text-center
 				button.btn.btn-success.btn-sm.add(type="button" onclick="addTag();") +
 			.col-sm-12.tag
-				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true") 国家一级景点
-				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true") 旅游
-				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true") 标签
-				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true") 测试
-				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true") 长短不一
-				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true") 可已删除标签
+				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true" style="margin-right: 5px;") 国家一级景点
+				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true" style="margin-right: 5px;") 旅游
+				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true" style="margin-right: 5px;") 标签
+				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true" style="margin-right: 5px;") 测试
+				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true" style="margin-right: 5px;") 长短不一
+				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true" style="margin-right: 5px;") 可已删除标签
 			#garbage.col-sm-12
 				span 拖 拽 删 除
 		.col-sm-4
@@ -124,16 +124,16 @@
 				textarea.form-control(rows="5")
 			form.form-horizontal(role="form")
 				.form-group.form-group-sm(style="padding-left: 15px;")
-					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传音频")
+					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传音频" style="height: 34px;")
 					.col-sm-8(style="padding-left: 0;")
 						input.form-control(type="text" name="textfield" id="audiofield")
-					input(type="file" name="field" onchange="document.getElementById('audiofield').value=this.value" style="top: -30px;width: 100%;height: 30px;opacity: 0;")
+					input(type="file" name="field" onchange="document.getElementById('audiofield').value=this.value" style="top: -34px;width: 100%;height: 34px;opacity: 0;")
 				.form-group.form-group-sm(style="padding-left: 15px;")
-					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传图片")
+					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传图片" style="height: 34px;")
 					.col-sm-8(style="padding-left: 0;")
 						input.form-control(type="text" name="textfield" id="imgfield")
-					input(type="file" name="field" onchange="document.getElementById('imgfield').value=this.value" style="top: -30px;width: 100%;height: 30px;opacity: 0;")
+					input(type="file" name="field" onchange="document.getElementById('imgfield').value=this.value" style="top: -34px;width: 100%;height: 34px;opacity: 0;")
 .model-foot
-	button.btn.btn-default.btn-sm(type="button" onclick="moveback();") Close
+	button.btn.btn-default.btn-sm(type="button" onclick="moveback();" style="margin-right: 15px;") Close
 	button.btn.btn-success.btn-sm(type="button" onclick="save();") Save
 script(src="../../scripts/tag.js")

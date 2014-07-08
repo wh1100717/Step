@@ -47,5 +47,7 @@ function addTag() {
 	c.title = "拖拽我";
 	c.draggable = "true";
 	c.innerHTML = document.getElementById("addTag").value;
+	c.style.marginRight = "5px";
 	p.appendChild(c);
+	var tags = document.getElementsByClassName("tags");
 }
