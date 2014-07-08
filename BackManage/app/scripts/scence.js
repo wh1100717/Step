@@ -365,8 +365,7 @@ markbiao = function(e) {
  */
 
 mark = function() {
-  scene_map.addEventListener("onclick", markbiao);
-  return console.log();
+  return scene_map.addEventListener("onclick", markbiao);
 };
 
 
@@ -388,8 +387,7 @@ back = function() {
     drawline = new BMap.Polyline(markpoints);
   }
   scene_map.addOverlay(drawline);
-  scene_map.addOverlay(markers[0]);
-  return console.log();
+  return scene_map.addOverlay(markers[0]);
 };
 
 
@@ -480,8 +478,7 @@ move = function() {
   $("#second").css("webkitAnimationName", "moveright");
   $("#first").css("animationName", "moveleft");
   $("#first").css("webkitAnimationName", "moveleft");
-  $("#second").css("display", "block");
-  return console.log();
+  return $("#second").css("display", "block");
 };
 
 
@@ -494,9 +491,8 @@ moveback = function() {
   $("#first").css("webkitAnimationName", "backleft");
   $("#second").css("animationName", "backright");
   $("#second").css("webkitAnimationName", "backright");
-  setTimeout(function() {
+  return setTimeout(function() {
     $("#second").css("display", "none");
     return console.log();
   }, 1000);
-  return console.log();
 };

@@ -214,22 +214,22 @@ save = ->
 			category: category
 			alias: alias
 			location: {
-			longitude: longitude
-			latitude: latitude
-			altitude: altitude
-			radius: radius
-			geo: geo
-			type: type
-			addr: addr
-			 }
+				longitude: longitude
+				latitude: latitude
+				altitude: altitude
+				radius: radius
+				geo: geo
+				type: type
+				addr: addr
+			}
 			ext: {
-			description: description
-			images: []
-			audio: "/audio/a.amr"
-			open_time: open_time
-			acreage: acreage
-			ticket_price: ticket_price
-			phone: phone
+				description: description
+				images: []
+				audio: "/audio/a.amr"
+				open_time: open_time
+				acreage: acreage
+				ticket_price: ticket_price
+				phone: phone
 			}
 		}
 		success: (result)->
@@ -290,7 +290,7 @@ markbiao = (e)->
 ###
 mark = ->
 	scene_map.addEventListener("onclick",markbiao)
-	console.log()
+	
 
 ###
  * 返回上一步
@@ -307,7 +307,7 @@ back = ->
 		drawline= new BMap.Polyline(markpoints)
 	scene_map.addOverlay(drawline)
 	scene_map.addOverlay(markers[0])
-	console.log()
+	
 
 ###
  * 清空
@@ -359,22 +359,22 @@ commit = ->
 			category: category
 			alias: alias
 			location: {
-			longitude: longitude
-			latitude: latitude
-			altitude: altitude
-			radius: radius
-			geo: geo
-			type: type
-			addr: addr
-			 }
+				longitude: longitude
+				latitude: latitude
+				altitude: altitude
+				radius: radius
+				geo: geo
+				type: type
+				addr: addr
+			}
 			ext: {
-			description: description
-			images: []
-			audio: "/audio/a.amr"
-			open_time: open_time
-			acreage: acreage
-			ticket_price: ticket_price
-			phone: phone
+				description: description
+				images: []
+				audio: "/audio/a.amr"
+				open_time: open_time
+				acreage: acreage
+				ticket_price: ticket_price
+				phone: phone
 			}
 		}
 	}
@@ -387,7 +387,7 @@ move = ->
 	$("#first").css "animationName" , "moveleft"
 	$("#first").css "webkitAnimationName" , "moveleft"
 	$("#second").css "display" , "block"
-	console.log()
+	
 ###
  * 回退页面过渡
 ###
@@ -396,11 +396,11 @@ moveback = ->
 	$("#first").css "webkitAnimationName" , "backleft"
 	$("#second").css "animationName" , "backright"
 	$("#second").css "webkitAnimationName" , "backright"
-	setTimeout ()->
+	setTimeout ->
 		$("#second").css "display" , "none"
 		console.log()
 	,1000
 	
-	console.log()
+	
 
 
