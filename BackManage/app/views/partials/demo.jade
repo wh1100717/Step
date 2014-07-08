@@ -124,15 +124,15 @@
 				textarea.form-control(rows="5")
 			form.form-horizontal(role="form")
 				.form-group.form-group-sm(style="padding-left: 15px;")
-					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传音频" style="height: 34px;")
+					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传音频")
 					.col-sm-8(style="padding-left: 0;")
-						input.form-control(type="text" name="textfield" id="audiofield")
-					input(type="file" name="field" onchange="document.getElementById('audiofield').value=this.value" style="top: -34px;width: 100%;height: 34px;opacity: 0;")
+						input.form-control(type="text" name="textfield" id="audiofield" style="height: 30px;")
+					input(type="file" name="field" onchange="document.getElementById('audiofield').value=this.value" style="top: -30px;width: 100%;height: 30px;opacity: 0;")
 				.form-group.form-group-sm(style="padding-left: 15px;")
-					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传图片" style="height: 34px;")
+					input.col-sm-4.btn.btn-primary.btn-sm(type="button" value="上传图片")
 					.col-sm-8(style="padding-left: 0;")
-						input.form-control(type="text" name="textfield" id="imgfield")
-					input(type="file" name="field" onchange="document.getElementById('imgfield').value=this.value" style="top: -34px;width: 100%;height: 34px;opacity: 0;")
+						input.form-control(type="text" name="textfield" id="imgfield" style="height: 30px;")
+					input(type="file" name="field" onchange="document.getElementById('imgfield').value=this.value" style="top: -30px;width: 100%;height: 30px;opacity: 0;")
 .model-foot
 	button.btn.btn-default.btn-sm(type="button" onclick="moveback();" style="margin-right: 15px;") Close
 	button.btn.btn-success.btn-sm(type="button" onclick="save();") Save

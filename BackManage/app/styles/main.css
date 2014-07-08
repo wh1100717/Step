@@ -386,7 +386,7 @@ nav p {
   font-size: 15px;
   line-height: 1.467;
   padding: 8px 12px;
-  height: 42px;
+  height: 34px;
   -webkit-appearance: none;
   border-radius: 6px;
   -webkit-box-shadow: none;
@@ -472,18 +472,18 @@ button span {
   height: 6em;
   border-radius: 8px;
   box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.6);
-  background-color: black;
-  -webkit-transition: margin 12s; 
-}
-.mimg :hover{
-margin: -10px;
+  background-color: black; 
 }
 .miniphoto {
-
   border-radius: 8px;
   width: 100%;
   height: 100%;
-
+  -webkit-transform: translateX(0px) translateY(0px);
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease; 
+}
+.mimg:hover .miniphoto{
+  -webkit-transform: translateX(-10px) translateY(-10px);
   
 }
 

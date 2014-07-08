@@ -4,34 +4,34 @@ block content
 	#allmap
 	.row.demo-row.map-head
 		.map-head-content
-			input#prov_city.typeahead(type="text" placeholder="输入省或者市" )
+			input#prov_city.form-control.input-sm(type="text" placeholder="输入省或者市" )
 		.map-head-content
 			input#scenes.typeahead(type="text" placeholder="输入景点名")
 		.map-head-content
-			button#sub.btn.btn-primary.btn-block(type="button" onclick="search();")
+			button#sub.btn.btn-primary.btn-sm(type="button" onclick="search();")
 				span.glyphicon.glyphicon-search
 			//include ./scene_model
 		div(style="float: right;")
 				//button#change.btn.btn-primary.btn-block(data-toggle="modal" data-target="#myMal" onclick="get_scene();")
-				button#change.btn.btn-primary.btn-block(onclick="move();")
+				button#change.btn.btn-primary.btn-sm(onclick="move();")
 					span.glyphicon.glyphicon-wrench
 					span change
 	
 	#sidetool.row.demo-row.map-foot
 		.map-foot-content
-			button.btn.btn-primary.btn-block(type="button" onclick="commit();")
+			button.btn.btn-primary.btn-sm(type="button" onclick="commit();")
 				span.glyphicon.glyphicon-ok
 				span commit
 		.map-foot-content
-			button.btn.btn-primary.btn-block(type="button" onclick="clearmap();")
+			button.btn.btn-primary.btn-sm(type="button" onclick="clearmap();")
 				span.glyphicon.glyphicon-fire
 				span clear
 		.map-foot-content
-			button.btn.btn-primary.btn-block(type="button" onclick="back();")
+			button.btn.btn-primary.btn-sm(type="button" onclick="back();")
 				span.glyphicon.glyphicon-arrow-left
 				span back
 		.map-foot-content
-			button.btn.btn-primary.btn-block(type="button" onclick="mark();")
+			button.btn.btn-primary.btn-sm(type="button" onclick="mark();")
 				span.glyphicon.glyphicon-map-marker
 				span drawmarker
 	//
