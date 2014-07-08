@@ -78,6 +78,7 @@ class SceneAllDetailSpider:
 		self._scene_detail['best_visit_time'] =  best_visit_time.next.next if best_visit_time != None else ""
 		self._scene_detail['children_scenes'] = []
 		self._get_children_scenes(surl)
+		self._scene_detail['remark_num'] = soup.find("a",attrs={"href":"#scene-remark-anchor"}).find("span").next[1:-1]
 		for i in self._scene_detail.keys():
 			print self._scene_detail[i]
 		print self._scene_detail
@@ -135,6 +136,9 @@ class SceneAllDetailSpider:
 		except Exception, e:
 			print traceback.format_exc()
 			return None
+
+	# def _get_remark(self,surl,):
+	# 	url = "http://lvyou.baidu.com/search/ajax/search?format=ajax&word=%E9%BC%93%E6%B5%AA%E5%B1%BF&father_place=%E5%8E%A6%E9%97%A8"
 
 	def run(self):
 		self._get_scene_list_from_mongo()

@@ -1,0 +1,26 @@
+{
+  "name": "zq",
+  "version": "0.0.1",
+  "authors": [
+    "zq920320 <530030134@qq.com>"
+  ],
+  "description": "test",
+  "main": "src",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "test"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
