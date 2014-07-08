@@ -12,5 +12,7 @@
 //#import "MSDynamicsDrawerStyler.h"
 
 #import "AFNetworking.h"
-#import "DRDynamicSlideShow.h"
+
 #import "NSDate+Utilities.h"
+
+#import "TTUIScrollViewSlidingPages.h"

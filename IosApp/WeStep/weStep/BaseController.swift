@@ -8,20 +8,46 @@
 
 import Foundation
 
-class BaseController: UIViewController {
+class BaseController: UIViewController, TTSlidingPagesDataSource, TTSliddingPageDelegate {
 
     var frameRect: CGRect?
+    var slider: TTScrollSlidingPagesController?
     
     override func viewDidLoad(){
         super.viewDidLoad()
         frameRect = CGRect(x: 0,y: 0,width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-        self.view.backgroundColor = UIColor.blackColor()
-        let slideShow = DRDynamicSlideShow(frame: frameRect!)
-        slideShow.addSubview(viewGenerator(NSDate.date()), onPage: 0)
-        slideShow.addSubview(viewGenerator(NSDate.dateYesterday()), onPage: 1)
-        slideShow.addSubview(viewGenerator(NSDate.dateTomorrow()), onPage: 2)
-        self.view.addSubview(slideShow)
-        self.view.bringSubviewToFront(slideShow)
+        self.slider = TTScrollSlidingPagesController()
+        self.slider!.titleScrollerInActiveTextColour = UIColor.grayColor()
+        self.slider!.titleScrollerBottomEdgeColour = UIColor.darkGrayColor()
+        self.slider!.titleScrollerBottomEdgeHeight = 2
+        
+        if String.bridgeToObjectiveC(UIDevice.currentDevice().systemVersion)().floatValue >= 7 {
+            self.slider!.hideStatusBarWhenScrolling = true
+        }
+    }
+    
+    func numberOfPagesForSlidingPagesViewController(source: TTScrollSlidingPagesController?) -> CInt {
+        return 7
+    }
+    
+    func pageForSlidingPagesViewController(source: TTScrollSlidingPagesController?, atIndex index: CInt) -> TTSlidingPage {
+        var viewController: UIViewController
+        //这里根据不同的日期生成不同的ViewController
+        //暂时简单写一下
+        if (index % 2 == 0) {
+            viewController = UIViewController()
+        } else {
+            viewController = UIViewController()
+        }
+        return TTSlidingPage(contentViewController: viewController)
+    }
+
+    func titleForSlidingPagesViewController(source: TTScrollSlidingPagesController, atIndex index: CInt) -> TTSlidingPageTitle {
+        return TTSlidingPageTitle(headerText: "Title\(index)")
+    }
+    
+    func didScrollToViewAtIndex(index: Int){
+        println("scrolled to view\(index)")
     }
 
     func viewGenerator(date: NSDate) -> UIView {

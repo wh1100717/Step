@@ -8,7 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		07B294DD1965320200D4D195 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B294DC1965320200D4D195 /* BaseController.swift */; };
-		07B294E11965367400D4D195 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B294E01965367400D4D195 /* NSDate+Utilities.m */; };
+		07D4B793196BFB7E00450DB0 /* diagmonds.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D4B783196BFB7E00450DB0 /* diagmonds.png */; };
+		07D4B794196BFB7E00450DB0 /* diagmonds_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D4B784196BFB7E00450DB0 /* diagmonds_@2X.png */; };
+		07D4B795196BFB7E00450DB0 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07D4B785196BFB7E00450DB0 /* readme.txt */; };
+		07D4B796196BFB7E00450DB0 /* TTBlackTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B787196BFB7E00450DB0 /* TTBlackTriangle.m */; };
+		07D4B797196BFB7E00450DB0 /* TTScrollSlidingPagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B789196BFB7E00450DB0 /* TTScrollSlidingPagesController.m */; };
+		07D4B798196BFB7E00450DB0 /* TTScrollViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B78B196BFB7E00450DB0 /* TTScrollViewWrapper.m */; };
+		07D4B799196BFB7E00450DB0 /* TTSlidingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B78E196BFB7E00450DB0 /* TTSlidingPage.m */; };
+		07D4B79A196BFB7E00450DB0 /* TTSlidingPageTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B791196BFB7E00450DB0 /* TTSlidingPageTitle.m */; };
+		07D4B79E196BFB9900450DB0 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B79D196BFB9900450DB0 /* NSDate+Utilities.m */; };
+		07D4B7A0196C473700450DB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D4B79F196C473700450DB0 /* UIKit.framework */; };
+		07D4B7A2196C474800450DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D4B7A1196C474800450DB0 /* Foundation.framework */; };
+		07D4B7A4196C475100450DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D4B7A3196C475100450DB0 /* CoreGraphics.framework */; };
 		3FBD42F81952D2520079731D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD42F71952D2520079731D /* AppDelegate.swift */; };
 		3FBD42FA1952D2520079731D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FBD42F91952D2520079731D /* Images.xcassets */; };
 		3FBD43061952D2520079731D /* WeStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD43051952D2520079731D /* WeStepTests.swift */; };
@@ -27,8 +38,27 @@
 
 /* Begin PBXFileReference section */
 		07B294DC1965320200D4D195 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseController.swift; path = weStep/BaseController.swift; sourceTree = SOURCE_ROOT; };
-		07B294DF1965367400D4D195 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
-		07B294E01965367400D4D195 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
+		07D4B783196BFB7E00450DB0 /* diagmonds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diagmonds.png; sourceTree = "<group>"; };
+		07D4B784196BFB7E00450DB0 /* diagmonds_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "diagmonds_@2X.png"; sourceTree = "<group>"; };
+		07D4B785196BFB7E00450DB0 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		07D4B786196BFB7E00450DB0 /* TTBlackTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBlackTriangle.h; sourceTree = "<group>"; };
+		07D4B787196BFB7E00450DB0 /* TTBlackTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBlackTriangle.m; sourceTree = "<group>"; };
+		07D4B788196BFB7E00450DB0 /* TTScrollSlidingPagesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTScrollSlidingPagesController.h; sourceTree = "<group>"; };
+		07D4B789196BFB7E00450DB0 /* TTScrollSlidingPagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTScrollSlidingPagesController.m; sourceTree = "<group>"; };
+		07D4B78A196BFB7E00450DB0 /* TTScrollViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTScrollViewWrapper.h; sourceTree = "<group>"; };
+		07D4B78B196BFB7E00450DB0 /* TTScrollViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTScrollViewWrapper.m; sourceTree = "<group>"; };
+		07D4B78C196BFB7E00450DB0 /* TTSliddingPageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSliddingPageDelegate.h; sourceTree = "<group>"; };
+		07D4B78D196BFB7E00450DB0 /* TTSlidingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPage.h; sourceTree = "<group>"; };
+		07D4B78E196BFB7E00450DB0 /* TTSlidingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSlidingPage.m; sourceTree = "<group>"; };
+		07D4B78F196BFB7E00450DB0 /* TTSlidingPagesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPagesDataSource.h; sourceTree = "<group>"; };
+		07D4B790196BFB7E00450DB0 /* TTSlidingPageTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPageTitle.h; sourceTree = "<group>"; };
+		07D4B791196BFB7E00450DB0 /* TTSlidingPageTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSlidingPageTitle.m; sourceTree = "<group>"; };
+		07D4B792196BFB7E00450DB0 /* TTUIScrollViewSlidingPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTUIScrollViewSlidingPages.h; sourceTree = "<group>"; };
+		07D4B79C196BFB9900450DB0 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
+		07D4B79D196BFB9900450DB0 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
+		07D4B79F196C473700450DB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		07D4B7A1196C474800450DB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		07D4B7A3196C475100450DB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3FBD42F21952D2520079731D /* WeStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FBD42F61952D2520079731D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FBD42F71952D2520079731D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D4B7A4196C475100450DB0 /* CoreGraphics.framework in Frameworks */,
+				07D4B7A2196C474800450DB0 /* Foundation.framework in Frameworks */,
+				07D4B7A0196C473700450DB0 /* UIKit.framework in Frameworks */,
 				6503292A83FC43A3A74A0BA8 /* libPods-WeStep.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,21 +101,61 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		07B294DE1965367400D4D195 /* NSDate-Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				07B294DF1965367400D4D195 /* NSDate+Utilities.h */,
-				07B294E01965367400D4D195 /* NSDate+Utilities.m */,
-			);
-			path = "NSDate-Extensions";
-			sourceTree = "<group>";
-		};
 		07B294E21965367900D4D195 /* ThirdLibs */ = {
 			isa = PBXGroup;
 			children = (
-				07B294DE1965367400D4D195 /* NSDate-Extensions */,
+				07D4B79B196BFB9900450DB0 /* NSDate-Extensions */,
+				07D4B780196BFB7E00450DB0 /* UIScrollSlidingPages */,
 			);
 			name = ThirdLibs;
+			sourceTree = "<group>";
+		};
+		07D4B780196BFB7E00450DB0 /* UIScrollSlidingPages */ = {
+			isa = PBXGroup;
+			children = (
+				07D4B781196BFB7E00450DB0 /* Images */,
+				07D4B786196BFB7E00450DB0 /* TTBlackTriangle.h */,
+				07D4B787196BFB7E00450DB0 /* TTBlackTriangle.m */,
+				07D4B788196BFB7E00450DB0 /* TTScrollSlidingPagesController.h */,
+				07D4B789196BFB7E00450DB0 /* TTScrollSlidingPagesController.m */,
+				07D4B78A196BFB7E00450DB0 /* TTScrollViewWrapper.h */,
+				07D4B78B196BFB7E00450DB0 /* TTScrollViewWrapper.m */,
+				07D4B78C196BFB7E00450DB0 /* TTSliddingPageDelegate.h */,
+				07D4B78D196BFB7E00450DB0 /* TTSlidingPage.h */,
+				07D4B78E196BFB7E00450DB0 /* TTSlidingPage.m */,
+				07D4B78F196BFB7E00450DB0 /* TTSlidingPagesDataSource.h */,
+				07D4B790196BFB7E00450DB0 /* TTSlidingPageTitle.h */,
+				07D4B791196BFB7E00450DB0 /* TTSlidingPageTitle.m */,
+				07D4B792196BFB7E00450DB0 /* TTUIScrollViewSlidingPages.h */,
+			);
+			path = UIScrollSlidingPages;
+			sourceTree = "<group>";
+		};
+		07D4B781196BFB7E00450DB0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				07D4B782196BFB7E00450DB0 /* diagmonds */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		07D4B782196BFB7E00450DB0 /* diagmonds */ = {
+			isa = PBXGroup;
+			children = (
+				07D4B783196BFB7E00450DB0 /* diagmonds.png */,
+				07D4B784196BFB7E00450DB0 /* diagmonds_@2X.png */,
+				07D4B785196BFB7E00450DB0 /* readme.txt */,
+			);
+			path = diagmonds;
+			sourceTree = "<group>";
+		};
+		07D4B79B196BFB9900450DB0 /* NSDate-Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				07D4B79C196BFB9900450DB0 /* NSDate+Utilities.h */,
+				07D4B79D196BFB9900450DB0 /* NSDate+Utilities.m */,
+			);
+			path = "NSDate-Extensions";
 			sourceTree = "<group>";
 		};
 		3FBD42E91952D2520079731D = {
@@ -146,6 +219,9 @@
 		91B1615DA6B6465F8BC5C41F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07D4B7A3196C475100450DB0 /* CoreGraphics.framework */,
+				07D4B7A1196C474800450DB0 /* Foundation.framework */,
+				07D4B79F196C473700450DB0 /* UIKit.framework */,
 				CC699D122B20410D8E721B33 /* libPods-WeStep.a */,
 			);
 			name = Frameworks;
@@ -232,6 +308,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D4B794196BFB7E00450DB0 /* diagmonds_@2X.png in Resources */,
+				07D4B793196BFB7E00450DB0 /* diagmonds.png in Resources */,
+				07D4B795196BFB7E00450DB0 /* readme.txt in Resources */,
 				3FBD42FA1952D2520079731D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,9 +362,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D4B79A196BFB7E00450DB0 /* TTSlidingPageTitle.m in Sources */,
 				07B294DD1965320200D4D195 /* BaseController.swift in Sources */,
-				07B294E11965367400D4D195 /* NSDate+Utilities.m in Sources */,
+				07D4B798196BFB7E00450DB0 /* TTScrollViewWrapper.m in Sources */,
+				07D4B79E196BFB9900450DB0 /* NSDate+Utilities.m in Sources */,
+				07D4B797196BFB7E00450DB0 /* TTScrollSlidingPagesController.m in Sources */,
 				3FBD42F81952D2520079731D /* AppDelegate.swift in Sources */,
+				07D4B796196BFB7E00450DB0 /* TTBlackTriangle.m in Sources */,
+				07D4B799196BFB7E00450DB0 /* TTSlidingPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +478,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeStep/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeStep/WeStep-Bridging-Header.h";
@@ -411,7 +495,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeStep/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeStep/WeStep-Bridging-Header.h";
