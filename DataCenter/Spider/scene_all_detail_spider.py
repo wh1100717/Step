@@ -50,22 +50,17 @@ class SceneAllDetailSpider:
 		has_gone = soup.findAll("span",attrs={"class":"view-head-gray-font"})
 		self._scene_detail['has_gone'] = has_gone[1].next[1:-1]
 		self._scene_detail['content'] = []
-		tmp = soup.findAll("div",attrs={"class":"J-sketch-more-info subview-basicinfo-alert-more"})
-		if len(tmp) == 0:
-			tmp = soup.findAll("span",attrs={"class":"view-head-scene-abstract"})
-		if len(tmp) == 0:
-			tmp = soup.findAll("div",attrs={"id":"J_scene-desc-all"})
-		
-		tmp = tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"})
-
-		# print len(tmp)
-		for i in tmp:
+		content = soup.findAll("div",attrs={"class":"J-sketch-more-info subview-basicinfo-alert-more"})
+		if len(content) !=0:
+			content = content[0].findAll("p",attrs={"class":"text-p text-desc-p"})
+		if len(content) == 0:
+			content = soup.findAll("span",attrs={"class":"view-head-scene-abstract"})
+		if len(content) == 0:
+			content = soup.findAll("div",attrs={"id":"J_scene-desc-all"})
+			content = content[0].findAll("p",attrs={"class":"text-p text-desc-p"})
+		for i in content:
 			self._scene_detail['content'].append(i.next)
 		self._scene_detail['content'] = ''.join(self._scene_detail['content'])
-		# for i in tmp[0].findAll("p",attrs={"class":"text-p text-desc-p"}):
-		# 	print i.next.next
-		# 	scene_detail['content'].append(i.next.next)
-		# scene_detail['content'] = ''.join(scene_detail['content'])
 		open_time = soup.find("div",attrs={"class":"val opening_hours-value"})
 		self._scene_detail['open_time'] = open_time.next.next if open_time != None else ""
 		play_time = soup.find("span",attrs={"class":"val recommend_visit_time-value"})
@@ -137,8 +132,6 @@ class SceneAllDetailSpider:
 			print traceback.format_exc()
 			return None
 
-	# def _get_remark(self,surl,):
-	# 	url = "http://lvyou.baidu.com/search/ajax/search?format=ajax&word=%E9%BC%93%E6%B5%AA%E5%B1%BF&father_place=%E5%8E%A6%E9%97%A8"
 
 	def run(self):
 		self._get_scene_list_from_mongo()
@@ -150,11 +143,6 @@ class SceneAllDetailSpider:
 			self._get_scene_detail(scene['surl'])
 			print dict(scene, **self._scene_detail)
 			SceneDetailsCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': dict(scene, **self._scene_detail)},upsert=True)
-		# scene = self._scenes[0]
-		# print scene['surl']
-		# self._scene_detail = {}
-		# self._get_scene_detail(scene['surl'])
-		# SceneDetailsCollection.insert(dict(scene, **self._scene_detail))
 
 
 def populate():
@@ -162,7 +150,7 @@ def populate():
 	sal_spider.run()
 def test():
 	sal_spider = SceneAllDetailSpider()
-	sal_spider._get_scene_detail("shuangyashan")
+	sal_spider._get_scene_detail("zhangjiakou")
 
 populate()
 # test()
