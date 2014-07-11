@@ -13,3 +13,9 @@ IosApp
 *	上传游记数据
 
 [原型介绍](https://app.yinxiang.com/shard/s27/sh/598ec13b-4c90-437e-87ec-f771166bb829/7472bc4394c1de953da4f0ce3baacd98)
+
+---
+
+weStep 是对应的项目源码。
+
+weStepSample 放置一些试验的demo代码。
