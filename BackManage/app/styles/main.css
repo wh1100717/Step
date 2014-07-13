@@ -361,17 +361,18 @@ nav p {
   }
 }
 
+/* 下拉框 */
 .typeahead,
 .tt-query,
 .tt-hint {
   height: 30px;
   padding: 8px 12px;
-  font-size: 20px;
+  font-size: 12px;
   line-height: 30px;
-  border: 2px solid #ccc;
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
   outline: none;
 }
 
@@ -380,14 +381,14 @@ nav p {
 }
 
 .typeahead {
-  border: 2px solid #bdc3c7;
+  border: 1px solid #bdc3c7;
   font-family: "Lato", Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.467;
-  padding: 8px 12px;
-  height: 34px;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  height: 30px;
   -webkit-appearance: none;
-  border-radius: 6px;
+  border-radius: 3px;
   -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
@@ -396,7 +397,7 @@ nav p {
 .tt-suggestion {
   padding: 3px 20px;
   font-size: 18px;
-  line-height: 24px;
+  line-height: 1em;
 }
 .tt-suggestion.tt-cursor {
   color: #fff;
@@ -405,26 +406,24 @@ nav p {
 }
 
 .tt-dropdown-menu {
-  width: 180px;
+  width: 100%;
   margin-top: 12px;
   padding: 8px 0;
   color: #050505;
-  background-color: rgba(255,255,255,.8);
+  background-color: rgba(255,255,255,1);
   border: 1px solid #fcc;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 8px;
-     -moz-border-radius: 8px;
-          border-radius: 8px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
   -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
      -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
           box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
-
 button span {
   margin: 0 5px;
 }
-
 
 #ex1Slider .slider-selection {
   background: #BABABA;
@@ -492,6 +491,7 @@ button span {
   position: absolute;
   left: 100%;
   width: 100%;
+  background: #fff;
   display: none;
   animation: 1s ease forwards;
   -webkit-animation: 1s ease forwards;
