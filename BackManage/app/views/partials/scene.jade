@@ -4,7 +4,7 @@ block content
 	#allmap
 	.row.demo-row.map-head
 		.map-head-content
-			input#prov_city.form-control.input-sm(type="text" placeholder="输入省或者市" )
+			input#prov_city.form-control.input-sm.typeahead(type="text" placeholder="输入省或者市" )
 		.map-head-content
 			input#scenes.typeahead(type="text" placeholder="输入景点名")
 		.map-head-content
@@ -12,10 +12,10 @@ block content
 				span.glyphicon.glyphicon-search
 			//include ./scene_model
 		div(style="float: right;")
-				//button#change.btn.btn-primary.btn-block(data-toggle="modal" data-target="#myMal" onclick="get_scene();")
-				button#change.btn.btn-primary.btn-sm(onclick="move();")
-					span.glyphicon.glyphicon-wrench
-					span change
+			//button#change.btn.btn-primary.btn-block(data-toggle="modal" data-target="#myMal" onclick="get_scene();")
+			button#change.btn.btn-primary.btn-sm(onclick="move();")
+				span.glyphicon.glyphicon-wrench
+				span change
 	
 	#sidetool.row.demo-row.map-foot
 		.map-foot-content
