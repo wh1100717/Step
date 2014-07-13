@@ -12,10 +12,6 @@ $ ->
 	scene_map.enableScrollWheelZoom()
 	#prov_city typeahead初始化
 	city_init()
-	$("#bg").addClass("bg")
-	$("#first").show()
-	$("#loading").hide()
-
 
 ###
  * 在Array原型中定义包含方法，如果该数组包含item则返回true

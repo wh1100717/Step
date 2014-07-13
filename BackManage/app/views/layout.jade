@@ -47,15 +47,20 @@ html
 								li(name="nav_help"): a(href="#") Help
 								li(name="nav_ab"): a(href="#") About
 								li(name="nav_photo"): a(href="/photo") photo
-				script
-					:coffee
-						nav_url = document.URL.split('/')[3]
-						console.log(document.URL)
-						nav_url = "home" if nav_url is ""
-						nav_url = "nav_#{nav_url}"
-						$(".main-nav > li[name='#{nav_url}']").addClass('active')
 			block content
 		#second
 			include partials/demo
+		script
+			:coffee
+				$ ->
+					nav_url = document.URL.split('/')[3]
+					console.log(document.URL)
+					nav_url = "home" if nav_url is ""
+					nav_url = "nav_#{nav_url}"
+					$(".main-nav > li[name='#{nav_url}']").addClass('active')
+					$("#bg").addClass("bg")
+					$("#first").show()
+					$("#loading").hide()
+
 		
 
