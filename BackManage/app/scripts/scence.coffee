@@ -12,6 +12,9 @@ $ ->
 	scene_map.enableScrollWheelZoom()
 	#prov_city typeahead初始化
 	city_init()
+	$("#bg").addClass("bg")
+	$("#first").show()
+	$("#loading").hide()
 
 
 ###

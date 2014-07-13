@@ -11,7 +11,10 @@ $(function() {
   root.markers = new Array();
   scene_map.centerAndZoom(new BMap.Point(116.404, 39.915), 5);
   scene_map.enableScrollWheelZoom();
-  return city_init();
+  city_init();
+  $("#bg").addClass("bg");
+  $("#first").show();
+  return $("#loading").hide();
 });
 
 
