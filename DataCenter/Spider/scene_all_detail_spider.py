@@ -74,6 +74,12 @@ class SceneAllDetailSpider:
 		self._scene_detail['children_scenes'] = []
 		self._get_children_scenes(surl)
 		self._scene_detail['remark_num'] = soup.find("a",attrs={"href":"#scene-remark-anchor"}).find("span").next[1:-1]
+		self._scene_detail['user'] = ''
+		self._scene_detail['category'] = ''
+		self._scene_detail['type'] = ''
+		self._scene_detail['acreage'] = ''
+		self._scene_detail['name_en'] = ''
+		self._scene_detail['update'] = time.strftime( '%Y-%m-%d %X', time.localtime(time.time()))
 		for i in self._scene_detail.keys():
 			print self._scene_detail[i]
 		print self._scene_detail
