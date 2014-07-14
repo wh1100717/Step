@@ -202,3 +202,18 @@ a = soup.findAll("span",attrs={"div":"val best-visit-time-value"})
     "open_time": ""
 }
 ```
+
+##需要添加
+```
+prevince：省
+update：更新时间
+user：管理员          //我感觉可有可无
+category：分类
+type：出/入口
+acreage：面积
+name_en：英文名
+location：
+    altitude：海拔
+    radius：面积
+    geo               //当为圆形时，使用radius，不规则图形使用geo
+```
