@@ -46,7 +46,7 @@ window.onload = function() {
 };
 
 addTag = function() {
-  var c, p, tagV, tags;
+  var c, p, tagV;
   p = document.getElementsByClassName("tag");
   c = document.createElement("span");
   tagV = document.getElementById("addTag");
@@ -55,6 +55,5 @@ addTag = function() {
   c.draggable = "true";
   c.innerHTML = tagV.value;
   c.style.marginRight = "5px";
-  p[0].appendChild(c);
-  return tags = document.getElementsByClassName("tags");
+  return p[0].appendChild(c);
 };

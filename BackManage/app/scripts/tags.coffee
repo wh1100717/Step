@@ -40,4 +40,3 @@ addTag = ->
 	c.innerHTML = tagV.value
 	c.style.marginRight = "5px"
 	p[0].appendChild c
-	tags = document.getElementsByClassName "tags"
