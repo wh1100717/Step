@@ -1,4 +1,4 @@
-window.onload = ->
+tagDel = ->
 	garbag = document.getElementById "garbag"
 	tags = document.getElementsByClassName "tags"
 	tag = null
@@ -30,6 +30,8 @@ window.onload = ->
 		ev.preventDefault()
 		false
 
+tagDel()
+
 addTag = ->
 	p = document.getElementsByClassName "tag"
 	c = document.createElement "span"
@@ -40,3 +42,4 @@ addTag = ->
 	c.innerHTML = tagV.value
 	c.style.marginRight = "5px"
 	p[0].appendChild c
+	tagDel()
