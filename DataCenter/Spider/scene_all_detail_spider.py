@@ -148,6 +148,12 @@ class SceneAllDetailSpider:
 			self._scene_detail = {}
 			self._get_scene_detail(scene['surl'])
 			print dict(scene, **self._scene_detail)
+			if 'location' in scene.keys():
+				scene['location']['altitude'] = ''
+				scene['location']['radius'] = ''
+				scene['location']['geo'] = ''
+			else:
+				scene['location'] = {'altitude':'','radius':'','geo':''}
 			SceneDetailsCollection.update({'name': scene['name'],'city_cn': scene['city_cn']}, {'$set': dict(scene, **self._scene_detail)},upsert=True)
 
 
