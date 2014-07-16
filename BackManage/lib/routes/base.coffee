@@ -28,6 +28,8 @@ module.exports = (app) ->
 
 	app.route('/my')
 		.get base.my
+	app.route('/login')
+		.get base.login
 
 
 	app.route('/')

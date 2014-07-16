@@ -22,6 +22,7 @@ module.exports = function(app) {
   app.route('/scene').get(base.scene);
   app.route('/photo').get(base.photo);
   app.route('/my').get(base.my);
+  app.route('/login').get(base.login);
   app.route('/').get(base.index);
   return app.route('/*').get(base.notFound);
 };

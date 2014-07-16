@@ -125,6 +125,10 @@ exports.my = function(req, res) {
   return res.render('partials/my');
 };
 
+exports.login = function(req, res) {
+  return res.render('partials/login');
+};
+
 exports.notFound = function(req, res) {
   return res.render('404');
 };

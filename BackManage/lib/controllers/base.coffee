@@ -90,6 +90,8 @@ exports.photo = (req, res) -> res.render 'partials/photo'
 
 exports.my = (req, res) -> res.render 'partials/my'
 
+exports.login = (req, res) -> res.render 'partials/login'
+
 exports.notFound = (req, res) -> res.render '404'
 
 

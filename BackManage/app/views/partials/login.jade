@@ -1,0 +1,112 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		link(rel='stylesheet', href='../bower_components/bootstrap/dist/css/bootstrap.css')
+		link(rel='stylesheet' href='styles/login.css')
+		script(src='../bower_components/jquery/dist/jquery.js')
+		script(src='../bower_components/bootstrap/dist/js/bootstrap.js')
+	body
+		.login-back
+			.login-content: .container
+				.login-box
+					.login
+						.logo
+						hr.helf-rule
+						from.form-horizontal(role="form")
+							.form-group.form-group-sm
+								label.col-xs-2.control-label
+									span.glyphicon.glyphicon-user
+								.col-xs-10
+									input.form-control(type="text")
+							.form-group.form-group-sm
+								label.col-xs-2.control-label
+									span.glyphicon.glyphicon-lock
+								.col-xs-10
+									input.form-control(type="text")
+							.checkbox
+								label
+									input(type="checkbox" id="checkboxWarning" value="option1")
+									| 记住我
+						hr.helf-rule
+						button#toReg.btn.btn-success.btn-sm(type="button" onclick="toReg();" style="float: left") 注册
+						button.btn.btn-primary.btn-sm(style="float: right") 登录
+					.reg
+						.logo
+						hr.helf-rule
+						from.form-horizontal(role="form")
+							.form-group.form-group-sm
+								label.col-xs-2.control-label
+									span.glyphicon.glyphicon-user
+								.col-xs-10
+									input.form-control(type="text")
+							.form-group.form-group-sm
+								label.col-xs-2.control-label
+									span.glyphicon.glyphicon-envelope
+								.col-xs-10
+									input.form-control(type="text")
+							.form-group.form-group-sm
+								label.col-xs-2.control-label
+									span.glyphicon.glyphicon-lock
+								.col-xs-10
+									input.form-control(type="text")
+							.form-group.form-group-sm
+								label.col-xs-2.control-label
+									span.glyphicon.glyphicon-lock
+								.col-xs-10
+									input.form-control(type="text")
+						hr.helf-rule
+						button#toLogin.btn.btn-primary.btn-sm(type="button" onclick="toLogin();" style="float: left") 登录
+						button.btn.btn-success.btn-sm(style="float: right") 注册
+				h1 携程在手，说走就走
+		script.
+			var login = document.getElementsByClassName("login")[0];
+			var reg = document.getElementsByClassName("reg")[0];
+			var toReg = function() {
+				login.style.animationName = "hide";
+				login.style.webkitAnimationName = "hide";
+				reg.style.animationName = "show";
+				reg.style.webkitAnimationName = "show";
+			}
+			var toLogin = function() {
+				reg.style.animationName = "hide";
+				reg.style.webkitAnimationName = "hide";
+				login.style.animationName = "show";
+				login.style.webkitAnimationName = "show";
+			}
+			/*
+			var login = $(".login")[0];
+			alert(login);
+			var reg = $(".reg")[0];
+			var toReg = function() {
+				login.css({
+					"animation-name":"hide",
+					"-webkit-animation-name":"hide"
+					});
+				reg.css({
+					"animation-name":"show",
+					"-webkit-animation-name":"show"
+					});
+			}
+			var toLogin = function() {
+				reg.css({"animation-name":"hide", "-webkit-animation-name":"hide"});
+				login.css({"animation-name":"show", "-webkit-animation-name":"show"});
+			}
+			*/
+			/*
+			:coffee
+				logins = $ ".login"
+				login = logins[0]
+				regs = $ ".reg"
+				reg = regs[0]
+				toReg = ->
+					login.css "animationName","hide"
+					login.css "webkitAnimationName","hide"
+					reg.css "animationName","show"
+					reg.css "webkitAnimationName","show"
+				toLogin = ->
+					reg.css "animationName","hide"
+					reg.css "webkitAnimationName","hide"
+					login.css "animationName","show"
+					login.css "webkitAnimationName","show"
+			*/
