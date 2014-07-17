@@ -60,24 +60,23 @@ html
 						button.btn.btn-success.btn-sm(style="float: right") 注册
 				h1 携程在手，说走就走
 		script.
-			var login = document.getElementsByClassName("login")[0];
-			var reg = document.getElementsByClassName("reg")[0];
-			var toReg = function() {
-				login.style.animationName = "hide";
-				login.style.webkitAnimationName = "hide";
-				reg.style.animationName = "show";
-				reg.style.webkitAnimationName = "show";
-			}
-			var toLogin = function() {
-				reg.style.animationName = "hide";
-				reg.style.webkitAnimationName = "hide";
-				login.style.animationName = "show";
-				login.style.webkitAnimationName = "show";
-			}
-			/*
-			var login = $(".login")[0];
+			//- var login = document.getElementsByClassName("login")[0];
+			//- var reg = document.getElementsByClassName("reg")[0];
+			//- var toReg = function() {
+			//- 	login.style.animationName = "hide";
+			//- 	login.style.webkitAnimationName = "hide";
+			//- 	reg.style.animationName = "show";
+			//- 	reg.style.webkitAnimationName = "show";
+			//- }
+			//- var toLogin = function() {
+			//- 	reg.style.animationName = "hide";
+			//- 	reg.style.webkitAnimationName = "hide";
+			//- 	login.style.animationName = "show";
+			//- 	login.style.webkitAnimationName = "show";
+			//- }
+			var login = $(".login");
 			alert(login);
-			var reg = $(".reg")[0];
+			var reg = $(".reg");
 			var toReg = function() {
 				login.css({
 					"animation-name":"hide",
@@ -92,7 +91,6 @@ html
 				reg.css({"animation-name":"hide", "-webkit-animation-name":"hide"});
 				login.css({"animation-name":"show", "-webkit-animation-name":"show"});
 			}
-			*/
 			/*
 			:coffee
 				logins = $ ".login"
