@@ -4,6 +4,7 @@ mongoose = require('mongoose')
 cityUtil = require('../util/cityUtil')
 City = mongoose.model('City')
 Scene = mongoose.model('Scene')
+Scenedetail = mongoose.model('Scenedetail')
 
 cities = {}
 cities.scenes = {
@@ -19,7 +20,7 @@ cities.scenes = {
 		city = req.params.city
 		scene_name = req.params.scenes
 		console.log "City: #{city} | SceneName: #{scene_name}"
-		Scene.find {name:scene_name}, (err, scene) ->
+		Scenedetail.find {name:scene_name,city_cn:city}, (err, scene) ->
 			return next(err) if err
 			return res.send(404) if not scene
 

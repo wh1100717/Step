@@ -162,7 +162,7 @@ def populate():
 	sal_spider.run()
 def test():
 	sal_spider = SceneAllDetailSpider()
-	sal_spider._get_scene_detail("zhangjiakou")
+	sal_spider._get_scene_detail("tiananmen")
 
 populate()
 # test()
