@@ -75,21 +75,14 @@ html
 			//- 	login.style.webkitAnimationName = "show";
 			//- }
 			var login = $(".login");
-			alert(login);
 			var reg = $(".reg");
-			var toReg = function() {
-				login.css({
-					"animation-name":"hide",
-					"-webkit-animation-name":"hide"
-					});
-				reg.css({
-					"animation-name":"show",
-					"-webkit-animation-name":"show"
-					});
+			var toReg = function() {//点击按钮执行，为元素添加动画属性
+				login.css({"animation-name":"hide","-webkit-animation-name":"hide"});
+				reg.css({"animation-name":"show","-webkit-animation-name":"show"});
 			}
 			var toLogin = function() {
-				reg.css({"animation-name":"hide", "-webkit-animation-name":"hide"});
-				login.css({"animation-name":"show", "-webkit-animation-name":"show"});
+				reg.css({"animation-name":"hide","-webkit-animation-name":"hide"});
+				login.css({"animation-name":"show","-webkit-animation-name":"show"});
 			}
 			/*
 			:coffee

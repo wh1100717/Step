@@ -27,18 +27,18 @@ $ ->
             tag.parentNode.removeChild tag 
             ev.preventDefault()
 addTag = ->
-        p = $ ".tag"
-        c = document.createElement "span"
-        c.className = "btn btn-info btn-xs tags"
-        c.title = "拖拽我"
-        c.draggable = "true"
-        c.innerHTML = (document.getElementById "addTag").value
-        c.style.marginRight = "5px"
-        p[0].appendChild c
-        c.ondragstart = (ev) ->
-            ev.dataTransfer.setData "text" , ev.target.innerHTML
-            tag = ev.target
-        c.ondragend = (ev) ->
-            tag = null
+    p = $ ".tag"
+    c = document.createElement "span"
+    c.className = "btn btn-info btn-xs tags"
+    c.title = "拖拽我"
+    c.draggable = "true"
+    c.innerHTML = (document.getElementById "addTag").value
+    c.style.marginRight = "5px"
+    p[0].appendChild c
+    c.ondragstart = (ev) ->
+        ev.dataTransfer.setData "text" , ev.target.innerHTML
+        tag = ev.target
+    c.ondragend = (ev) ->
+        tag = null
     console.log()
 

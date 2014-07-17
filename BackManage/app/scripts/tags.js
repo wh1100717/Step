@@ -54,9 +54,8 @@ addTag = function() {
     ev.dataTransfer.setData("text", ev.target.innerHTML);
     return tag = ev.target;
   };
-  return c.ondragend = function(ev) {
+  c.ondragend = function(ev) {
     return tag = null;
   };
+  return console.log();
 };
-
-console.log();
