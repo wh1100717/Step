@@ -515,6 +515,7 @@ button span {
   position: absolute;
   left: 100%;
   width: 100%;
+  min-height: 100%;
   background: #fff;
   display: none;
   animation: 1s ease forwards;

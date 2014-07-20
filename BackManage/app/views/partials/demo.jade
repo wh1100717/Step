@@ -6,62 +6,22 @@
 .model-body.container-fluid
 	.row
 		h1.text-center base message
-		.col-sm-4
+		.col-sm-3
 			from.form-horizontal(role="form")
 				.form-group.form-group-sm
 					label.col-sm-4.control-label name:
 					.col-sm-8
 						input.form-control(type="text")
 				.form-group.form-group-sm
-					label.col-sm-4.control-label update:
-					.col-sm-8
-						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label type:
-					.col-sm-8
-						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label addr:
-					.col-sm-8
-						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label ename:
-					.col-sm-8
-						input.form-control(type="text")
-		.col-sm-4
-			from.form-horizontal(role="form")
-				.form-group.form-group-sm
 					label.col-sm-4.control-label city:
 					.col-sm-8
 						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label user:
-					.col-sm-8
-						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label time:
-					.col-sm-8
-						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label tprice:
-					.col-sm-8
-						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label status:
-					.col-sm-8
-						input.form-control(type="text")
-		.col-sm-4
-			from.form-horizontal(role="form")
 				.form-group.form-group-sm
 					label.col-sm-4.control-label province:
 					.col-sm-8
 						input.form-control(type="text")
 				.form-group.form-group-sm
-					label.col-sm-4.control-label category:
-					.col-sm-8
-						input.form-control(type="text")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label acreage:
+					label.col-sm-4.control-label surl:
 					.col-sm-8
 						input.form-control(type="text")
 				.form-group.form-group-sm
@@ -69,39 +29,103 @@
 					.col-sm-8
 						input.form-control(type="text")
 				.form-group.form-group-sm
-					label.col-sm-4.control-label objtid:
+					label.col-sm-4.control-label addr:
+					.col-sm-8
+						input.form-control(type="text")
+		.col-sm-3
+			from.form-horizontal(role="form")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label id:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label type:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label category:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label update:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label user:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label status:
+					.col-sm-8
+						input.form-control(type="text")
+		.col-sm-3
+			from.form-horizontal(role="form")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label name-en:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label time:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label best-time:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label tprice:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label has-gone:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label play-time:
+					.col-sm-8
+						input.form-control(type="text")
+		.col-sm-3
+			from.form-horizontal(role="form")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label acreage:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label p-scene:
+					.col-sm-8
+						input.form-control(type="text")
+				.form-group.form-group-sm
+					label.col-sm-4.control-label c-scene:
 					.col-sm-8
 						input.form-control(type="text")
 	hr.half-rule
 	.row
-		h1.text-center location
-		.col-sm-3
-			form.form-horizontal(role="form")
+		.col-sm-6
+			h1.text-center location
+			.col-sm-6
+				form.form-horizontal(role="form")
+					.form-group.form-group-sm
+						label.col-sm-4.control-label longtitude:
+						.col-sm-8
+							input.form-control(type="text")
+					.form-group.form-group-sm
+						label.col-sm-4.control-label latitude:
+						.col-sm-8
+							input.form-control(type="text")
+					.form-group.form-group-sm
+						label.col-sm-4.control-label altitude:
+						.col-sm-8
+							input.form-control(type="text")
+			.col-sm-6
+				form.form-horizontal(role="form")
+					.form-group.form-group-sm
+						label.col-sm-4.control-label radius:
+						.col-sm-8
+							input.form-control(type="text")
+				h5.text-center(style="font-weight: bold;") geo
 				.form-group.form-group-sm
-					label.col-sm-4.control-label longtitude:
-					.col-sm-8
-						input.form-control(type="text")
+					textarea.form-control(rows="2")
 		.col-sm-3
-			form.form-horizontal(role="form")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label latitude:
-					.col-sm-8
-						input.form-control(type="text")
-		.col-sm-3
-			form.form-horizontal(role="form")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label altitude:
-					.col-sm-8
-						input.form-control(type="text")
-		.col-sm-3
-			form.form-horizontal(role="form")
-				.form-group.form-group-sm
-					label.col-sm-4.control-label radius:
-					.col-sm-8
-						input.form-control(type="text")
-	hr.half-rule
-	.row
-		.col-sm-4
 			h1.text-center alias
 			.col-sm-9
 				input.form-control.input-sm(type="test" id="addTag")
@@ -116,9 +140,7 @@
 				span.btn.btn-info.btn-xs.tags(title="拖拽我" draggable="true" style="margin-right: 5px;") 可已删除标签
 			#garbage.col-sm-12
 				span 拖 拽 删 除
-		.col-sm-4
-			h1.text-center geo
-		.col-sm-4
+		.col-sm-3
 			h1.text-center description
 			.form-group.form-group-sm
 				textarea.form-control(rows="5")
