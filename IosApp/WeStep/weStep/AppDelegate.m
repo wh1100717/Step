@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "FBTweakShakeWindow.h"
+
 @interface AppDelegate ()
 
 @end
