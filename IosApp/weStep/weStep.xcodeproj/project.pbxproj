@@ -7,83 +7,99 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07B294DD1965320200D4D195 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B294DC1965320200D4D195 /* BaseController.swift */; };
-		07D4B793196BFB7E00450DB0 /* diagmonds.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D4B783196BFB7E00450DB0 /* diagmonds.png */; };
-		07D4B794196BFB7E00450DB0 /* diagmonds_@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D4B784196BFB7E00450DB0 /* diagmonds_@2X.png */; };
-		07D4B795196BFB7E00450DB0 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07D4B785196BFB7E00450DB0 /* readme.txt */; };
-		07D4B796196BFB7E00450DB0 /* TTBlackTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B787196BFB7E00450DB0 /* TTBlackTriangle.m */; };
-		07D4B797196BFB7E00450DB0 /* TTScrollSlidingPagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B789196BFB7E00450DB0 /* TTScrollSlidingPagesController.m */; };
-		07D4B798196BFB7E00450DB0 /* TTScrollViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B78B196BFB7E00450DB0 /* TTScrollViewWrapper.m */; };
-		07D4B799196BFB7E00450DB0 /* TTSlidingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B78E196BFB7E00450DB0 /* TTSlidingPage.m */; };
-		07D4B79A196BFB7E00450DB0 /* TTSlidingPageTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B791196BFB7E00450DB0 /* TTSlidingPageTitle.m */; };
-		07D4B79E196BFB9900450DB0 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B79D196BFB9900450DB0 /* NSDate+Utilities.m */; };
-		07D4B7A0196C473700450DB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D4B79F196C473700450DB0 /* UIKit.framework */; };
-		07D4B7A2196C474800450DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D4B7A1196C474800450DB0 /* Foundation.framework */; };
-		07D4B7A4196C475100450DB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D4B7A3196C475100450DB0 /* CoreGraphics.framework */; };
-		3FBD42F81952D2520079731D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD42F71952D2520079731D /* AppDelegate.swift */; };
-		3FBD42FA1952D2520079731D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FBD42F91952D2520079731D /* Images.xcassets */; };
-		3FBD43061952D2520079731D /* WeStepTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD43051952D2520079731D /* WeStepTests.swift */; };
-		6503292A83FC43A3A74A0BA8 /* libPods-WeStep.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC699D122B20410D8E721B33 /* libPods-WeStep.a */; };
+		3FBCEC851A2F64A200091BF3 /* FBShimmeringLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC681A2F64A200091BF3 /* FBShimmeringLayer.m */; };
+		3FBCEC861A2F64A200091BF3 /* FBShimmeringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC6A1A2F64A200091BF3 /* FBShimmeringView.m */; };
+		3FBCEC871A2F64A200091BF3 /* _FBTweakBindObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC6D1A2F64A200091BF3 /* _FBTweakBindObserver.m */; };
+		3FBCEC881A2F64A200091BF3 /* _FBTweakCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC6F1A2F64A200091BF3 /* _FBTweakCategoryViewController.m */; };
+		3FBCEC891A2F64A200091BF3 /* _FBTweakCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC711A2F64A200091BF3 /* _FBTweakCollectionViewController.m */; };
+		3FBCEC8A1A2F64A200091BF3 /* _FBTweakTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC731A2F64A200091BF3 /* _FBTweakTableViewCell.m */; };
+		3FBCEC8B1A2F64A200091BF3 /* FBTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC761A2F64A200091BF3 /* FBTweak.m */; };
+		3FBCEC8C1A2F64A200091BF3 /* FBTweakCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC781A2F64A200091BF3 /* FBTweakCategory.m */; };
+		3FBCEC8D1A2F64A200091BF3 /* FBTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC7A1A2F64A200091BF3 /* FBTweakCollection.m */; };
+		3FBCEC8E1A2F64A200091BF3 /* FBTweakInline.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC7D1A2F64A200091BF3 /* FBTweakInline.m */; };
+		3FBCEC8F1A2F64A200091BF3 /* FBTweakShakeWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC801A2F64A200091BF3 /* FBTweakShakeWindow.m */; };
+		3FBCEC901A2F64A200091BF3 /* FBTweakStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC821A2F64A200091BF3 /* FBTweakStore.m */; };
+		3FBCEC911A2F64A200091BF3 /* FBTweakViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBCEC841A2F64A200091BF3 /* FBTweakViewController.m */; };
+		3FCBEF771A2F6190002C830B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCBEF761A2F6190002C830B /* main.m */; };
+		3FCBEF7A1A2F6190002C830B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCBEF791A2F6190002C830B /* AppDelegate.m */; };
+		3FCBEF7D1A2F6190002C830B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCBEF7C1A2F6190002C830B /* ViewController.m */; };
+		3FCBEF801A2F6190002C830B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FCBEF7E1A2F6190002C830B /* Main.storyboard */; };
+		3FCBEF821A2F6190002C830B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FCBEF811A2F6190002C830B /* Images.xcassets */; };
+		3FCBEF851A2F6190002C830B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FCBEF831A2F6190002C830B /* LaunchScreen.xib */; };
+		3FCBEF911A2F6191002C830B /* WeStepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FCBEF901A2F6191002C830B /* WeStepTests.m */; };
+		95E69B3212097EB87E38E870 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5517804A7A3485C427CF606A /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3FBD43001952D2520079731D /* PBXContainerItemProxy */ = {
+		3FCBEF8B1A2F6191002C830B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3FBD42EA1952D2520079731D /* Project object */;
+			containerPortal = 3FCBEF691A2F6190002C830B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3FBD42F11952D2520079731D;
+			remoteGlobalIDString = 3FCBEF701A2F6190002C830B;
 			remoteInfo = WeStep;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07B294DC1965320200D4D195 /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseController.swift; path = weStep/BaseController.swift; sourceTree = SOURCE_ROOT; };
-		07D4B783196BFB7E00450DB0 /* diagmonds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diagmonds.png; sourceTree = "<group>"; };
-		07D4B784196BFB7E00450DB0 /* diagmonds_@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "diagmonds_@2X.png"; sourceTree = "<group>"; };
-		07D4B785196BFB7E00450DB0 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		07D4B786196BFB7E00450DB0 /* TTBlackTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBlackTriangle.h; sourceTree = "<group>"; };
-		07D4B787196BFB7E00450DB0 /* TTBlackTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBlackTriangle.m; sourceTree = "<group>"; };
-		07D4B788196BFB7E00450DB0 /* TTScrollSlidingPagesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTScrollSlidingPagesController.h; sourceTree = "<group>"; };
-		07D4B789196BFB7E00450DB0 /* TTScrollSlidingPagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTScrollSlidingPagesController.m; sourceTree = "<group>"; };
-		07D4B78A196BFB7E00450DB0 /* TTScrollViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTScrollViewWrapper.h; sourceTree = "<group>"; };
-		07D4B78B196BFB7E00450DB0 /* TTScrollViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTScrollViewWrapper.m; sourceTree = "<group>"; };
-		07D4B78C196BFB7E00450DB0 /* TTSliddingPageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSliddingPageDelegate.h; sourceTree = "<group>"; };
-		07D4B78D196BFB7E00450DB0 /* TTSlidingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPage.h; sourceTree = "<group>"; };
-		07D4B78E196BFB7E00450DB0 /* TTSlidingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSlidingPage.m; sourceTree = "<group>"; };
-		07D4B78F196BFB7E00450DB0 /* TTSlidingPagesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPagesDataSource.h; sourceTree = "<group>"; };
-		07D4B790196BFB7E00450DB0 /* TTSlidingPageTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPageTitle.h; sourceTree = "<group>"; };
-		07D4B791196BFB7E00450DB0 /* TTSlidingPageTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSlidingPageTitle.m; sourceTree = "<group>"; };
-		07D4B792196BFB7E00450DB0 /* TTUIScrollViewSlidingPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTUIScrollViewSlidingPages.h; sourceTree = "<group>"; };
-		07D4B79C196BFB9900450DB0 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
-		07D4B79D196BFB9900450DB0 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
-		07D4B79F196C473700450DB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		07D4B7A1196C474800450DB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		07D4B7A3196C475100450DB0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3FBD42F21952D2520079731D /* WeStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FBD42F61952D2520079731D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FBD42F71952D2520079731D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3FBD42F91952D2520079731D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3FBD42FF1952D2520079731D /* WeStepTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeStepTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FBD43041952D2520079731D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3FBD43051952D2520079731D /* WeStepTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeStepTests.swift; sourceTree = "<group>"; };
-		3FBD430F1952D2660079731D /* WeStep-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeStep-Bridging-Header.h"; sourceTree = "<group>"; };
-		CC699D122B20410D8E721B33 /* libPods-WeStep.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeStep.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E74B697492A9467E90A99842 /* Pods-WeStep.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeStep.xcconfig"; path = "Pods/Pods-WeStep.xcconfig"; sourceTree = "<group>"; };
+		1CB4B1E8F3B4496952676A70 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3FBCEC651A2F64A200091BF3 /* FBShimmering-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBShimmering-Prefix.pch"; sourceTree = "<group>"; };
+		3FBCEC661A2F64A200091BF3 /* FBShimmering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmering.h; sourceTree = "<group>"; };
+		3FBCEC671A2F64A200091BF3 /* FBShimmeringLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringLayer.h; sourceTree = "<group>"; };
+		3FBCEC681A2F64A200091BF3 /* FBShimmeringLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringLayer.m; sourceTree = "<group>"; };
+		3FBCEC691A2F64A200091BF3 /* FBShimmeringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBShimmeringView.h; sourceTree = "<group>"; };
+		3FBCEC6A1A2F64A200091BF3 /* FBShimmeringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBShimmeringView.m; sourceTree = "<group>"; };
+		3FBCEC6C1A2F64A200091BF3 /* _FBTweakBindObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakBindObserver.h; sourceTree = "<group>"; };
+		3FBCEC6D1A2F64A200091BF3 /* _FBTweakBindObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakBindObserver.m; sourceTree = "<group>"; };
+		3FBCEC6E1A2F64A200091BF3 /* _FBTweakCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakCategoryViewController.h; sourceTree = "<group>"; };
+		3FBCEC6F1A2F64A200091BF3 /* _FBTweakCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakCategoryViewController.m; sourceTree = "<group>"; };
+		3FBCEC701A2F64A200091BF3 /* _FBTweakCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakCollectionViewController.h; sourceTree = "<group>"; };
+		3FBCEC711A2F64A200091BF3 /* _FBTweakCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakCollectionViewController.m; sourceTree = "<group>"; };
+		3FBCEC721A2F64A200091BF3 /* _FBTweakTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _FBTweakTableViewCell.h; sourceTree = "<group>"; };
+		3FBCEC731A2F64A200091BF3 /* _FBTweakTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _FBTweakTableViewCell.m; sourceTree = "<group>"; };
+		3FBCEC741A2F64A200091BF3 /* FBTweak-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FBTweak-Prefix.pch"; sourceTree = "<group>"; };
+		3FBCEC751A2F64A200091BF3 /* FBTweak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweak.h; sourceTree = "<group>"; };
+		3FBCEC761A2F64A200091BF3 /* FBTweak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweak.m; sourceTree = "<group>"; };
+		3FBCEC771A2F64A200091BF3 /* FBTweakCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakCategory.h; sourceTree = "<group>"; };
+		3FBCEC781A2F64A200091BF3 /* FBTweakCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakCategory.m; sourceTree = "<group>"; };
+		3FBCEC791A2F64A200091BF3 /* FBTweakCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakCollection.h; sourceTree = "<group>"; };
+		3FBCEC7A1A2F64A200091BF3 /* FBTweakCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakCollection.m; sourceTree = "<group>"; };
+		3FBCEC7B1A2F64A200091BF3 /* FBTweakEnabled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakEnabled.h; sourceTree = "<group>"; };
+		3FBCEC7C1A2F64A200091BF3 /* FBTweakInline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakInline.h; sourceTree = "<group>"; };
+		3FBCEC7D1A2F64A200091BF3 /* FBTweakInline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakInline.m; sourceTree = "<group>"; };
+		3FBCEC7E1A2F64A200091BF3 /* FBTweakInlineInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakInlineInternal.h; sourceTree = "<group>"; };
+		3FBCEC7F1A2F64A200091BF3 /* FBTweakShakeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakShakeWindow.h; sourceTree = "<group>"; };
+		3FBCEC801A2F64A200091BF3 /* FBTweakShakeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakShakeWindow.m; sourceTree = "<group>"; };
+		3FBCEC811A2F64A200091BF3 /* FBTweakStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakStore.h; sourceTree = "<group>"; };
+		3FBCEC821A2F64A200091BF3 /* FBTweakStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakStore.m; sourceTree = "<group>"; };
+		3FBCEC831A2F64A200091BF3 /* FBTweakViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBTweakViewController.h; sourceTree = "<group>"; };
+		3FBCEC841A2F64A200091BF3 /* FBTweakViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBTweakViewController.m; sourceTree = "<group>"; };
+		3FCBEF711A2F6190002C830B /* WeStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FCBEF751A2F6190002C830B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FCBEF761A2F6190002C830B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3FCBEF781A2F6190002C830B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3FCBEF791A2F6190002C830B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3FCBEF7B1A2F6190002C830B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3FCBEF7C1A2F6190002C830B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3FCBEF7F1A2F6190002C830B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3FCBEF811A2F6190002C830B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3FCBEF841A2F6190002C830B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3FCBEF8A1A2F6191002C830B /* WeStepTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeStepTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FCBEF8F1A2F6191002C830B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FCBEF901A2F6191002C830B /* WeStepTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeStepTests.m; sourceTree = "<group>"; };
+		5517804A7A3485C427CF606A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8763B5DD37911A8673421894 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3FBD42EF1952D2520079731D /* Frameworks */ = {
+		3FCBEF6E1A2F6190002C830B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D4B7A4196C475100450DB0 /* CoreGraphics.framework in Frameworks */,
-				07D4B7A2196C474800450DB0 /* Foundation.framework in Frameworks */,
-				07D4B7A0196C473700450DB0 /* UIKit.framework in Frameworks */,
-				6503292A83FC43A3A74A0BA8 /* libPods-WeStep.a in Frameworks */,
+				95E69B3212097EB87E38E870 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3FBD42FC1952D2520079731D /* Frameworks */ = {
+		3FCBEF871A2F6191002C830B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -93,152 +109,151 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07B294DB196531B500D4D195 /* Controller */ = {
+		3FBCEC631A2F64A200091BF3 /* OpenSource */ = {
 			isa = PBXGroup;
 			children = (
-				07B294DC1965320200D4D195 /* BaseController.swift */,
+				3FBCEC641A2F64A200091BF3 /* FBShimmering */,
+				3FBCEC6B1A2F64A200091BF3 /* FBTweak */,
 			);
-			name = Controller;
+			path = OpenSource;
 			sourceTree = "<group>";
 		};
-		07B294E21965367900D4D195 /* ThirdLibs */ = {
+		3FBCEC641A2F64A200091BF3 /* FBShimmering */ = {
 			isa = PBXGroup;
 			children = (
-				07D4B79B196BFB9900450DB0 /* NSDate-Extensions */,
-				07D4B780196BFB7E00450DB0 /* UIScrollSlidingPages */,
+				3FBCEC651A2F64A200091BF3 /* FBShimmering-Prefix.pch */,
+				3FBCEC661A2F64A200091BF3 /* FBShimmering.h */,
+				3FBCEC671A2F64A200091BF3 /* FBShimmeringLayer.h */,
+				3FBCEC681A2F64A200091BF3 /* FBShimmeringLayer.m */,
+				3FBCEC691A2F64A200091BF3 /* FBShimmeringView.h */,
+				3FBCEC6A1A2F64A200091BF3 /* FBShimmeringView.m */,
 			);
-			name = ThirdLibs;
+			path = FBShimmering;
 			sourceTree = "<group>";
 		};
-		07D4B780196BFB7E00450DB0 /* UIScrollSlidingPages */ = {
+		3FBCEC6B1A2F64A200091BF3 /* FBTweak */ = {
 			isa = PBXGroup;
 			children = (
-				07D4B781196BFB7E00450DB0 /* Images */,
-				07D4B786196BFB7E00450DB0 /* TTBlackTriangle.h */,
-				07D4B787196BFB7E00450DB0 /* TTBlackTriangle.m */,
-				07D4B788196BFB7E00450DB0 /* TTScrollSlidingPagesController.h */,
-				07D4B789196BFB7E00450DB0 /* TTScrollSlidingPagesController.m */,
-				07D4B78A196BFB7E00450DB0 /* TTScrollViewWrapper.h */,
-				07D4B78B196BFB7E00450DB0 /* TTScrollViewWrapper.m */,
-				07D4B78C196BFB7E00450DB0 /* TTSliddingPageDelegate.h */,
-				07D4B78D196BFB7E00450DB0 /* TTSlidingPage.h */,
-				07D4B78E196BFB7E00450DB0 /* TTSlidingPage.m */,
-				07D4B78F196BFB7E00450DB0 /* TTSlidingPagesDataSource.h */,
-				07D4B790196BFB7E00450DB0 /* TTSlidingPageTitle.h */,
-				07D4B791196BFB7E00450DB0 /* TTSlidingPageTitle.m */,
-				07D4B792196BFB7E00450DB0 /* TTUIScrollViewSlidingPages.h */,
+				3FBCEC6C1A2F64A200091BF3 /* _FBTweakBindObserver.h */,
+				3FBCEC6D1A2F64A200091BF3 /* _FBTweakBindObserver.m */,
+				3FBCEC6E1A2F64A200091BF3 /* _FBTweakCategoryViewController.h */,
+				3FBCEC6F1A2F64A200091BF3 /* _FBTweakCategoryViewController.m */,
+				3FBCEC701A2F64A200091BF3 /* _FBTweakCollectionViewController.h */,
+				3FBCEC711A2F64A200091BF3 /* _FBTweakCollectionViewController.m */,
+				3FBCEC721A2F64A200091BF3 /* _FBTweakTableViewCell.h */,
+				3FBCEC731A2F64A200091BF3 /* _FBTweakTableViewCell.m */,
+				3FBCEC741A2F64A200091BF3 /* FBTweak-Prefix.pch */,
+				3FBCEC751A2F64A200091BF3 /* FBTweak.h */,
+				3FBCEC761A2F64A200091BF3 /* FBTweak.m */,
+				3FBCEC771A2F64A200091BF3 /* FBTweakCategory.h */,
+				3FBCEC781A2F64A200091BF3 /* FBTweakCategory.m */,
+				3FBCEC791A2F64A200091BF3 /* FBTweakCollection.h */,
+				3FBCEC7A1A2F64A200091BF3 /* FBTweakCollection.m */,
+				3FBCEC7B1A2F64A200091BF3 /* FBTweakEnabled.h */,
+				3FBCEC7C1A2F64A200091BF3 /* FBTweakInline.h */,
+				3FBCEC7D1A2F64A200091BF3 /* FBTweakInline.m */,
+				3FBCEC7E1A2F64A200091BF3 /* FBTweakInlineInternal.h */,
+				3FBCEC7F1A2F64A200091BF3 /* FBTweakShakeWindow.h */,
+				3FBCEC801A2F64A200091BF3 /* FBTweakShakeWindow.m */,
+				3FBCEC811A2F64A200091BF3 /* FBTweakStore.h */,
+				3FBCEC821A2F64A200091BF3 /* FBTweakStore.m */,
+				3FBCEC831A2F64A200091BF3 /* FBTweakViewController.h */,
+				3FBCEC841A2F64A200091BF3 /* FBTweakViewController.m */,
 			);
-			path = UIScrollSlidingPages;
+			path = FBTweak;
 			sourceTree = "<group>";
 		};
-		07D4B781196BFB7E00450DB0 /* Images */ = {
+		3FCBEF681A2F6190002C830B = {
 			isa = PBXGroup;
 			children = (
-				07D4B782196BFB7E00450DB0 /* diagmonds */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		07D4B782196BFB7E00450DB0 /* diagmonds */ = {
-			isa = PBXGroup;
-			children = (
-				07D4B783196BFB7E00450DB0 /* diagmonds.png */,
-				07D4B784196BFB7E00450DB0 /* diagmonds_@2X.png */,
-				07D4B785196BFB7E00450DB0 /* readme.txt */,
-			);
-			path = diagmonds;
-			sourceTree = "<group>";
-		};
-		07D4B79B196BFB9900450DB0 /* NSDate-Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				07D4B79C196BFB9900450DB0 /* NSDate+Utilities.h */,
-				07D4B79D196BFB9900450DB0 /* NSDate+Utilities.m */,
-			);
-			path = "NSDate-Extensions";
-			sourceTree = "<group>";
-		};
-		3FBD42E91952D2520079731D = {
-			isa = PBXGroup;
-			children = (
-				3FBD42F41952D2520079731D /* WeStep */,
-				3FBD43021952D2520079731D /* WeStepTests */,
-				3FBD42F31952D2520079731D /* Products */,
-				E74B697492A9467E90A99842 /* Pods-WeStep.xcconfig */,
-				91B1615DA6B6465F8BC5C41F /* Frameworks */,
+				3FCBEF731A2F6190002C830B /* WeStep */,
+				3FCBEF8D1A2F6191002C830B /* WeStepTests */,
+				3FCBEF721A2F6190002C830B /* Products */,
+				8D8A6BCA6494653F9E5CA911 /* Pods */,
+				86239C6E2AE2ACC8DB5ADE13 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		3FBD42F31952D2520079731D /* Products */ = {
+		3FCBEF721A2F6190002C830B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3FBD42F21952D2520079731D /* WeStep.app */,
-				3FBD42FF1952D2520079731D /* WeStepTests.xctest */,
+				3FCBEF711A2F6190002C830B /* WeStep.app */,
+				3FCBEF8A1A2F6191002C830B /* WeStepTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3FBD42F41952D2520079731D /* WeStep */ = {
+		3FCBEF731A2F6190002C830B /* WeStep */ = {
 			isa = PBXGroup;
 			children = (
-				07B294DB196531B500D4D195 /* Controller */,
-				3FBD42F71952D2520079731D /* AppDelegate.swift */,
-				3FBD42F91952D2520079731D /* Images.xcassets */,
-				3FBD42F51952D2520079731D /* Supporting Files */,
-				3FBD430F1952D2660079731D /* WeStep-Bridging-Header.h */,
+				3FCBEF781A2F6190002C830B /* AppDelegate.h */,
+				3FCBEF791A2F6190002C830B /* AppDelegate.m */,
+				3FCBEF7B1A2F6190002C830B /* ViewController.h */,
+				3FCBEF7C1A2F6190002C830B /* ViewController.m */,
+				3FCBEF7E1A2F6190002C830B /* Main.storyboard */,
+				3FCBEF811A2F6190002C830B /* Images.xcassets */,
+				3FCBEF831A2F6190002C830B /* LaunchScreen.xib */,
+				3FCBEF741A2F6190002C830B /* Supporting Files */,
 			);
 			path = WeStep;
 			sourceTree = "<group>";
 		};
-		3FBD42F51952D2520079731D /* Supporting Files */ = {
+		3FCBEF741A2F6190002C830B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				07B294E21965367900D4D195 /* ThirdLibs */,
-				3FBD42F61952D2520079731D /* Info.plist */,
+				3FBCEC631A2F64A200091BF3 /* OpenSource */,
+				3FCBEF751A2F6190002C830B /* Info.plist */,
+				3FCBEF761A2F6190002C830B /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3FBD43021952D2520079731D /* WeStepTests */ = {
+		3FCBEF8D1A2F6191002C830B /* WeStepTests */ = {
 			isa = PBXGroup;
 			children = (
-				3FBD43051952D2520079731D /* WeStepTests.swift */,
-				3FBD43031952D2520079731D /* Supporting Files */,
+				3FCBEF901A2F6191002C830B /* WeStepTests.m */,
+				3FCBEF8E1A2F6191002C830B /* Supporting Files */,
 			);
 			path = WeStepTests;
 			sourceTree = "<group>";
 		};
-		3FBD43031952D2520079731D /* Supporting Files */ = {
+		3FCBEF8E1A2F6191002C830B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3FBD43041952D2520079731D /* Info.plist */,
+				3FCBEF8F1A2F6191002C830B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		91B1615DA6B6465F8BC5C41F /* Frameworks */ = {
+		86239C6E2AE2ACC8DB5ADE13 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				07D4B7A3196C475100450DB0 /* CoreGraphics.framework */,
-				07D4B7A1196C474800450DB0 /* Foundation.framework */,
-				07D4B79F196C473700450DB0 /* UIKit.framework */,
-				CC699D122B20410D8E721B33 /* libPods-WeStep.a */,
+				5517804A7A3485C427CF606A /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D8A6BCA6494653F9E5CA911 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1CB4B1E8F3B4496952676A70 /* Pods.debug.xcconfig */,
+				8763B5DD37911A8673421894 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3FBD42F11952D2520079731D /* WeStep */ = {
+		3FCBEF701A2F6190002C830B /* WeStep */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FBD43091952D2520079731D /* Build configuration list for PBXNativeTarget "WeStep" */;
+			buildConfigurationList = 3FCBEF941A2F6191002C830B /* Build configuration list for PBXNativeTarget "WeStep" */;
 			buildPhases = (
-				A356279450734319A29084DB /* Check Pods Manifest.lock */,
-				3FBD42EE1952D2520079731D /* Sources */,
-				3FBD42EF1952D2520079731D /* Frameworks */,
-				3FBD42F01952D2520079731D /* Resources */,
-				D982C6BE1F9D4905A7F361F4 /* Copy Pods Resources */,
+				F3D914C5224AC58DF5FA23D6 /* Check Pods Manifest.lock */,
+				3FCBEF6D1A2F6190002C830B /* Sources */,
+				3FCBEF6E1A2F6190002C830B /* Frameworks */,
+				3FCBEF6F1A2F6190002C830B /* Resources */,
+				49064DE88850385DDACE41C8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -246,76 +261,76 @@
 			);
 			name = WeStep;
 			productName = WeStep;
-			productReference = 3FBD42F21952D2520079731D /* WeStep.app */;
+			productReference = 3FCBEF711A2F6190002C830B /* WeStep.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3FBD42FE1952D2520079731D /* WeStepTests */ = {
+		3FCBEF891A2F6191002C830B /* WeStepTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3FBD430C1952D2520079731D /* Build configuration list for PBXNativeTarget "WeStepTests" */;
+			buildConfigurationList = 3FCBEF971A2F6191002C830B /* Build configuration list for PBXNativeTarget "WeStepTests" */;
 			buildPhases = (
-				3FBD42FB1952D2520079731D /* Sources */,
-				3FBD42FC1952D2520079731D /* Frameworks */,
-				3FBD42FD1952D2520079731D /* Resources */,
+				3FCBEF861A2F6191002C830B /* Sources */,
+				3FCBEF871A2F6191002C830B /* Frameworks */,
+				3FCBEF881A2F6191002C830B /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3FBD43011952D2520079731D /* PBXTargetDependency */,
+				3FCBEF8C1A2F6191002C830B /* PBXTargetDependency */,
 			);
 			name = WeStepTests;
 			productName = WeStepTests;
-			productReference = 3FBD42FF1952D2520079731D /* WeStepTests.xctest */;
+			productReference = 3FCBEF8A1A2F6191002C830B /* WeStepTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3FBD42EA1952D2520079731D /* Project object */ = {
+		3FCBEF691A2F6190002C830B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "哈尔滨工程大学 技术研究部";
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "WeStep, Inc.";
 				TargetAttributes = {
-					3FBD42F11952D2520079731D = {
-						CreatedOnToolsVersion = 6.0;
+					3FCBEF701A2F6190002C830B = {
+						CreatedOnToolsVersion = 6.1;
 					};
-					3FBD42FE1952D2520079731D = {
-						CreatedOnToolsVersion = 6.0;
-						TestTargetID = 3FBD42F11952D2520079731D;
+					3FCBEF891A2F6191002C830B = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 3FCBEF701A2F6190002C830B;
 					};
 				};
 			};
-			buildConfigurationList = 3FBD42ED1952D2520079731D /* Build configuration list for PBXProject "weStep" */;
+			buildConfigurationList = 3FCBEF6C1A2F6190002C830B /* Build configuration list for PBXProject "WeStep" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 3FBD42E91952D2520079731D;
-			productRefGroup = 3FBD42F31952D2520079731D /* Products */;
+			mainGroup = 3FCBEF681A2F6190002C830B;
+			productRefGroup = 3FCBEF721A2F6190002C830B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3FBD42F11952D2520079731D /* WeStep */,
-				3FBD42FE1952D2520079731D /* WeStepTests */,
+				3FCBEF701A2F6190002C830B /* WeStep */,
+				3FCBEF891A2F6191002C830B /* WeStepTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3FBD42F01952D2520079731D /* Resources */ = {
+		3FCBEF6F1A2F6190002C830B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D4B794196BFB7E00450DB0 /* diagmonds_@2X.png in Resources */,
-				07D4B793196BFB7E00450DB0 /* diagmonds.png in Resources */,
-				07D4B795196BFB7E00450DB0 /* readme.txt in Resources */,
-				3FBD42FA1952D2520079731D /* Images.xcassets in Resources */,
+				3FCBEF801A2F6190002C830B /* Main.storyboard in Resources */,
+				3FCBEF851A2F6190002C830B /* LaunchScreen.xib in Resources */,
+				3FCBEF821A2F6190002C830B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3FBD42FD1952D2520079731D /* Resources */ = {
+		3FCBEF881A2F6191002C830B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,7 +340,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A356279450734319A29084DB /* Check Pods Manifest.lock */ = {
+		49064DE88850385DDACE41C8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3D914C5224AC58DF5FA23D6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,59 +370,71 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		D982C6BE1F9D4905A7F361F4 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-WeStep-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3FBD42EE1952D2520079731D /* Sources */ = {
+		3FCBEF6D1A2F6190002C830B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07D4B79A196BFB7E00450DB0 /* TTSlidingPageTitle.m in Sources */,
-				07B294DD1965320200D4D195 /* BaseController.swift in Sources */,
-				07D4B798196BFB7E00450DB0 /* TTScrollViewWrapper.m in Sources */,
-				07D4B79E196BFB9900450DB0 /* NSDate+Utilities.m in Sources */,
-				07D4B797196BFB7E00450DB0 /* TTScrollSlidingPagesController.m in Sources */,
-				3FBD42F81952D2520079731D /* AppDelegate.swift in Sources */,
-				07D4B796196BFB7E00450DB0 /* TTBlackTriangle.m in Sources */,
-				07D4B799196BFB7E00450DB0 /* TTSlidingPage.m in Sources */,
+				3FBCEC8B1A2F64A200091BF3 /* FBTweak.m in Sources */,
+				3FBCEC8F1A2F64A200091BF3 /* FBTweakShakeWindow.m in Sources */,
+				3FCBEF7D1A2F6190002C830B /* ViewController.m in Sources */,
+				3FBCEC8D1A2F64A200091BF3 /* FBTweakCollection.m in Sources */,
+				3FBCEC871A2F64A200091BF3 /* _FBTweakBindObserver.m in Sources */,
+				3FBCEC911A2F64A200091BF3 /* FBTweakViewController.m in Sources */,
+				3FBCEC901A2F64A200091BF3 /* FBTweakStore.m in Sources */,
+				3FBCEC8C1A2F64A200091BF3 /* FBTweakCategory.m in Sources */,
+				3FCBEF7A1A2F6190002C830B /* AppDelegate.m in Sources */,
+				3FBCEC851A2F64A200091BF3 /* FBShimmeringLayer.m in Sources */,
+				3FBCEC8E1A2F64A200091BF3 /* FBTweakInline.m in Sources */,
+				3FBCEC861A2F64A200091BF3 /* FBShimmeringView.m in Sources */,
+				3FBCEC8A1A2F64A200091BF3 /* _FBTweakTableViewCell.m in Sources */,
+				3FCBEF771A2F6190002C830B /* main.m in Sources */,
+				3FBCEC881A2F64A200091BF3 /* _FBTweakCategoryViewController.m in Sources */,
+				3FBCEC891A2F64A200091BF3 /* _FBTweakCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3FBD42FB1952D2520079731D /* Sources */ = {
+		3FCBEF861A2F6191002C830B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FBD43061952D2520079731D /* WeStepTests.swift in Sources */,
+				3FCBEF911A2F6191002C830B /* WeStepTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3FBD43011952D2520079731D /* PBXTargetDependency */ = {
+		3FCBEF8C1A2F6191002C830B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3FBD42F11952D2520079731D /* WeStep */;
-			targetProxy = 3FBD43001952D2520079731D /* PBXContainerItemProxy */;
+			target = 3FCBEF701A2F6190002C830B /* WeStep */;
+			targetProxy = 3FCBEF8B1A2F6191002C830B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		3FCBEF7E1A2F6190002C830B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FCBEF7F1A2F6190002C830B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3FCBEF831A2F6190002C830B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3FCBEF841A2F6190002C830B /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		3FBD43071952D2520079731D /* Debug */ = {
+		3FCBEF921A2F6191002C830B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -426,15 +468,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				METAL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		3FBD43081952D2520079731D /* Release */ = {
+		3FCBEF931A2F6191002C830B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -462,50 +503,41 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				METAL_ENABLE_DEBUG_INFO = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		3FBD430A1952D2520079731D /* Debug */ = {
+		3FCBEF951A2F6191002C830B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E74B697492A9467E90A99842 /* Pods-WeStep.xcconfig */;
+			baseConfigurationReference = 1CB4B1E8F3B4496952676A70 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeStep/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WeStep/WeStep-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		3FBD430B1952D2520079731D /* Release */ = {
+		3FCBEF961A2F6191002C830B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E74B697492A9467E90A99842 /* Pods-WeStep.xcconfig */;
+			baseConfigurationReference = 8763B5DD37911A8673421894 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = WeStep/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WeStep/WeStep-Bridging-Header.h";
 			};
 			name = Release;
 		};
-		3FBD430D1952D2520079731D /* Debug */ = {
+		3FCBEF981A2F6191002C830B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WeStep.app/WeStep";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -516,59 +548,57 @@
 				);
 				INFOPLIST_FILE = WeStepTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeStep.app/WeStep";
 			};
 			name = Debug;
 		};
-		3FBD430E1952D2520079731D /* Release */ = {
+		3FCBEF991A2F6191002C830B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WeStep.app/WeStep";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = WeStepTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeStep.app/WeStep";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3FBD42ED1952D2520079731D /* Build configuration list for PBXProject "weStep" */ = {
+		3FCBEF6C1A2F6190002C830B /* Build configuration list for PBXProject "WeStep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3FBD43071952D2520079731D /* Debug */,
-				3FBD43081952D2520079731D /* Release */,
+				3FCBEF921A2F6191002C830B /* Debug */,
+				3FCBEF931A2F6191002C830B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FBD43091952D2520079731D /* Build configuration list for PBXNativeTarget "WeStep" */ = {
+		3FCBEF941A2F6191002C830B /* Build configuration list for PBXNativeTarget "WeStep" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3FBD430A1952D2520079731D /* Debug */,
-				3FBD430B1952D2520079731D /* Release */,
+				3FCBEF951A2F6191002C830B /* Debug */,
+				3FCBEF961A2F6191002C830B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3FBD430C1952D2520079731D /* Build configuration list for PBXNativeTarget "WeStepTests" */ = {
+		3FCBEF971A2F6191002C830B /* Build configuration list for PBXNativeTarget "WeStepTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3FBD430D1952D2520079731D /* Debug */,
-				3FBD430E1952D2520079731D /* Release */,
+				3FCBEF981A2F6191002C830B /* Debug */,
+				3FCBEF991A2F6191002C830B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 3FBD42EA1952D2520079731D /* Project object */;
+	rootObject = 3FCBEF691A2F6190002C830B /* Project object */;
 }
